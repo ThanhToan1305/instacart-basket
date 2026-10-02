@@ -1,0 +1,78 @@
+# Môi trường, cache Python/Jupyter
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ipynb_checkpoints/
+
+# Bí mật và cấu hình cục bộ
+.env
+.env.*
+!.env.example
+.aws/
+.codex/
+.agents/
+.streamlit/secrets.toml
+*.pem
+*.key
+*.p12
+*.pfx
+
+# Logs và trạng thái Spark
+logs/*
+!logs/.gitkeep
+*.log
+spark-warehouse/
+metastore_db/
+derby.log
+checkpoints/
+artifacts/
+
+# Dataset/Parquet và checkpoint: giữ scaffolding, không giữ dữ liệu
+data/raw/*
+data/bronze/*
+data/silver/*
+data/gold/*
+!data/**/.gitkeep
+!data/raw/README.md
+
+# Runtime metrics có đường dẫn máy; chỉ chia sẻ CSV aggregate đã review
+outputs/metrics/*
+!outputs/metrics/.gitkeep
+!outputs/metrics/*.csv
+outputs/metrics/raw_profile.csv
+
+# Giữ biểu đồ và bằng chứng thật, không bỏ qua toàn bộ outputs
+outputs/figures/*
+!outputs/figures/.gitkeep
+!outputs/figures/*.png
+!outputs/figures/*.html
+outputs/evidence/*
+!outputs/evidence/.gitkeep
+!outputs/evidence/*.png
+!outputs/evidence/EVIDENCE_MANIFEST.md
+!outputs/evidence/evidence_manifest.json
+outputs/tables/*
+!outputs/tables/.gitkeep
+!outputs/tables/*.csv
+outputs/tables/raw_profile.csv
+outputs/tools/
+outputs/sample_runs/
+
+# IDE / hệ điều hành / file tạm
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+Desktop.ini
+*.swp
+*.swo
+*~
+~$*
+*.tmp
+
+# CSV audit chứa worker_log là đường dẫn máy; giữ provenance local
+outputs/metrics/model_comparison.csv
+outputs/metrics/model_attempt_01.csv
+outputs/tables/model_comparison.csv

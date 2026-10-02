@@ -1,0 +1,110 @@
+file,bytes,reason
+src/__pycache__/prototype_checks.cpython-314.pyc,17996,Generated Python bytecode
+src/__pycache__/write_chapter5.cpython-314.pyc,27365,Generated Python bytecode
+src/__pycache__/run_pipeline.cpython-314.pyc,16954,Generated Python bytecode
+src/pipeline/__pycache__/raw_validation.cpython-314.pyc,13597,Generated Python bytecode
+src/pipeline/__pycache__/02_ingest_bronze.cpython-314.pyc,9198,Generated Python bytecode
+src/pipeline/__pycache__/__init__.cpython-314.pyc,202,Generated Python bytecode
+src/pipeline/__pycache__/fpgrowth_helpers.cpython-314.pyc,7960,Generated Python bytecode
+src/pipeline/__pycache__/04_eda.cpython-314.pyc,17099,Generated Python bytecode
+src/pipeline/__pycache__/06_evaluate_rules.cpython-314.pyc,27495,Generated Python bytecode
+src/pipeline/__pycache__/silver_helpers.cpython-314.pyc,4148,Generated Python bytecode
+src/pipeline/__pycache__/03_build_thưsilver.cpython-314.pyc,13623,Generated Python bytecode
+src/pipeline/__pycache__/fpgrowth_worker.cpython-314.pyc,8488,Generated Python bytecode
+src/pipeline/__pycache__/01_validate_raw.cpython-314.pyc,3337,Generated Python bytecode
+src/pipeline/__pycache__/05_train_fpgrowth.cpython-314.pyc,18538,Generated Python bytecode
+src/common/__pycache__/__init__.cpython-314.pyc,195,Generated Python bytecode
+src/common/__pycache__/spark_session.cpython-314.pyc,2412,Generated Python bytecode
+src/common/__pycache__/logger.cpython-314.pyc,1827,Generated Python bytecode
+src/evidence/__pycache__/local_office.cpython-314.pyc,7044,Generated Python bytecode
+src/evidence/__pycache__/build_report.cpython-314.pyc,35421,Generated Python bytecode
+src/evidence/__pycache__/__init__.cpython-314.pyc,189,Generated Python bytecode
+src/evidence/__pycache__/environment.cpython-314.pyc,3081,Generated Python bytecode
+src/evidence/__pycache__/capture.cpython-314.pyc,29108,Generated Python bytecode
+src/evidence/__pycache__/sample_pipeline.cpython-314.pyc,4956,Generated Python bytecode
+src/evidence/__pycache__/spark_ui_session.cpython-314.pyc,3005,Generated Python bytecode
+src/evidence/__pycache__/migrate_bronze.cpython-314.pyc,4320,Generated Python bytecode
+src/evidence/__pycache__/supplement.cpython-314.pyc,14166,Generated Python bytecode
+src/evidence/__pycache__/render_report.cpython-314.pyc,4832,Generated Python bytecode
+app/__pycache__/__init__.cpython-314.pyc,181,Generated Python bytecode
+app/__pycache__/recommender.cpython-314.pyc,3438,Generated Python bytecode
+app/__pycache__/prepare_dashboard_data.cpython-314.pyc,2444,Generated Python bytecode
+app/__pycache__/dashboard.cpython-314.pyc,23355,Generated Python bytecode
+app/__pycache__/data_loader.cpython-314.pyc,4654,Generated Python bytecode
+tests/__pycache__/test_silver_eda.cpython-314.pyc,11339,Generated Python bytecode
+tests/__pycache__/test_dashboard.cpython-314.pyc,14528,Generated Python bytecode
+tests/__pycache__/test_fpgrowth.cpython-314.pyc,15829,Generated Python bytecode
+tests/__pycache__/test_prototype_integration.cpython-314.pyc,9098,Generated Python bytecode
+tests/__pycache__/test_raw_validation.cpython-314.pyc,8145,Generated Python bytecode
+tests/__pycache__/test_pipeline_runner.cpython-314.pyc,4876,Generated Python bytecode
+outputs/tools/libreoffice/debs/libreoffice-base-core_4%3a26.2.5.2-0ubuntu0.26.04.1_amd64.deb,975362,Extracted installer cache or temporary installer debug trace
+outputs/tools/libreoffice/debs/libwebp7_1.5.0-0.1build1_amd64.deb,263542,Extracted installer cache or temporary installer debug trace
+outputs/tools/libreoffice/debs/libpoppler156_26.01.0-2ubuntu0.1_amd64.deb,1238410,Extracted installer cache or temporary installer debug trace
+outputs/tools/libreoffice/debs/libeot0_0.01-5build4_amd64.deb,28710,Extracted installer cache or temporary installer debug trace
+outputs/tools/libreoffice/debs/libreoffice-core_4%3a26.2.5.2-0ubuntu0.26.04.1_amd64.deb,44338796,Extracted installer cache or temporary installer debug trace
+outputs/tools/libreoffice/debs/libreoffice-common_4%3a26.2.5.2-0ubuntu0.26.04.1_all.deb,20592792,Extracted installer cache or temporary installer debug trace
+outputs/tools/libreoffice/debs/libyajl2_2.1.0-5.1_amd64.deb,20870,Extracted installer cache or temporary installer debug trace
+outputs/tools/libreoffice/debs/libabsl20260107_20260107.0-4_amd64.deb,587956,Extracted installer cache or temporary installer debug trace
+outputs/tools/libreoffice/debs/libuno-purpenvhelpergcc3-3t64_4%3a26.2.5.2-0ubuntu0.26.04.1_amd64.deb,17228,Extracted installer cache or temporary installer debug trace
+outputs/tools/libreoffice/debs/libboost-iostreams1.90.0_1.90.0-6ubuntu1_amd64.deb,252674,Extracted installer cache or temporary installer debug trace
+outputs/tools/libreoffice/debs/libboost-locale1.90.0_1.90.0-6ubuntu1_amd64.deb,422510,Extracted installer cache or temporary installer debug trace
+outputs/tools/libreoffice/debs/libodfgen-0.1-1_0.1.8-3build1_amd64.deb,253904,Extracted installer cache or temporary installer debug trace
+outputs/tools/libreoffice/debs/libboost-thread1.90.0_1.90.0-6ubuntu1_amd64.deb,263920,Extracted installer cache or temporary installer debug trace
+outputs/tools/libreoffice/debs/libraptor2-0_2.0.16-6build1_amd64.deb,167334,Extracted installer cache or temporary installer debug trace
+outputs/tools/libreoffice/debs/libuno-cppuhelpergcc3-3t64_4%3a26.2.5.2-0ubuntu0.26.04.1_amd64.deb,369564,Extracted installer cache or temporary installer debug trace
+outputs/tools/libreoffice/debs/libxmlsec1-1_1.3.9-1_amd64.deb,161458,Extracted installer cache or temporary installer debug trace
+outputs/tools/libreoffice/debs/libuno-salhelpergcc3-3t64_4%3a26.2.5.2-0ubuntu0.26.04.1_amd64.deb,20968,Extracted installer cache or temporary installer debug trace
+outputs/tools/libreoffice/debs/libe-book-0.1-1_0.1.3-2build9_amd64.deb,150968,Extracted installer cache or temporary installer debug trace
+outputs/tools/libreoffice/debs/liborcus-parser-0.21-0_0.21.0-4_amd64.deb,115428,Extracted installer cache or temporary installer debug trace
+outputs/tools/libreoffice/debs/liborcus-0.21-0_0.21.0-4_amd64.deb,483220,Extracted installer cache or temporary installer debug trace
+outputs/tools/libreoffice/debs/fonts-opensymbol_4%3a102.12+LibO26.2.5.2-0ubuntu0.26.04.1_all.deb,121216,Extracted installer cache or temporary installer debug trace
+outputs/tools/libreoffice/debs/libclucene-contribs1t64_2.3.3.4+dfsg-1.3_amd64.deb,91098,Extracted installer cache or temporary installer debug trace
+outputs/tools/libreoffice/debs/libabw-0.1-1_0.1.3-1build6_amd64.deb,104402,Extracted installer cache or temporary installer debug trace
+outputs/tools/libreoffice/debs/liblangtag-common_0.6.8-2_all.deb,209676,Extracted installer cache or temporary installer debug trace
+outputs/tools/libreoffice/debs/libxmlsec1-nss1_1.3.9-1_amd64.deb,77010,Extracted installer cache or temporary installer debug trace
+outputs/tools/libreoffice/debs/libtiff6_4.7.0-3ubuntu5_amd64.deb,205792,Extracted installer cache or temporary installer debug trace
+outputs/tools/libreoffice/debs/libmhash2_0.9.9.9-11_amd64.deb,94824,Extracted installer cache or temporary installer debug trace
+outputs/tools/libreoffice/debs/libepubgen-0.1-1_0.1.1-1ubuntu8_amd64.deb,124190,Extracted installer cache or temporary installer debug trace
+outputs/tools/libreoffice/debs/libreoffice-core-nogui_4%3a26.2.5.2-0ubuntu0.26.04.1_amd64.deb,39533876,Extracted installer cache or temporary installer debug trace
+outputs/tools/libreoffice/debs/libwps-0.4-4_0.4.14-2build2_amd64.deb,834128,Extracted installer cache or temporary installer debug trace
+outputs/tools/libreoffice/debs/librevenge-0.0-0_0.0.5-3build2_amd64.deb,215608,Extracted installer cache or temporary installer debug trace
+outputs/tools/libreoffice/debs/libgpgme45_2.0.1-2build1_amd64.deb,139814,Extracted installer cache or temporary installer debug trace
+outputs/tools/libreoffice/debs/libjbig0_2.1-6.1ubuntu3_amd64.deb,30028,Extracted installer cache or temporary installer debug trace
+outputs/tools/libreoffice/debs/libhunspell-1.7-0_1.7.2+really1.7.2-11_amd64.deb,315810,Extracted installer cache or temporary installer debug trace
+outputs/tools/libreoffice/debs/libgpgmepp7_2.0.0-2_amd64.deb,131100,Extracted installer cache or temporary installer debug trace
+outputs/tools/libreoffice/debs/libetonyek-0.1-1_0.1.13-2_amd64.deb,674040,Extracted installer cache or temporary installer debug trace
+outputs/tools/libreoffice/debs/libuno-cppu3t64_4%3a26.2.5.2-0ubuntu0.26.04.1_amd64.deb,92742,Extracted installer cache or temporary installer debug trace
+outputs/tools/libreoffice/debs/libwpg-0.3-3_0.3.4-3build2_amd64.deb,52132,Extracted installer cache or temporary installer debug trace
+outputs/tools/libreoffice/debs/libreoffice-writer_4%3a26.2.5.2-0ubuntu0.26.04.1_amd64.deb,11381384,Extracted installer cache or temporary installer debug trace
+outputs/tools/libreoffice/debs/strace_6.19+ds-0ubuntu5_amd64.deb,677520,Extracted installer cache or temporary installer debug trace
+outputs/tools/libreoffice/debs/liblerc4_4.0.0+ds-5ubuntu2_amd64.deb,206718,Extracted installer cache or temporary installer debug trace
+outputs/tools/libreoffice/debs/libargon2-1_0~20190702+dfsg-5_amd64.deb,21344,Extracted installer cache or temporary installer debug trace
+outputs/tools/libreoffice/debs/libreoffice-uiconfig-common_4%3a26.2.5.2-0ubuntu0.26.04.1_all.deb,328634,Extracted installer cache or temporary installer debug trace
+outputs/tools/libreoffice/debs/uno-libs-private_4%3a26.2.5.2-0ubuntu0.26.04.1_amd64.deb,236886,Extracted installer cache or temporary installer debug trace
+outputs/tools/libreoffice/debs/liborc-0.4-0t64_1%3a0.4.42-2_amd64.deb,283098,Extracted installer cache or temporary installer debug trace
+outputs/tools/libreoffice/debs/liblangtag1_0.6.8-2_amd64.deb,52972,Extracted installer cache or temporary installer debug trace
+outputs/tools/libreoffice/debs/libunwind8_1.8.3-0ubuntu1_amd64.deb,59630,Extracted installer cache or temporary installer debug trace
+outputs/tools/libreoffice/debs/libhyphen0_2.8.8-7build4_amd64.deb,26730,Extracted installer cache or temporary installer debug trace
+outputs/tools/libreoffice/debs/libopenjp2-7_2.5.4-1ubuntu0.1_amd64.deb,186936,Extracted installer cache or temporary installer debug trace
+outputs/tools/libreoffice/debs/libwpd-0.10-10_0.10.3-2build3_amd64.deb,209904,Extracted installer cache or temporary installer debug trace
+outputs/tools/libreoffice/debs/libharfbuzz-icu0_12.3.2-2_amd64.deb,11788,Extracted installer cache or temporary installer debug trace
+outputs/tools/libreoffice/debs/libexttextcat-data_3.4.7-2_all.deb,190672,Extracted installer cache or temporary installer debug trace
+outputs/tools/libreoffice/debs/libmythes-1.2-0_2%3a1.2.5-2build1_amd64.deb,8544,Extracted installer cache or temporary installer debug trace
+outputs/tools/libreoffice/debs/ure_4%3a26.2.5.2-0ubuntu0.26.04.1_amd64.deb,1437682,Extracted installer cache or temporary installer debug trace
+outputs/tools/libreoffice/debs/libexttextcat-2.0-0_3.4.7-2_amd64.deb,13640,Extracted installer cache or temporary installer debug trace
+outputs/tools/libreoffice/debs/libltdl7_2.5.4-9_amd64.deb,43668,Extracted installer cache or temporary installer debug trace
+outputs/tools/libreoffice/debs/libreoffice-style-colibre_4%3a26.2.5.2-0ubuntu0.26.04.1_all.deb,7356304,Extracted installer cache or temporary installer debug trace
+outputs/tools/libreoffice/debs/libclucene-core1t64_2.3.3.4+dfsg-1.3_amd64.deb,531936,Extracted installer cache or temporary installer debug trace
+outputs/tools/libreoffice/debs/libuno-sal3t64_4%3a26.2.5.2-0ubuntu0.26.04.1_amd64.deb,221366,Extracted installer cache or temporary installer debug trace
+outputs/tools/libreoffice/debs/librasqal3t64_0.9.33-3_amd64.deb,187790,Extracted installer cache or temporary installer debug trace
+outputs/tools/libreoffice/debs/libgstreamer-plugins-base1.0-0_1.28.2-1ubuntu0.1_amd64.deb,920576,Extracted installer cache or temporary installer debug trace
+outputs/tools/libreoffice/debs/librdf0t64_1.0.17-8_amd64.deb,89788,Extracted installer cache or temporary installer debug trace
+outputs/tools/libreoffice/debs/libicu78_78.2-2ubuntu1_amd64.deb,11456466,Extracted installer cache or temporary installer debug trace
+outputs/tools/libreoffice/debs/libreoffice-uiconfig-writer_4%3a26.2.5.2-0ubuntu0.26.04.1_all.deb,251920,Extracted installer cache or temporary installer debug trace
+outputs/tools/libreoffice/debs/libxslt1.1_1.1.45-0.1_amd64.deb,165368,Extracted installer cache or temporary installer debug trace
+outputs/tools/libreoffice/debs/libmwaw-0.3-3_0.3.22-2_amd64.deb,2553470,Extracted installer cache or temporary installer debug trace
+outputs/tools/libreoffice/debs/libdeflate0_1.23-2ubuntu1_amd64.deb,51702,Extracted installer cache or temporary installer debug trace
+outputs/tools/libreoffice/debug.log,171570,Extracted installer cache or temporary installer debug trace
+outputs/tools/libreoffice/debug2.log,0,Extracted installer cache or temporary installer debug trace
+outputs/evidence/.stop_prototype_c813268ab40a,0,Completed evidence worker stop marker
+outputs/evidence/.stop_prototype_86b2ccbcbf66,0,Completed evidence worker stop marker

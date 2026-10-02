@@ -1,0 +1,13 @@
+fpgrowth:
+  driver_memory: 3g
+  min_supports: [0.0005, 0.001, 0.002]
+  min_confidences: [0.20, 0.30, 0.40]
+  num_partitions: 128
+  task_cpus: 4
+  min_basket_size: 2
+  max_itemsets: 200000
+  max_rules: 500000
+  worker_timeout_seconds: 1200
+  recommendation_k: 5
+  plot_min_support: 0.001
+  scoring: confidence_lift_support
