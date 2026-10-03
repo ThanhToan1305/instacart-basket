@@ -1,0 +1,40 @@
+name: instacart
+
+x-common: &common
+  image: instacart-basket:1.0
+  build:
+    context: .
+  init: true
+
+services:
+  pipeline:
+    <<: *common
+    profiles: ["jobs"]
+    command:
+      - pipeline
+      - --mode
+      - sample
+      - --sample-fraction
+      - "0.01"
+    volumes:
+      - ./data:/app/data
+      - ./outputs:/app/outputs
+      - ./logs:/app/logs
+
+  dashboard:
+    <<: *common
+    command: ["dashboard"]
+    ports:
+      - "127.0.0.1:8501:8501"
+    volumes:
+      - ./data/gold:/app/data/gold:ro
+      - ./outputs:/app/outputs:ro
+
+  dashboard-sample:
+    <<: *common
+    profiles: ["sample"]
+    command: ["dashboard-sample"]
+    ports:
+      - "127.0.0.1:8502:8501"
+    volumes:
+      - ./outputs:/app/outputs:ro
