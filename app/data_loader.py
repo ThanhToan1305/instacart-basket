@@ -1,11 +1,14 @@
 """Cached, bounded reads of Gold and precomputed metrics; never starts Spark."""
 import json
+import os
 from pathlib import Path
 import pandas as pd
 import pyarrow.parquet as pq
 import streamlit as st
 
-ROOT = Path(__file__).resolve().parents[1]
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
+# Explicit workspace selection keeps sample artifacts separate from full data.
+ROOT = Path(os.environ.get('INSTACART_DASHBOARD_ROOT', PROJECT_ROOT)).resolve()
 
 class DataUnavailable(RuntimeError):
     pass

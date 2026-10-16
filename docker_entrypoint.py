@@ -47,10 +47,11 @@ elif mode in {"dashboard", "dashboard-sample"}:
         if info.get("status") != "PASS":
             raise SystemExit("Pipeline sample chua PASS. Hay kiem tra log.")
 
-        app = Path(info["workspace"]) / "app/dashboard.py"
-
-        if not app.is_file():
-            raise SystemExit(f"Khong tim thay dashboard sample: {app}")
+        workspace = Path(info["workspace"])
+        if not (workspace / "data/gold").is_dir() or not (workspace / "outputs/metrics").is_dir():
+            raise SystemExit(f"Khong tim thay Gold/metrics sample: {workspace}")
+        # Use the current UI source with the saved sample artifacts.
+        os.environ["INSTACART_DASHBOARD_ROOT"] = str(workspace)
 
     command = [
         sys.executable,

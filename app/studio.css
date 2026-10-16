@@ -1,0 +1,49 @@
+:root { color-scheme: light; }
+[data-testid="stAppViewContainer"], .stApp { background: #F3F5FA; color: #24314C; }
+[data-testid="stHeader"] { background: transparent; }
+[data-testid="stMainBlockContainer"] { max-width: 1520px; padding: 1.6rem 2.5rem 4rem; }
+[data-testid="stSidebar"] { background: #202B49; min-width: 72px !important; max-width: 72px !important; width: 72px !important; }
+[data-testid="stSidebarContent"] { padding: 0 !important; width: 72px !important; min-width: 72px !important; scrollbar-gutter: auto; }
+[data-testid="stSidebarHeader"] { display: none; }
+[data-testid="stSidebarUserContent"] { padding: 28px 12px !important; width: 72px !important; box-sizing: border-box; margin: 0 !important; }
+[data-testid="stSidebar"] [data-testid="stVerticalBlock"] { gap: 12px; }
+[data-testid="stSidebarCollapseButton"] { display: none; }
+[data-testid="stSidebar"] [data-testid="stButton"] button { width: 48px; height: 48px; padding: 0; margin: 9px 0; background: transparent; color: #BCC6DF; border: 0; border-radius: 12px; }
+[data-testid="stSidebar"] [data-testid="stButton"] button { min-width: 48px; }
+[data-testid="stSidebar"] button[kind="primary"] { background: #5266BA; color: white; }
+[data-testid="stSidebar"] button:hover { background: #3B496B; color: white; }
+[data-testid="stSidebar"] .st-key-studio_home button { background: #5266BA; color: white; margin-bottom: 22px; }
+.studio-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #DFE4EF; padding-bottom: 24px; color: #24314C; font-size: 13px; letter-spacing: 1.3px; }
+.muted, .studio-intro p { color: #6D7790; }
+.studio-tag { background: #EAEEFB; color: #5266BA; padding: 7px 12px; border-radius: 7px; font-size: 12px; }
+.studio-intro { position: relative; padding: 30px 0 10px; }
+.eyebrow { font-size: 12px; color: #5266BA; letter-spacing: 2px; margin-bottom: 10px; }
+h1, h2, h3 { color: #24314C; }
+.studio-intro h1 { font-size: clamp(25px, 2.5vw, 36px); font-weight: 650; padding: 0 170px 12px 0; }
+.studio-intro p { font-size: 14px; }
+.validation-tag { position: absolute; right: 0; top: 30px; border: 1px solid #DFE4EF; border-radius: 24px; padding: 9px 14px; font-size: 12px; }
+[data-testid="stRadio"] { border-bottom: 1px solid #DFE4EF; padding-bottom: 12px; margin-bottom: 14px; }
+[data-testid="stRadio"] [role="radiogroup"] { gap: 22px; }
+[data-testid="stRadioOption"] > div > div:first-child { display: none; }
+[data-testid="stRadio"] label:has(input:checked) { color: #5266BA; border-bottom: 2px solid #5266BA; }
+[data-testid="stVerticalBlockBorderWrapper"] > div { border-color: #DFE4EF !important; border-radius: 12px !important; background: #FFFFFF; }
+[class*="st-key-panel_"] { background: white; border-color: #DFE4EF !important; border-radius: 12px; }
+.st-key-selected_model { background: #EAEEFB !important; border-color: #DFE4EF !important; }
+.model-setting { display: flex; justify-content: space-between; gap: 16px; padding: 8px 0; border-bottom: 1px solid #DFE4EF; font-size: 14px; }
+[data-testid="stMetric"] { background: white; border: 1px solid #DFE4EF; border-radius: 10px; padding: 16px; }
+[data-testid="stMetricValue"] { color: #24314C; font-size: 28px; }
+[data-testid="stCaptionContainer"] { color: #6D7790; }
+[data-testid="stPlotlyChart"] { border-radius: 12px; overflow: hidden; }
+button[kind="secondary"], [data-baseweb="select"] > div, [data-baseweb="input"] { border-color: #DFE4EF; }
+@media (max-width: 1100px) { [data-testid="stMainBlockContainer"] { padding-left: 1.5rem; padding-right: 1.5rem; } }
+@media (max-width: 640px) {
+ [data-testid="stSidebar"] { display: none; }
+ [data-testid="stSidebarCollapsedControl"] { display: none; }
+ [data-testid="stMainBlockContainer"] { padding: 1rem 1rem 3rem; }
+ .studio-header { font-size: 10px; letter-spacing: .5px; }
+ .studio-intro h1 { padding-right: 0; }
+ .validation-tag { position: static; display: inline-block; margin: 0 0 10px; }
+ [data-testid="stRadio"] [role="radiogroup"] { gap: 8px 16px; flex-wrap: wrap; }
+ [data-testid="stHorizontalBlock"] { flex-direction: column; }
+ [data-testid="stColumn"] { width: 100% !important; flex: 1 1 100% !important; }
+}
