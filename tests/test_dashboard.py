@@ -58,19 +58,19 @@ class DashboardTests(unittest.TestCase):
         app=AppTest.from_file(str(ROOT/'app/dashboard.py'),default_timeout=30).run()
         self.assertEqual(len(app.exception),0)
         self.assertEqual(len(app.error),0)
-        for page in ['Hành vi mua sắm','Luật kết hợp','Gợi ý sản phẩm','Hiệu năng hệ thống']:
-            app.sidebar.radio[0].set_value(page).run()
+        for page in ['Hành vi','Mô hình & luật','Gợi ý','Hiệu năng']:
+            app.radio[0].set_value(page).run()
             self.assertEqual(len(app.exception),0,page)
             self.assertEqual(len(app.error),0,page)
         self.assertTrue(any('Cấu hình Spark' in h.value for h in app.subheader))
 
     def test_rule_filter_empty_and_recommendation_ui(self):
         app=AppTest.from_file(str(ROOT/'app/dashboard.py'),default_timeout=30).run()
-        app.sidebar.radio[0].set_value('Luật kết hợp').run()
+        app.radio[0].set_value('Mô hình & luật').run()
         app.number_input[0].set_value(1.0).run()
         self.assertEqual(len(app.exception),0)
-        self.assertEqual(app.metric[0].value,'0')
-        app.sidebar.radio[0].set_value('Gợi ý sản phẩm').run()
+        self.assertEqual(app.metric[-1].value,'0')
+        app.radio[0].set_value('Gợi ý').run()
         basket=[int(x) for x in self.lookup.iloc[0].antecedent]
         app.multiselect[0].set_value(basket).run()
         self.assertEqual(len(app.exception),0)
@@ -82,12 +82,24 @@ class DashboardTests(unittest.TestCase):
         self.assertEqual(len(app.exception),0)
         self.assertTrue(any('Fallback:' in w.value for w in app.warning))
 
+    def test_rail_and_tabs_share_navigation(self):
+        app=AppTest.from_file(str(ROOT/'app/dashboard.py'),default_timeout=30).run()
+        app.sidebar.button(key='rail_hub').click().run()
+        self.assertEqual(app.radio[0].value,'Mô hình & luật')
+        self.assertEqual(len(app.exception),0)
+        app.radio[0].set_value('Gợi ý').run()
+        self.assertEqual(app.session_state['studio_page'],'Gợi ý')
+        self.assertEqual(len(app.multiselect),1)
+        app.sidebar.button(key='rail_dashboard').click().run()
+        self.assertEqual(app.radio[0].value,'Tổng quan')
+        self.assertEqual(len(app.multiselect),0)
+
     def test_missing_inputs_do_not_crash(self):
         with tempfile.TemporaryDirectory() as folder,patch.object(data_loader,'ROOT',Path(folder)):
             st.cache_data.clear()
             app=AppTest.from_file(str(ROOT/'app/dashboard.py'),default_timeout=30).run()
-            for page in ['Tổng quan','Hành vi mua sắm','Luật kết hợp','Gợi ý sản phẩm','Hiệu năng hệ thống']:
-                app.sidebar.radio[0].set_value(page).run()
+            for page in ['Tổng quan','Hành vi','Mô hình & luật','Gợi ý','Hiệu năng']:
+                app.radio[0].set_value(page).run()
                 self.assertEqual(len(app.exception),0,page)
                 self.assertGreater(len(app.warning),0,page)
                 self.assertGreater(len(app.code),0,page)

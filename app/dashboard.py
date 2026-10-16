@@ -8,27 +8,15 @@ import streamlit as st
 from app.data_loader import DataUnavailable, gold, metrics
 from app.recommender import recommend
 
-st.set_page_config(page_title='Instacart Basket Intelligence', page_icon='🛒', layout='wide')
-GREEN = '#145C43'
-st.markdown('''<style>
-[data-testid="stSidebar"] {background-color: #ecf4ef;}
-h1, h2, h3 {color: #145C43;}
-[data-testid="stMetric"] {border: 1px solid #b9d8c7; border-radius: 10px; padding: 14px;}
-</style>''', unsafe_allow_html=True)
-st.title('Instacart Basket Intelligence')
-st.caption('Khám phá hành vi mua sắm và sản phẩm mua kèm từ dữ liệu Instacart thực tế.')
-try:
-    evidence_context=metrics('evidence_context.json')
-    st.caption(f"Bằng chứng thực nghiệm • {evidence_context['execution_mode']} • run_id={evidence_context['run_id']} • {evidence_context['created_at']}")
-except DataUnavailable:
-    pass
-PAGES = ['Tổng quan', 'Hành vi mua sắm', 'Luật kết hợp', 'Gợi ý sản phẩm', 'Hiệu năng hệ thống']
-page = st.sidebar.radio('Điều hướng', PAGES)
-st.sidebar.caption('Dữ liệu tổng hợp đã lưu • Không chạy Spark khi mở dashboard')
-if st.sidebar.button('Làm mới dữ liệu'):
-    st.cache_data.clear()
-    st.rerun()
+from app.studio import shell, model_panel, ACCENT
 
+page = shell()
+GREEN = ACCENT
+try:
+    context = metrics('sampling.json')
+    st.caption(f"Dữ liệu: {context['execution_mode']} · {context['sampling_rule']} · run_id={context['run_id']}")
+except DataUnavailable:
+    st.caption('Workspace full · Gold / metrics đã lưu')
 
 def get(name, parquet=False):
     try:
@@ -48,7 +36,8 @@ def get(name, parquet=False):
         else:
             command = '.venv/bin/python src/pipeline/04_eda.py'
         st.info('Cần khôi phục đầu ra pipeline tương ứng. Kiểm tra checkpoint/đầu ra hiện có trước khi chạy lại.')
-        st.code(command, language='bash')
+        with st.expander('Khôi phục dữ liệu'):
+            st.code(command, language='bash')
         return None
 
 
@@ -59,12 +48,13 @@ def chart(name, x, y, title, labels, horizontal=False, percent=False):
     fig = px.bar(data, x=y if horizontal else x, y=x if horizontal else y,
         orientation='h' if horizontal else 'v', title=title, labels=labels,
         color_discrete_sequence=[GREEN])
-    fig.update_layout(template='plotly_white')
+    fig.update_layout(template='studio', paper_bgcolor='white', plot_bgcolor='white')
     if horizontal:
         fig.update_yaxes(autorange='reversed')
     if percent:
         fig.update_xaxes(tickformat='.0%') if horizontal else fig.update_yaxes(tickformat='.0%')
-    st.plotly_chart(fig, width='stretch', key=page+'_'+name)
+    with st.container(border=True, key='panel_'+name):
+        st.plotly_chart(fig, theme=None, width='stretch', key=page+'_'+name)
 
 
 def overview():
@@ -86,6 +76,7 @@ def overview():
     model = get('model_summary.json')
     if model and 'selected' in model:
         c = model['selected']
+        model_panel(model)
         st.subheader('Chất lượng gợi ý trên train')
         a,b,d = st.columns(3)
         a.metric('Luật hữu dụng',f"{c['useful_rules']:,}")
@@ -108,36 +99,55 @@ def behavior():
 
 
 def rule_page():
-    st.subheader('Luật kết hợp')
-    st.caption('Bộ lọc áp dụng trên mô hình Gold đã chọn; giảm ngưỡng không tạo thêm luật chưa được lưu.')
+    model = get('model_summary.json')
     rules = get('association_rules',True)
+    left, right = st.columns([3, 2], gap='large')
+    with right:
+        model_panel(model)
+    with left, st.container(border=True, key='panel_scatter'):
+        st.subheader('Không gian luật kết hợp')
+        if rules is not None and not rules.empty:
+            st.caption(f'{len(rules):,} luật · mô hình Gold đã lưu')
+            scatter_data = rules.copy()
+            scatter_data['Luật'] = [', '.join(r.antecedent_names)+' → '+', '.join(r.consequent_names) for r in rules.itertuples()]
+            scatter = px.scatter(scatter_data, x='confidence', y='lift', size='support', hover_name='Luật',
+                                 labels={'confidence':'Confidence', 'lift':'Lift', 'support':'Support'},
+                                 color_discrete_sequence=[GREEN])
+            scatter.update_traces(marker=dict(opacity=0.72, line=dict(width=1, color='white')))
+            scatter.update_layout(height=360, template='studio', paper_bgcolor='white', plot_bgcolor='white')
+            st.plotly_chart(scatter, theme=None, width='stretch', key='rules_confidence_lift')
+        else:
+            st.info('Chưa có luật để hiển thị. Cần Gold association_rules từ pipeline.')
+    st.caption('Validation nội bộ: train cũng dùng chọn cấu hình. Bộ lọc chỉ áp dụng trên mô hình Gold đã lưu, không huấn luyện lại và không tạo thêm luật.')
     if rules is None or rules.empty:
         if rules is not None: st.info('Chưa có luật trong Gold.')
         return
-    a,b,c = st.columns(3)
-    support = a.number_input('minSupport',min_value=0.0,max_value=1.0,value=0.001,step=0.0005,format='%.4f')
-    confidence = b.slider('minConfidence',0.0,1.0,0.20,0.05)
-    lift = c.number_input('minLift',min_value=1.0,value=1.0,step=0.5)
-    filtered = rules[(rules.support>=support)&(rules.confidence>=confidence)&(rules.lift>=lift)].copy()
-    filtered['Luật'] = [', '.join(r.antecedent_names)+' → '+', '.join(r.consequent_names)
-                        for r in filtered.itertuples()]
-    filtered = filtered.sort_values(['lift','support','rule_id'],ascending=[False,False,True])
-    st.metric('Luật đạt bộ lọc',len(filtered))
-    visible = filtered[['Luật','support','confidence','lift','rule_id']]
-    st.dataframe(visible,width='stretch',hide_index=True)
-    st.download_button('Tải CSV luật đã lọc',visible.to_csv(index=False).encode('utf-8-sig'),'instacart_rules.csv','text/csv')
+    with st.container(border=True, key='panel_explorer'):
+        st.subheader('Khám phá luật')
+        selected = model.get('selected', {}) if model else {}
+        a,b,c = st.columns(3)
+        support = a.number_input('minSupport',min_value=0.0,max_value=1.0,value=float(selected.get('min_support', rules.support.min())),step=0.0005,format='%.4f')
+        confidence = b.slider('minConfidence',0.0,1.0,float(selected.get('min_confidence', rules.confidence.min())),0.05)
+        lift = c.number_input('minLift',min_value=1.0,value=1.0,step=0.5)
+        filtered = rules[(rules.support>=support)&(rules.confidence>=confidence)&(rules.lift>=lift)].copy()
+        filtered['Luật'] = [', '.join(r.antecedent_names)+' → '+', '.join(r.consequent_names)
+                            for r in filtered.itertuples()]
+        filtered = filtered.sort_values(['lift','support','rule_id'],ascending=[False,False,True])
+        st.metric('Luật đạt bộ lọc',len(filtered))
+        filtered['Antecedent'] = [', '.join(x) for x in filtered.antecedent_names]
+        filtered['Consequent'] = [', '.join(x) for x in filtered.consequent_names]
+        visible = filtered[['Antecedent','Consequent','support','confidence','lift','rule_id']]
+        st.dataframe(visible,width='stretch',hide_index=True)
+        st.download_button('Tải CSV luật đã lọc',visible.to_csv(index=False).encode('utf-8-sig'),'instacart_rules.csv','text/csv')
     if filtered.empty:
         st.info('Không có luật đạt các ngưỡng đã chọn. Hãy giảm bộ lọc.')
         return
     top = filtered.head(20).copy()
     top['Nhãn'] = [f'{i}. {label}' for i,label in enumerate(top['Luật'],1)]
     fig = px.bar(top,x='lift',y='Nhãn',orientation='h',title='Top 20 luật theo lift (sau bộ lọc support)',color_discrete_sequence=[GREEN])
-    fig.update_yaxes(autorange='reversed');fig.update_layout(height=800,template='plotly_white')
-    st.plotly_chart(fig,width='stretch',key='rules_top_lift')
-    scatter = px.scatter(filtered,x='confidence',y='lift',size='support',hover_name='Luật',
-        title='Confidence–lift của luật đã lọc',color_discrete_sequence=[GREEN],labels={'confidence':'Confidence','lift':'Lift','support':'Support'})
-    scatter.update_layout(template='plotly_white')
-    st.plotly_chart(scatter,width='stretch',key='rules_confidence_lift')
+    fig.update_yaxes(autorange='reversed');fig.update_layout(height=800,template='studio')
+    with st.expander('Top 20 luật theo lift', expanded=False):
+        st.plotly_chart(fig,theme=None,width='stretch',key='rules_top_lift')
 
 
 def recommendation_page():
@@ -231,7 +241,7 @@ def performance():
 
 
 try:
-    {'Tổng quan':overview,'Hành vi mua sắm':behavior,'Luật kết hợp':rule_page,
-     'Gợi ý sản phẩm':recommendation_page,'Hiệu năng hệ thống':performance}[page]()
+    {'Tổng quan':overview,'Hành vi':behavior,'Mô hình & luật':rule_page,
+     'Gợi ý':recommendation_page,'Hiệu năng':performance}[page]()
 except (KeyError,ValueError,TypeError) as exc:
     st.error(f'Đầu ra dữ liệu chưa đúng cấu trúc: {exc}. Kiểm tra lại báo cáo và pipeline tạo dữ liệu cho trang này.')
