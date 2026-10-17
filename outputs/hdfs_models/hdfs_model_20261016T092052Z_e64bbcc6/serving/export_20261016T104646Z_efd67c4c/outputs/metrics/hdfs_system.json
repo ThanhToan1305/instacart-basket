@@ -1,0 +1,206 @@
+{
+  "timings": [
+    {
+      "Run": "ETL",
+      "Stage": "sample_real_csv",
+      "Giây": 8.988,
+      "Trạng thái": "PASS"
+    },
+    {
+      "Run": "ETL",
+      "Stage": "raw_to_bronze_hdfs",
+      "Giây": 14.372,
+      "Trạng thái": "PASS"
+    },
+    {
+      "Run": "ETL",
+      "Stage": "bronze_to_silver_hdfs",
+      "Giây": 11.516,
+      "Trạng thái": "PASS"
+    },
+    {
+      "Run": "ETL",
+      "Stage": "silver_to_gold_hdfs",
+      "Giây": 3.662,
+      "Trạng thái": "PASS"
+    },
+    {
+      "Run": "ETL",
+      "Stage": "charts_from_hdfs_silver",
+      "Giây": 6.593,
+      "Trạng thái": "PASS"
+    },
+    {
+      "Run": "ETL",
+      "Stage": "final_read_reconciliation",
+      "Giây": 1.436,
+      "Trạng thái": "PASS"
+    },
+    {
+      "Run": "Model pilot",
+      "Stage": "verify_hdfs_silver",
+      "Giây": 5.241,
+      "Trạng thái": "PASS"
+    },
+    {
+      "Run": "Model pilot",
+      "Stage": "validate_prior_baskets",
+      "Giây": 7.293,
+      "Trạng thái": "PASS"
+    },
+    {
+      "Run": "Model pilot",
+      "Stage": "save_training_baskets",
+      "Giây": 2.46,
+      "Trạng thái": "PASS"
+    },
+    {
+      "Run": "Model pilot",
+      "Stage": "fit_pilot_fpgrowth",
+      "Giây": 7.825,
+      "Trạng thái": "PASS"
+    },
+    {
+      "Run": "Model pilot",
+      "Stage": "save_frequent_itemsets",
+      "Giây": 1.529,
+      "Trạng thái": "PASS"
+    },
+    {
+      "Run": "Model pilot",
+      "Stage": "save_rules",
+      "Giây": 1.389,
+      "Trạng thái": "PASS"
+    },
+    {
+      "Run": "Model pilot",
+      "Stage": "final_read_reconciliation",
+      "Giây": 1.325,
+      "Trạng thái": "PASS"
+    },
+    {
+      "Run": "Publication",
+      "Stage": "verify_model_artifacts",
+      "Giây": 3.575,
+      "Trạng thái": "PASS"
+    },
+    {
+      "Run": "Publication",
+      "Stage": "verify_etl_catalog",
+      "Giây": 0.242,
+      "Trạng thái": "PASS"
+    },
+    {
+      "Run": "Publication",
+      "Stage": "build_useful_rules_and_lookup",
+      "Giây": 3.624,
+      "Trạng thái": "PASS"
+    },
+    {
+      "Run": "Publication",
+      "Stage": "write_staging_and_readback",
+      "Giây": 5.435,
+      "Trạng thái": "PASS"
+    },
+    {
+      "Run": "Publication",
+      "Stage": "validate_staging_values",
+      "Giây": 7.967,
+      "Trạng thái": "PASS"
+    },
+    {
+      "Run": "Publication",
+      "Stage": "charts_from_real_rules",
+      "Giây": 2.956,
+      "Trạng thái": "PASS"
+    },
+    {
+      "Run": "Publication",
+      "Stage": "real_basket_integration",
+      "Giây": 2.387,
+      "Trạng thái": "PASS"
+    },
+    {
+      "Run": "Publication",
+      "Stage": "atomic_rename",
+      "Giây": 0.122,
+      "Trạng thái": "PASS"
+    },
+    {
+      "Run": "Publication",
+      "Stage": "final_hdfs_reconciliation",
+      "Giây": 8.11,
+      "Trạng thái": "PASS"
+    },
+    {
+      "Run": "Export",
+      "Stage": "verify_hdfs_commit",
+      "Giây": 0.308,
+      "Trạng thái": "PASS"
+    },
+    {
+      "Run": "Export",
+      "Stage": "export_product_catalog",
+      "Giây": 6.675,
+      "Trạng thái": "PASS"
+    },
+    {
+      "Run": "Export",
+      "Stage": "export_kpi_summary",
+      "Giây": 1.368,
+      "Trạng thái": "PASS"
+    },
+    {
+      "Run": "Export",
+      "Stage": "export_association_rules",
+      "Giây": 3.542,
+      "Trạng thái": "PASS"
+    },
+    {
+      "Run": "Export",
+      "Stage": "export_recommendation_lookup",
+      "Giây": 3.371,
+      "Trạng thái": "PASS"
+    },
+    {
+      "Run": "Export",
+      "Stage": "validate_local_gold",
+      "Giây": 13.529,
+      "Trạng thái": "PASS"
+    },
+    {
+      "Run": "Export",
+      "Stage": "silver_hdfs_aggregates",
+      "Giây": 4.366,
+      "Trạng thái": "PASS"
+    },
+    {
+      "Run": "Export",
+      "Stage": "local_recommendation_and_fallback",
+      "Giây": 0.476,
+      "Trạng thái": "PASS"
+    }
+  ],
+  "counts": [
+    {
+      "Bảng": "product_catalog",
+      "Dòng": 49688,
+      "URI": "hdfs://namenode:9000/instacart/runs/hdfs_etl_20261016T083208Z_887f71ba/gold/product_catalog"
+    },
+    {
+      "Bảng": "kpi_summary",
+      "Dòng": 1,
+      "URI": "hdfs://namenode:9000/instacart/runs/hdfs_etl_20261016T083208Z_887f71ba/gold/kpi_summary"
+    },
+    {
+      "Bảng": "association_rules",
+      "Dòng": 279,
+      "URI": "hdfs://namenode:9000/instacart/runs/hdfs_etl_20261016T083208Z_887f71ba/models/hdfs_model_20261016T092052Z_e64bbcc6/gold/pub_20261016T102223Z_816c1801/association_rules"
+    },
+    {
+      "Bảng": "recommendation_lookup",
+      "Dòng": 347,
+      "URI": "hdfs://namenode:9000/instacart/runs/hdfs_etl_20261016T083208Z_887f71ba/models/hdfs_model_20261016T092052Z_e64bbcc6/gold/pub_20261016T102223Z_816c1801/recommendation_lookup"
+    }
+  ]
+}

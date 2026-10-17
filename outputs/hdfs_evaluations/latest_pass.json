@@ -1,0 +1,7 @@
+{
+  "status": "PASS",
+  "evaluation_run_id": "eval_20261016T135439Z_163e5bb7",
+  "export_id": "export_b078dc33",
+  "serving_dir": "outputs/hdfs_evaluations/eval_20261016T135439Z_163e5bb7/serving/export_b078dc33",
+  "serving_manifest": "outputs/hdfs_evaluations/eval_20261016T135439Z_163e5bb7/serving/export_b078dc33/serving_manifest.json"
+}

@@ -1,0 +1,14 @@
+{
+  "total_orders": 34299,
+  "total_users": 29607,
+  "avg_days_between_orders": 11.065915247376779,
+  "total_order_items": 339165,
+  "reorder_rate": 0.5908363186059883,
+  "observed_baskets": 33523,
+  "avg_basket_size": 10.117382095874474,
+  "median_basket_size": 8.0,
+  "basket_item_total": 339165,
+  "total_products": 49688,
+  "avg_orders_per_user": 1.1584760360725503,
+  "orders_without_observed_items": 776
+}

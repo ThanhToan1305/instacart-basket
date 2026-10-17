@@ -1,0 +1,67 @@
+﻿{
+    "etl_run_id":  "hdfs_etl_20261016T083208Z_887f71ba",
+    "capture_id":  "capture_20261016T110240Z",
+    "model_run_id":  "hdfs_model_20261016T092052Z_e64bbcc6",
+    "images":  [
+                   {
+                       "captured_at":  "2026-10-16T11:02:46.2605933Z",
+                       "export_id":  "export_20261016T104646Z_efd67c4c",
+                       "max_height":  3500,
+                       "kind":  "real browser screenshot",
+                       "publication_id":  "pub_20261016T102223Z_816c1801",
+                       "url":  "http://127.0.0.1:8503",
+                       "file":  "01_overview.png"
+                   },
+                   {
+                       "captured_at":  "2026-10-16T11:02:48.6487146Z",
+                       "export_id":  "export_20261016T104646Z_efd67c4c",
+                       "max_height":  3500,
+                       "kind":  "real browser screenshot",
+                       "publication_id":  "pub_20261016T102223Z_816c1801",
+                       "url":  "http://127.0.0.1:8503",
+                       "file":  "02_behavior.png"
+                   },
+                   {
+                       "captured_at":  "2026-10-16T11:02:51.0742906Z",
+                       "export_id":  "export_20261016T104646Z_efd67c4c",
+                       "max_height":  3500,
+                       "kind":  "real browser screenshot",
+                       "publication_id":  "pub_20261016T102223Z_816c1801",
+                       "url":  "http://127.0.0.1:8503",
+                       "file":  "03_rules.png"
+                   },
+                   {
+                       "captured_at":  "2026-10-16T11:02:59.0397821Z",
+                       "export_id":  "export_20261016T104646Z_efd67c4c",
+                       "max_height":  3500,
+                       "kind":  "real browser screenshot",
+                       "publication_id":  "pub_20261016T102223Z_816c1801",
+                       "url":  "http://127.0.0.1:8503",
+                       "file":  "04_rule_recommendation.png"
+                   },
+                   {
+                       "captured_at":  "2026-10-16T11:03:04.1040328Z",
+                       "export_id":  "export_20261016T104646Z_efd67c4c",
+                       "max_height":  3500,
+                       "kind":  "real browser screenshot",
+                       "publication_id":  "pub_20261016T102223Z_816c1801",
+                       "url":  "http://127.0.0.1:8503",
+                       "file":  "05_fallback.png"
+                   },
+                   {
+                       "captured_at":  "2026-10-16T11:03:06.3690525Z",
+                       "export_id":  "export_20261016T104646Z_efd67c4c",
+                       "max_height":  3500,
+                       "kind":  "real browser screenshot",
+                       "publication_id":  "pub_20261016T102223Z_816c1801",
+                       "url":  "http://127.0.0.1:8503",
+                       "file":  "06_performance.png"
+                   }
+               ],
+    "created_at":  "2026-10-16T11:03:06.3705587Z",
+    "browser":  "Microsoft Edge headless via CDP",
+    "publication_id":  "pub_20261016T102223Z_816c1801",
+    "status":  "PASS",
+    "error":  null,
+    "export_id":  "export_20261016T104646Z_efd67c4c"
+}

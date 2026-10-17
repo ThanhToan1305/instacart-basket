@@ -1,0 +1,14 @@
+﻿layer,table,rows,final_read_rows,bytes,uri
+bronze,aisles,134,134,4746,hdfs://namenode:9000/instacart/runs/hdfs_etl_20261016T083208Z_887f71ba/bronze/aisles
+bronze,departments,21,21,2699,hdfs://namenode:9000/instacart/runs/hdfs_etl_20261016T083208Z_887f71ba/bronze/departments
+bronze,products,49688,49688,1347668,hdfs://namenode:9000/instacart/runs/hdfs_etl_20261016T083208Z_887f71ba/bronze/products
+bronze,orders,34299,34299,372530,hdfs://namenode:9000/instacart/runs/hdfs_etl_20261016T083208Z_887f71ba/bronze/orders
+bronze,order_products_prior,325321,325321,1228466,hdfs://namenode:9000/instacart/runs/hdfs_etl_20261016T083208Z_887f71ba/bronze/order_products_prior
+bronze,order_products_train,13844,13844,67088,hdfs://namenode:9000/instacart/runs/hdfs_etl_20261016T083208Z_887f71ba/bronze/order_products_train
+silver,orders,34299,34299,370200,hdfs://namenode:9000/instacart/runs/hdfs_etl_20261016T083208Z_887f71ba/silver/orders
+silver,products,49688,49688,1428964,hdfs://namenode:9000/instacart/runs/hdfs_etl_20261016T083208Z_887f71ba/silver/products
+silver,order_items,339165,339165,1810341,hdfs://namenode:9000/instacart/runs/hdfs_etl_20261016T083208Z_887f71ba/silver/order_items
+silver,order_items_enriched,339165,339165,5623721,hdfs://namenode:9000/instacart/runs/hdfs_etl_20261016T083208Z_887f71ba/silver/order_items_enriched
+silver,baskets,33523,33523,1139828,hdfs://namenode:9000/instacart/runs/hdfs_etl_20261016T083208Z_887f71ba/silver/baskets
+gold,kpi_summary,1,1,5147,hdfs://namenode:9000/instacart/runs/hdfs_etl_20261016T083208Z_887f71ba/gold/kpi_summary
+gold,product_catalog,49688,49688,1294374,hdfs://namenode:9000/instacart/runs/hdfs_etl_20261016T083208Z_887f71ba/gold/product_catalog

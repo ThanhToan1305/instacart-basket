@@ -1,0 +1,4 @@
+method,p50_ms,p95_ms,calls,contexts,mode
+popularity,0.0020980000954295974,0.004426000054991165,300,100,warm in-process engine; one excluded warm-up; 3 repeats/context; no network/UI
+rule_only,0.0047894998260744615,0.047077099816306235,300,100,warm in-process engine; one excluded warm-up; 3 repeats/context; no network/UI
+hybrid,0.005911499783906038,0.045289100080481155,300,100,warm in-process engine; one excluded warm-up; 3 repeats/context; no network/UI

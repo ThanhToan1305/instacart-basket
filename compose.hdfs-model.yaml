@@ -1,0 +1,72 @@
+services:
+  hdfs-model: &hdfs-model
+    image: instacart-basket:1.0
+    profiles: ["hdfs"]
+    init: true
+    working_dir: /app
+    entrypoint: ["python", "-u", "-m", "hdfs_pipeline.train"]
+    command: []
+    environment:
+      PYTHONPATH: /app/src
+      HADOOP_CONF_DIR: /etc/instacart-hdfs
+      SPARK_LOCAL_IP: 127.0.0.1
+      PYTHONUNBUFFERED: "1"
+    depends_on:
+      namenode:
+        condition: service_healthy
+      datanode:
+        condition: service_healthy
+    volumes:
+      - ./src:/app/src:ro
+      - ./config:/app/config:ro
+      - ./infra/hdfs-docker:/app/infra/hdfs-docker:ro
+      - ./infra/hdfs-docker/conf:/etc/instacart-hdfs:ro
+      - ./outputs:/app/outputs
+    mem_limit: 3g
+  hdfs-publish:
+    <<: *hdfs-model
+    entrypoint: ["python", "-u", "-m", "hdfs_pipeline.publish"]
+  hdfs-export:
+    <<: *hdfs-model
+    entrypoint: ["python", "-u", "-m", "hdfs_pipeline.export_dashboard"]
+    environment:
+      PYTHONPATH: /app/src:/app
+      HADOOP_CONF_DIR: /etc/instacart-hdfs
+      SPARK_LOCAL_IP: 127.0.0.1
+    volumes:
+      - ./src:/app/src:ro
+      - ./app:/app/app:ro
+      - ./config:/app/config:ro
+      - ./infra/hdfs-docker:/app/infra/hdfs-docker:ro
+      - ./infra/hdfs-docker/conf:/etc/instacart-hdfs:ro
+      - ./outputs:/app/outputs
+  dashboard-hdfs:
+    image: instacart-basket:1.0
+    profiles: ["hdfs-ui"]
+    init: true
+    working_dir: /app
+    entrypoint: ["python", "-m", "streamlit", "run", "app/dashboard.py", "--server.address=0.0.0.0", "--server.port=8501", "--server.headless=true", "--browser.gatherUsageStats=false"]
+    command: []
+    environment:
+      HDFS_SERVING_DIR: /serving
+    ports:
+      - "127.0.0.1:${HDFS_DASHBOARD_PORT:-8503}:8501"
+    volumes:
+      - ./app:/app/app:ro
+      - ${HDFS_SERVING_DIR:-./outputs/hdfs_serving/not-selected}:/serving:ro
+    mem_limit: 1g
+  hdfs-evaluate:
+    <<: *hdfs-model
+    entrypoint: ["python", "-u", "-m", "hdfs_pipeline.evaluate"]
+    environment:
+      PYTHONPATH: /app/src:/app
+      HADOOP_CONF_DIR: /etc/instacart-hdfs
+      SPARK_LOCAL_IP: 127.0.0.1
+    volumes:
+      - ./src:/app/src:ro
+      - ./app:/app/app:ro
+      - ./config:/app/config:ro
+      - ./docs/evaluation_protocol.md:/app/docs/evaluation_protocol.md:ro
+      - ./infra/hdfs-docker:/app/infra/hdfs-docker:ro
+      - ./infra/hdfs-docker/conf:/etc/instacart-hdfs:ro
+      - ./outputs:/app/outputs

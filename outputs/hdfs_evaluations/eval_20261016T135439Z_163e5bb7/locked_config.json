@@ -1,0 +1,82 @@
+{
+  "status": "LOCKED",
+  "locked_at": "2026-10-16T14:11:25.790545+00:00",
+  "evaluation_run_id": "eval_20261016T135439Z_163e5bb7",
+  "selected": {
+    "config_id": "s0.001_c0.2",
+    "status": "PASS",
+    "min_support": 0.001,
+    "min_confidence": 0.2,
+    "rule_only": {
+      "method": "rule_only",
+      "eligible_cases": 4103,
+      "hit_rate_at_5": 0.1786497684621009,
+      "precision_at_5": 0.0407994150621499,
+      "recall_at_5": 0.03288836976097836,
+      "recommendation_coverage": 0.6556178406044357,
+      "rule_coverage": 0.6556178406044357,
+      "zero_recommendation_cases": 1413,
+      "fewer_than_5_cases": 3790,
+      "rule_recommendations": 6824,
+      "popularity_recommendations": 0
+    },
+    "fit_report": "jobs/fit_0_001_7302c76d/report.json",
+    "fit_report_sha256": "1781b3dec3d2be705d268807ef5783b7df736149fa3f993032c454111979d0d2",
+    "batch_seconds": 4.462
+  },
+  "selection": "validation rule-only Recall@5, HitRate@5, higher support, higher confidence, config_id",
+  "split_manifest_sha256": "94d2489ac370fc8e0923d20acf64ecba30491468cb7a26b4fa3837932573395f",
+  "protocol_sha256": "d46b0c0db2dc1302b21d3ad2222baaa10419137aaedecebdf3116c365460c3f5",
+  "engine_sha256": "cc561567244261d6de8fe653ce01b70674889d77caebb8fcc0f5b3c2483d2753",
+  "train_popularity": {
+    "uri": "hdfs://namenode:9000/instacart/runs/hdfs_etl_20261016T083208Z_887f71ba/evaluations/eval_20261016T135439Z_163e5bb7/work/split_5972c049/train_popularity",
+    "rows": 22512,
+    "bytes": 118902,
+    "schema": {
+      "type": "struct",
+      "fields": [
+        {
+          "name": "product_id",
+          "type": "integer",
+          "nullable": true,
+          "metadata": {}
+        },
+        {
+          "name": "basket_count",
+          "type": "long",
+          "nullable": true,
+          "metadata": {}
+        }
+      ]
+    },
+    "schema_check": "full type tree; Parquet nullability flags ignored",
+    "status": "PASS",
+    "fingerprint": {
+      "algorithm": "count,sum(decimal(xxhash64)),min,max; order-independent, not cryptographic",
+      "values": {
+        "rows": 22512,
+        "sum": "507401449204912749849",
+        "min": -9222048231332557344,
+        "max": 9221434185131229937
+      },
+      "schema": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "product_id",
+            "type": "integer",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "basket_count",
+            "type": "long",
+            "nullable": true,
+            "metadata": {}
+          }
+        ]
+      }
+    }
+  },
+  "hdfs_uri": "hdfs://namenode:9000/instacart/runs/hdfs_etl_20261016T083208Z_887f71ba/evaluations/eval_20261016T135439Z_163e5bb7/work/validation_233bcd16/locked_config.json"
+}

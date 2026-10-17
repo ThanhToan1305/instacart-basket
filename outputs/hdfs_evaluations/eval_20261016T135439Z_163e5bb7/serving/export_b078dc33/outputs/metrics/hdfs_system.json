@@ -1,0 +1,61 @@
+{
+  "timings": [
+    {
+      "Run": "eval_20261016T135439Z_163e5bb7",
+      "Stage": "split",
+      "Giây": 45.34,
+      "Trạng thái": "PASS"
+    },
+    {
+      "Run": "eval_20261016T135439Z_163e5bb7",
+      "Stage": "fit_0_002",
+      "Giây": 27.872,
+      "Trạng thái": "PASS"
+    },
+    {
+      "Run": "eval_20261016T135439Z_163e5bb7",
+      "Stage": "fit_0_001",
+      "Giây": 24.224,
+      "Trạng thái": "PASS"
+    },
+    {
+      "Run": "eval_20261016T135439Z_163e5bb7",
+      "Stage": "validation",
+      "Giây": 49.329,
+      "Trạng thái": "PASS"
+    },
+    {
+      "Run": "eval_20261016T135439Z_163e5bb7",
+      "Stage": "test",
+      "Giây": 23.976,
+      "Trạng thái": "PASS"
+    }
+  ],
+  "counts": [
+    {
+      "Bảng": "product_catalog",
+      "Dòng": 49688,
+      "URI": "hdfs://namenode:9000/instacart/runs/hdfs_etl_20261016T083208Z_887f71ba/gold/product_catalog"
+    },
+    {
+      "Bảng": "kpi_summary",
+      "Dòng": 1,
+      "URI": "hdfs://namenode:9000/instacart/runs/hdfs_etl_20261016T083208Z_887f71ba/gold/kpi_summary"
+    },
+    {
+      "Bảng": "association_rules",
+      "Dòng": 1180,
+      "URI": "hdfs://namenode:9000/instacart/runs/hdfs_etl_20261016T083208Z_887f71ba/evaluations/eval_20261016T135439Z_163e5bb7/work/export_b078dc33/gold/association_rules"
+    },
+    {
+      "Bảng": "recommendation_lookup",
+      "Dòng": 1783,
+      "URI": "hdfs://namenode:9000/instacart/runs/hdfs_etl_20261016T083208Z_887f71ba/evaluations/eval_20261016T135439Z_163e5bb7/work/export_b078dc33/gold/recommendation_lookup"
+    },
+    {
+      "Bảng": "train_popularity",
+      "Dòng": 22512,
+      "URI": "hdfs://namenode:9000/instacart/runs/hdfs_etl_20261016T083208Z_887f71ba/evaluations/eval_20261016T135439Z_163e5bb7/work/split_5972c049/train_popularity"
+    }
+  ]
+}

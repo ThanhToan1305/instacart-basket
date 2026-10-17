@@ -1,0 +1,7 @@
+method,metric,value
+hybrid,recommendation_coverage,1.0
+popularity,recommendation_coverage,1.0
+rule_only,recommendation_coverage,0.6618635926993276
+hybrid,rule_coverage,0.6618635926993276
+popularity,rule_coverage,0.0
+rule_only,rule_coverage,0.6618635926993276

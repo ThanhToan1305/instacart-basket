@@ -1,0 +1,483 @@
+{
+  "status": "PASS",
+  "created_at": "2026-10-16T14:25:50.980555+00:00",
+  "export_id": "export_b078dc33",
+  "mode": "Gold export từ HDFS",
+  "execution_mode": "SAMPLE",
+  "evaluation_status": "EVALUATED_BASKET_COMPLETION",
+  "evaluation_run_id": "eval_20261016T135439Z_163e5bb7",
+  "etl_run_id": "hdfs_etl_20261016T083208Z_887f71ba",
+  "etl_root": "hdfs://namenode:9000/instacart/runs/hdfs_etl_20261016T083208Z_887f71ba",
+  "evaluation_root": "hdfs://namenode:9000/instacart/runs/hdfs_etl_20261016T083208Z_887f71ba/evaluations/eval_20261016T135439Z_163e5bb7",
+  "model_run_id": "fit_0_001_7302c76d",
+  "publication_id": "export_b078dc33",
+  "gold_root": "hdfs://namenode:9000/instacart/runs/hdfs_etl_20261016T083208Z_887f71ba/evaluations/eval_20261016T135439Z_163e5bb7/work/export_b078dc33/gold",
+  "train_popularity_uri": "hdfs://namenode:9000/instacart/runs/hdfs_etl_20261016T083208Z_887f71ba/evaluations/eval_20261016T135439Z_163e5bb7/work/split_5972c049/train_popularity",
+  "publication_manifest_uri": "hdfs://namenode:9000/instacart/runs/hdfs_etl_20261016T083208Z_887f71ba/evaluations/eval_20261016T135439Z_163e5bb7/work/export_b078dc33/gold/evaluation_gold_manifest.json",
+  "model_config": {
+    "min_confidence": 0.2,
+    "num_partitions": 8,
+    "max_itemsets": 200000,
+    "max_rules": 500000,
+    "worker_timeout_seconds": 1200,
+    "min_support": 0.001
+  },
+  "publication_min_confidence": 0.2,
+  "compute": "Spark local[2], driver=1g, task.cpus=1; one Docker host",
+  "test_used_for_development": false,
+  "tables": {
+    "product_catalog": {
+      "uri": "hdfs://namenode:9000/instacart/runs/hdfs_etl_20261016T083208Z_887f71ba/gold/product_catalog",
+      "rows": 49688,
+      "bytes": 1294374,
+      "schema": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "product_id",
+            "type": "integer",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "product_name",
+            "type": "string",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "department",
+            "type": "string",
+            "nullable": true,
+            "metadata": {}
+          }
+        ]
+      },
+      "schema_check": "full type tree; Parquet nullability flags ignored",
+      "status": "PASS",
+      "final_read_rows": 49688,
+      "arrow_schema": "product_id: int32\nproduct_name: string\ndepartment: string",
+      "reconciliation": "PASS; full keyed value comparison"
+    },
+    "kpi_summary": {
+      "uri": "hdfs://namenode:9000/instacart/runs/hdfs_etl_20261016T083208Z_887f71ba/gold/kpi_summary",
+      "rows": 1,
+      "bytes": 5147,
+      "schema": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "total_orders",
+            "type": "long",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "total_users",
+            "type": "long",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "avg_days_between_orders",
+            "type": "double",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "total_order_items",
+            "type": "long",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "reorder_rate",
+            "type": "double",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "observed_baskets",
+            "type": "long",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "avg_basket_size",
+            "type": "double",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "median_basket_size",
+            "type": "double",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "basket_item_total",
+            "type": "long",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "total_products",
+            "type": "long",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "avg_orders_per_user",
+            "type": "double",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "orders_without_observed_items",
+            "type": "long",
+            "nullable": true,
+            "metadata": {}
+          }
+        ]
+      },
+      "schema_check": "full type tree; Parquet nullability flags ignored",
+      "status": "PASS",
+      "final_read_rows": 1,
+      "arrow_schema": "total_orders: int64\ntotal_users: int64\navg_days_between_orders: double\ntotal_order_items: int64\nreorder_rate: double\nobserved_baskets: int64\navg_basket_size: double\nmedian_basket_size: double\nbasket_item_total: int64\ntotal_products: int64\navg_orders_per_user: double\norders_without_observed_items: int64",
+      "reconciliation": "PASS; full keyed value comparison"
+    },
+    "association_rules": {
+      "uri": "hdfs://namenode:9000/instacart/runs/hdfs_etl_20261016T083208Z_887f71ba/evaluations/eval_20261016T135439Z_163e5bb7/work/export_b078dc33/gold/association_rules",
+      "rows": 1180,
+      "bytes": 154283,
+      "schema": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "rule_id",
+            "type": "string",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "antecedent",
+            "type": {
+              "type": "array",
+              "elementType": "integer",
+              "containsNull": true
+            },
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "consequent",
+            "type": {
+              "type": "array",
+              "elementType": "integer",
+              "containsNull": true
+            },
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "support",
+            "type": "double",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "confidence",
+            "type": "double",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "lift",
+            "type": "double",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "antecedent_names",
+            "type": {
+              "type": "array",
+              "elementType": "string",
+              "containsNull": true
+            },
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "consequent_names",
+            "type": {
+              "type": "array",
+              "elementType": "string",
+              "containsNull": true
+            },
+            "nullable": true,
+            "metadata": {}
+          }
+        ]
+      },
+      "schema_check": "full type tree; Parquet nullability flags ignored",
+      "status": "PASS",
+      "arrow_schema": "rule_id: string\nantecedent: list<element: int32>\n  child 0, element: int32\nconsequent: list<element: int32>\n  child 0, element: int32\nsupport: double\nconfidence: double\nlift: double\nantecedent_names: list<element: string>\n  child 0, element: string\nconsequent_names: list<element: string>\n  child 0, element: string",
+      "reconciliation": "PASS; full keyed value comparison"
+    },
+    "recommendation_lookup": {
+      "uri": "hdfs://namenode:9000/instacart/runs/hdfs_etl_20261016T083208Z_887f71ba/evaluations/eval_20261016T135439Z_163e5bb7/work/export_b078dc33/gold/recommendation_lookup",
+      "rows": 1783,
+      "bytes": 177721,
+      "schema": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "rule_id",
+            "type": "string",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "antecedent",
+            "type": {
+              "type": "array",
+              "elementType": "integer",
+              "containsNull": true
+            },
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "consequent",
+            "type": {
+              "type": "array",
+              "elementType": "integer",
+              "containsNull": true
+            },
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "support",
+            "type": "double",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "confidence",
+            "type": "double",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "lift",
+            "type": "double",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "antecedent_names",
+            "type": {
+              "type": "array",
+              "elementType": "string",
+              "containsNull": true
+            },
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "consequent_names",
+            "type": {
+              "type": "array",
+              "elementType": "string",
+              "containsNull": true
+            },
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "antecedent_size",
+            "type": "integer",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "antecedent_product_id",
+            "type": "integer",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "recommended_product_id",
+            "type": "integer",
+            "nullable": true,
+            "metadata": {}
+          }
+        ]
+      },
+      "schema_check": "full type tree; Parquet nullability flags ignored",
+      "status": "PASS",
+      "arrow_schema": "rule_id: string\nantecedent: list<element: int32>\n  child 0, element: int32\nconsequent: list<element: int32>\n  child 0, element: int32\nsupport: double\nconfidence: double\nlift: double\nantecedent_names: list<element: string>\n  child 0, element: string\nconsequent_names: list<element: string>\n  child 0, element: string\nantecedent_size: int32\nantecedent_product_id: int32\nrecommended_product_id: int32",
+      "reconciliation": "PASS; full keyed value comparison"
+    },
+    "train_popularity": {
+      "uri": "hdfs://namenode:9000/instacart/runs/hdfs_etl_20261016T083208Z_887f71ba/evaluations/eval_20261016T135439Z_163e5bb7/work/split_5972c049/train_popularity",
+      "rows": 22512,
+      "bytes": 118902,
+      "schema": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "product_id",
+            "type": "integer",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "basket_count",
+            "type": "long",
+            "nullable": true,
+            "metadata": {}
+          }
+        ]
+      },
+      "schema_check": "full type tree; Parquet nullability flags ignored",
+      "status": "PASS",
+      "fingerprint": {
+        "algorithm": "count,sum(decimal(xxhash64)),min,max; order-independent, not cryptographic",
+        "values": {
+          "rows": 22512,
+          "sum": "507401449204912749849",
+          "min": -9222048231332557344,
+          "max": 9221434185131229937
+        },
+        "schema": {
+          "type": "struct",
+          "fields": [
+            {
+              "name": "product_id",
+              "type": "integer",
+              "nullable": true,
+              "metadata": {}
+            },
+            {
+              "name": "basket_count",
+              "type": "long",
+              "nullable": true,
+              "metadata": {}
+            }
+          ]
+        }
+      },
+      "arrow_schema": "product_id: int32\nbasket_count: int64 not null",
+      "reconciliation": "PASS; full keyed value comparison"
+    }
+  },
+  "aggregates": {
+    "orders_by_hour": {
+      "rows": 24,
+      "source": "hdfs://namenode:9000/instacart/runs/hdfs_etl_20261016T083208Z_887f71ba",
+      "bounded_maximum": 500
+    },
+    "orders_by_dow": {
+      "rows": 7,
+      "source": "hdfs://namenode:9000/instacart/runs/hdfs_etl_20261016T083208Z_887f71ba",
+      "bounded_maximum": 500
+    },
+    "top_20_products": {
+      "rows": 20,
+      "source": "hdfs://namenode:9000/instacart/runs/hdfs_etl_20261016T083208Z_887f71ba",
+      "bounded_maximum": 500
+    },
+    "top_15_departments": {
+      "rows": 15,
+      "source": "hdfs://namenode:9000/instacart/runs/hdfs_etl_20261016T083208Z_887f71ba",
+      "bounded_maximum": 500
+    },
+    "basket_size_distribution": {
+      "rows": 67,
+      "source": "hdfs://namenode:9000/instacart/runs/hdfs_etl_20261016T083208Z_887f71ba",
+      "bounded_maximum": 500
+    },
+    "reorder_by_department": {
+      "rows": 21,
+      "source": "hdfs://namenode:9000/instacart/runs/hdfs_etl_20261016T083208Z_887f71ba",
+      "bounded_maximum": 500
+    }
+  },
+  "figures": [
+    "validation_quality",
+    "validation_coverage",
+    "test_quality",
+    "test_coverage",
+    "warm_latency"
+  ],
+  "protocol_sha256": "d46b0c0db2dc1302b21d3ad2222baaa10419137aaedecebdf3116c365460c3f5",
+  "locked_config_sha256": "4f25a5c9f29a7bc99a3f479cec76c23b7a28c1827d477a4df1432c5e6bb74e7d",
+  "checksum_definition": "Local SHA-256 inventory; HDFS/local logical values independently compared",
+  "files": {
+    "data/gold/association_rules/_SUCCESS": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "data/gold/association_rules/part-00000-05cd0e7f-582d-4ab3-9887-ccd2b1d227e4-c000.snappy.parquet": "1fc4009b76294aff72363d54ce74380111eb8ccc5512ff72d053deadb94d5d64",
+    "data/gold/association_rules/part-00001-05cd0e7f-582d-4ab3-9887-ccd2b1d227e4-c000.snappy.parquet": "8afc8ecca1466508650c197313c6bf1785ed5d24f99273f18baa6d0c56d0a640",
+    "data/gold/association_rules/part-00002-05cd0e7f-582d-4ab3-9887-ccd2b1d227e4-c000.snappy.parquet": "f34d6feb6cded3319dc438e0563fb2d7f17bda59e6f9e220a8e986dcf31c9401",
+    "data/gold/association_rules/part-00003-05cd0e7f-582d-4ab3-9887-ccd2b1d227e4-c000.snappy.parquet": "b4a68f89128810d0883ae19cc715cafdfb56b25981c8f7b22bee171072a9521e",
+    "data/gold/association_rules/part-00004-05cd0e7f-582d-4ab3-9887-ccd2b1d227e4-c000.snappy.parquet": "a2514eb98e5f10242758b965b78cd15107ea8a5a0319e441185d32c22fd5694d",
+    "data/gold/association_rules/part-00005-05cd0e7f-582d-4ab3-9887-ccd2b1d227e4-c000.snappy.parquet": "2dc0be150d28f5f550281dcea25ff4042f76e2bdd6b9eb903efab26d529fa96d",
+    "data/gold/association_rules/part-00006-05cd0e7f-582d-4ab3-9887-ccd2b1d227e4-c000.snappy.parquet": "4dc94bbdf929e7f1e0e32a01eba5a8b2c41037dbc30e9652b0a2bbee4a9cfa36",
+    "data/gold/association_rules/part-00007-05cd0e7f-582d-4ab3-9887-ccd2b1d227e4-c000.snappy.parquet": "890d51c403d92982bc812fb349303b99e1507e4c4c567b8e7a110f5970c3dc80",
+    "data/gold/kpi_summary/_SUCCESS": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "data/gold/kpi_summary/part-00000-34ee3581-abb0-464a-8c16-250a10a47c59-c000.snappy.parquet": "66f91f5f4cbd875039e17b2835f7dcd9a750a8c717edadd0c278861f5d37424c",
+    "data/gold/kpi_summary/part-00001-34ee3581-abb0-464a-8c16-250a10a47c59-c000.snappy.parquet": "8880301dad2b60aea99ad2ffcecfa363be4cb295c3d36266a91bf4dc1976a4f9",
+    "data/gold/product_catalog/_SUCCESS": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "data/gold/product_catalog/part-00000-b931427f-5d9a-47d5-8547-8be8a28d6b30-c000.snappy.parquet": "59c2417d0ea67b1abeb6644ba9a1bf31cdf48c62cdf581c413a154ce3ac0189a",
+    "data/gold/recommendation_lookup/_SUCCESS": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "data/gold/recommendation_lookup/part-00000-c4468749-c325-41ca-bf52-e79792e1f9cb-c000.snappy.parquet": "7ed65c3b1263d6ca0a9e26260795026bdcac39803128f2c45ab952bf212f543d",
+    "data/gold/recommendation_lookup/part-00001-c4468749-c325-41ca-bf52-e79792e1f9cb-c000.snappy.parquet": "d5effe43aa0f4cb4b8a18a57a3f47d9fe901b252a83ee9cc0b9958a2b82df7b0",
+    "data/gold/recommendation_lookup/part-00002-c4468749-c325-41ca-bf52-e79792e1f9cb-c000.snappy.parquet": "a55cc3a3a2bda6d374ee98e6efea84b256d809b2d4a9b07fb1a12637c5b32157",
+    "data/gold/recommendation_lookup/part-00003-c4468749-c325-41ca-bf52-e79792e1f9cb-c000.snappy.parquet": "14412868e8ce8d17f5ca649df1d48687b619394842f80696cbbf6d8bdd9b7608",
+    "data/gold/recommendation_lookup/part-00004-c4468749-c325-41ca-bf52-e79792e1f9cb-c000.snappy.parquet": "6d2a7dad94f4e9060d00e501b13db19f820c75cbb59deb32d7f7fab2c0d0856e",
+    "data/gold/recommendation_lookup/part-00005-c4468749-c325-41ca-bf52-e79792e1f9cb-c000.snappy.parquet": "34447dc5a7673d3130cfdcc1a2395ba1d801b1e933ca2a653700a3c4cb6bf4fd",
+    "data/gold/recommendation_lookup/part-00006-c4468749-c325-41ca-bf52-e79792e1f9cb-c000.snappy.parquet": "1972068f7c90a8a7f89fd95a1e079b305afb3789bf44813ea5109a0a055ab9c2",
+    "data/gold/recommendation_lookup/part-00007-c4468749-c325-41ca-bf52-e79792e1f9cb-c000.snappy.parquet": "c139993aae68b6dd13e8adea1132882a9162884763ed649eea41d16a5e806799",
+    "data/gold/train_popularity/_SUCCESS": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "data/gold/train_popularity/part-00000-a145224f-a5c5-44fd-bd90-a9beb411554b-c000.snappy.parquet": "bc937565ad6dce66a26b5bfd576ec91e890a654f81b212861527750cdf913b52",
+    "data/gold/train_popularity/part-00001-a145224f-a5c5-44fd-bd90-a9beb411554b-c000.snappy.parquet": "9b9897fd47362fa4cafef5cfc9b50dd3d9c0b6cd23602d99a04449a62ef3f70d",
+    "data/gold/train_popularity/part-00002-a145224f-a5c5-44fd-bd90-a9beb411554b-c000.snappy.parquet": "71854aaa1817d362cc8e4a1c5fa2eac799cc6838aa3abe1fa1a45a0fad345911",
+    "data/gold/train_popularity/part-00003-a145224f-a5c5-44fd-bd90-a9beb411554b-c000.snappy.parquet": "9630dd309ff89a3b64cd590d8911d09220064833429542d84e0e51a2603e6d33",
+    "data/gold/train_popularity/part-00004-a145224f-a5c5-44fd-bd90-a9beb411554b-c000.snappy.parquet": "8461a6c3db1cd13551ad0d81c9e78136784331777880d670ec140bbc392819c5",
+    "data/gold/train_popularity/part-00005-a145224f-a5c5-44fd-bd90-a9beb411554b-c000.snappy.parquet": "6f62b513638b71a6e5f29a225c4fb6ac01a9ed53536b7c2867f8e90f6f8e0d9a",
+    "data/gold/train_popularity/part-00006-a145224f-a5c5-44fd-bd90-a9beb411554b-c000.snappy.parquet": "34db4f7122b003683c9d74616bc94c105e3916acd4e08f3f9520fd3ab078d5cb",
+    "data/gold/train_popularity/part-00007-a145224f-a5c5-44fd-bd90-a9beb411554b-c000.snappy.parquet": "32229c41560fcc00856f9d6855ff28ae147a9dd54e5dc279546c33097f2a7b62",
+    "outputs/metrics/baseline_comparison.csv": "511fddfbd0509c1ac262e54436a2d3636e752f789cc02660a3484f8fbc2588af",
+    "outputs/metrics/basket_size_distribution.csv": "83c4cb4cdde64a765c168d13c49acaa13ee5278983a69fd5c12d111dbb5f8bfe",
+    "outputs/metrics/batch_times.csv": "c0b8249b485be52e0ea0538ef4a211bf1757c5c87852e4cbf6ed4b28455aeb1a",
+    "outputs/metrics/demo_cases.json": "ed94fd550a0276cea2699a5b78e586b24d4f7a53a7d1630b998a3f5f84e7db58",
+    "outputs/metrics/eda_summary.json": "9f033e41b727fe765b6eb5d922b826093d852ebbd7219344bf5fd1051cda0878",
+    "outputs/metrics/evaluation_summary.json": "e947326ee904ed8f546d95f265bec1d926a36def81f90ad591ba73ef085eb56f",
+    "outputs/metrics/hdfs_export_counts.csv": "acba983d3c74d758151e3c277a2218ea5d3dd5709a9e9e9aa388d069e7ce3d61",
+    "outputs/metrics/hdfs_stage_timings.csv": "415f89acb182d6b61aac7aa03b44c69e7020aa75d4d319d96ee1dfff09c0e7c6",
+    "outputs/metrics/hdfs_system.json": "fd34356386308109e443c65cc4bf8b2125412f37d4cb3497ab7d4c4f94843d56",
+    "outputs/metrics/model_summary.json": "45afc3c93d05446098f2b19454294633bcd27e914217a6a928a80183cedd760b",
+    "outputs/metrics/orders_by_dow.csv": "dc47fd17728e47d46060e7ebe0e83dc14e4b6f437093832a2cca83a75e553771",
+    "outputs/metrics/orders_by_hour.csv": "042bad6b589aef0ca32d9e53666f3072ec7b9ea643c5d6d2d51d247f9a796597",
+    "outputs/metrics/reorder_by_department.csv": "9b682478bfa522c192bfd2cd6e7e67cab7f3c52075f40081936729e6e56ca518",
+    "outputs/metrics/test_coverage.csv": "ca0a995d88aef589d9e902ddc75ed1477f0548cbb4019767b3be3dea1fe2e203",
+    "outputs/metrics/test_coverage.html": "e1783e32647943589a3178aea1c4a171a966816d78c1f38121f73ad39ef3f4c8",
+    "outputs/metrics/test_coverage.png": "ee4a19e643630a996adb4a606b521819ab230e2cf84f512394b33adfa67616b6",
+    "outputs/metrics/test_quality.csv": "d875f1a6d081dd82d022e07c3193ee4dd28aba5a75b5a52340107b8f860a5ff4",
+    "outputs/metrics/test_quality.html": "b1f020f93ccecbd5722f5fb626e48ce5981a38fa90a434e397ed4d3b53646f6d",
+    "outputs/metrics/test_quality.png": "e434efd54f3b29ab79321d43dd3477a6990a590d59edba502c530d9b60660022",
+    "outputs/metrics/top_15_departments.csv": "a80a77dbee314e13f75757b678ef1d704c08e4726088203a47bc5c35b9dbe9ef",
+    "outputs/metrics/top_20_products.csv": "208ccedeceb31d8820772265e15851550fcde80a9282a3d5229ca797d2c66dd4",
+    "outputs/metrics/validation_coverage.csv": "b091260bdc8e5d9a5ccf7ef5c5b5b4be89f64e2fcdb911b9afac3ee46492c4e3",
+    "outputs/metrics/validation_coverage.html": "fcf5668a457fce8ca2ffa112a91d5c9fb7f32c58e0a7456c5b2345d1362e4975",
+    "outputs/metrics/validation_coverage.png": "1cc6f01d375e6152334658c72bb5895ecea5b288c4f28e1ba0de034b9f3e32a2",
+    "outputs/metrics/validation_grid.csv": "7d5be19e6a9293ec5252695b721d9cf185c0258cc2d7c9ff0703a89724481874",
+    "outputs/metrics/validation_quality.csv": "08838f9db41f2c6908eeec8f7d55eb7f8d530377d604eef96808d08c6387ef2f",
+    "outputs/metrics/validation_quality.html": "266b02be4721d9a405f11cf5a6b152d89fc68a85c19c7ca49fd8861f67961419",
+    "outputs/metrics/validation_quality.png": "9f42e3b26cc619cc9b6f58abf5cef098c5b728831013af3d6698bf7b858931d8",
+    "outputs/metrics/warm_latency.csv": "fa721c322c11419950061cf5de0eb93a883fd9e0dbc7d9532d38d518a036d4ac",
+    "outputs/metrics/warm_latency.html": "af2346ecec5f81398463e1c005d0d8ffa29b217f31f48e31d19288959a0059ac",
+    "outputs/metrics/warm_latency.png": "46ea286cc055502e9fa4343513e42f8810de8459c3073f06d8c2fb017c5c0d3f"
+  }
+}

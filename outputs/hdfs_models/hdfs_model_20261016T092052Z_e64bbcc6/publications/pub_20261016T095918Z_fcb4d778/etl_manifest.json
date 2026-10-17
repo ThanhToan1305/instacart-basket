@@ -1,0 +1,1312 @@
+{
+  "run_id": "hdfs_etl_20261016T083208Z_887f71ba",
+  "status": "PASS",
+  "started_at": "2026-10-16T08:32:08.080250+00:00",
+  "stages": [
+    {
+      "name": "sample_real_csv",
+      "status": "PASS",
+      "started_at": "2026-10-16T08:32:08.092520+00:00",
+      "seconds": 8.988,
+      "ended_at": "2026-10-16T08:32:17.095536+00:00"
+    },
+    {
+      "name": "raw_to_bronze_hdfs",
+      "status": "PASS",
+      "started_at": "2026-10-16T08:32:22.880458+00:00",
+      "seconds": 14.372,
+      "ended_at": "2026-10-16T08:32:37.263485+00:00"
+    },
+    {
+      "name": "bronze_to_silver_hdfs",
+      "status": "PASS",
+      "started_at": "2026-10-16T08:32:37.277892+00:00",
+      "seconds": 11.516,
+      "ended_at": "2026-10-16T08:32:48.807448+00:00"
+    },
+    {
+      "name": "silver_to_gold_hdfs",
+      "status": "PASS",
+      "started_at": "2026-10-16T08:32:48.821414+00:00",
+      "seconds": 3.662,
+      "ended_at": "2026-10-16T08:32:52.507876+00:00"
+    },
+    {
+      "name": "charts_from_hdfs_silver",
+      "status": "PASS",
+      "started_at": "2026-10-16T08:32:52.527736+00:00",
+      "seconds": 6.593,
+      "ended_at": "2026-10-16T08:32:59.135871+00:00"
+    },
+    {
+      "name": "final_read_reconciliation",
+      "status": "PASS",
+      "started_at": "2026-10-16T08:32:59.146661+00:00",
+      "seconds": 1.436,
+      "ended_at": "2026-10-16T08:33:00.589325+00:00"
+    }
+  ],
+  "hdfs_root": "hdfs://namenode:9000/instacart/runs/hdfs_etl_20261016T083208Z_887f71ba",
+  "local_output": "/app/outputs/hdfs_runs/hdfs_etl_20261016T083208Z_887f71ba",
+  "scope": "ETL: raw, six Bronze tables, five Silver tables, Gold KPI and catalog",
+  "model_training": "NOT_RUN",
+  "dashboard_integration": "UNCHANGED",
+  "evaluation": "NOT_RUN; order sample is not an independent ML test",
+  "compute": "Spark local[2] on one Docker host; HDFS one NameNode/one DataNode",
+  "sampling": {
+    "rule": "order_id % 10000 < 100",
+    "requested_fraction": 0.01,
+    "effective_bucket_fraction": 0.01,
+    "note": "Order-based ETL sample; not an independent recommendation test set.",
+    "source_files": {
+      "aisles": {
+        "source_path": "/app/data/raw/aisles.csv",
+        "size_bytes": 2603,
+        "header": [
+          "aisle_id",
+          "aisle"
+        ],
+        "column_count": 2,
+        "header_matches": true,
+        "missing_columns": []
+      },
+      "departments": {
+        "source_path": "/app/data/raw/departments.csv",
+        "size_bytes": 270,
+        "header": [
+          "department_id",
+          "department"
+        ],
+        "column_count": 2,
+        "header_matches": true,
+        "missing_columns": []
+      },
+      "products": {
+        "source_path": "/app/data/raw/products.csv",
+        "size_bytes": 2166953,
+        "header": [
+          "product_id",
+          "product_name",
+          "aisle_id",
+          "department_id"
+        ],
+        "column_count": 4,
+        "header_matches": true,
+        "missing_columns": []
+      },
+      "orders": {
+        "source_path": "/app/data/raw/orders.csv",
+        "size_bytes": 108968645,
+        "header": [
+          "order_id",
+          "user_id",
+          "eval_set",
+          "order_number",
+          "order_dow",
+          "order_hour_of_day",
+          "days_since_prior_order"
+        ],
+        "column_count": 7,
+        "header_matches": true,
+        "missing_columns": []
+      },
+      "order_products_prior": {
+        "source_path": "/app/data/raw/order_products__prior.csv",
+        "size_bytes": 577550706,
+        "header": [
+          "order_id",
+          "product_id",
+          "add_to_cart_order",
+          "reordered"
+        ],
+        "column_count": 4,
+        "header_matches": true,
+        "missing_columns": []
+      },
+      "order_products_train": {
+        "source_path": "/app/data/raw/order_products__train.csv",
+        "size_bytes": 24680147,
+        "header": [
+          "order_id",
+          "product_id",
+          "add_to_cart_order",
+          "reordered"
+        ],
+        "column_count": 4,
+        "header_matches": true,
+        "missing_columns": []
+      }
+    },
+    "rows": {
+      "aisles": 134,
+      "departments": 21,
+      "products": 49688,
+      "orders": 34299,
+      "order_products_prior": 325321,
+      "order_products_train": 13844
+    }
+  },
+  "spark_version": "4.2.0",
+  "hadoop_client_version": "3.5.0",
+  "raw": {
+    "aisles": {
+      "row_count": 134,
+      "schema": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "aisle_id",
+            "type": "integer",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "aisle",
+            "type": "string",
+            "nullable": true,
+            "metadata": {}
+          }
+        ]
+      },
+      "null_counts": {
+        "aisle_id": 0,
+        "aisle": 0
+      },
+      "key_null_counts": {
+        "aisle_id": 0
+      },
+      "invalid_counts": {
+        "aisle_id": 0,
+        "aisle": 0
+      },
+      "duplicate_key_groups": 0,
+      "duplicate_excess_rows": 0,
+      "checks": {
+        "nonempty": true,
+        "schema": true,
+        "required_nulls": true,
+        "duplicate_keys": true,
+        "domains": true
+      },
+      "status": "PASS",
+      "uri": "hdfs://namenode:9000/instacart/runs/hdfs_etl_20261016T083208Z_887f71ba/raw/aisles.csv",
+      "sample_sha256": "2c5f4677761907d3a3ca01edd2d2abe67c147cc60e4905e68736d5f9f3046067"
+    },
+    "departments": {
+      "row_count": 21,
+      "schema": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "department_id",
+            "type": "integer",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "department",
+            "type": "string",
+            "nullable": true,
+            "metadata": {}
+          }
+        ]
+      },
+      "null_counts": {
+        "department_id": 0,
+        "department": 0
+      },
+      "key_null_counts": {
+        "department_id": 0
+      },
+      "invalid_counts": {
+        "department_id": 0,
+        "department": 0
+      },
+      "duplicate_key_groups": 0,
+      "duplicate_excess_rows": 0,
+      "checks": {
+        "nonempty": true,
+        "schema": true,
+        "required_nulls": true,
+        "duplicate_keys": true,
+        "domains": true
+      },
+      "status": "PASS",
+      "uri": "hdfs://namenode:9000/instacart/runs/hdfs_etl_20261016T083208Z_887f71ba/raw/departments.csv",
+      "sample_sha256": "e6829cea3da95ec22eeb4e0294094a68b929f3bcfda48fdd7d1e33403110fc43"
+    },
+    "products": {
+      "row_count": 49688,
+      "schema": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "product_id",
+            "type": "integer",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "product_name",
+            "type": "string",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "aisle_id",
+            "type": "integer",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "department_id",
+            "type": "integer",
+            "nullable": true,
+            "metadata": {}
+          }
+        ]
+      },
+      "null_counts": {
+        "product_id": 0,
+        "product_name": 0,
+        "aisle_id": 0,
+        "department_id": 0
+      },
+      "key_null_counts": {
+        "product_id": 0
+      },
+      "invalid_counts": {
+        "product_id": 0,
+        "product_name": 0,
+        "aisle_id": 0,
+        "department_id": 0
+      },
+      "duplicate_key_groups": 0,
+      "duplicate_excess_rows": 0,
+      "checks": {
+        "nonempty": true,
+        "schema": true,
+        "required_nulls": true,
+        "duplicate_keys": true,
+        "domains": true
+      },
+      "status": "PASS",
+      "uri": "hdfs://namenode:9000/instacart/runs/hdfs_etl_20261016T083208Z_887f71ba/raw/products.csv",
+      "sample_sha256": "abc61fdd748003d280ae49cc5d71b65380805ab1ca55dba96fd9a49295ea78b9"
+    },
+    "orders": {
+      "row_count": 34299,
+      "schema": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "order_id",
+            "type": "integer",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "user_id",
+            "type": "integer",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "eval_set",
+            "type": "string",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "order_number",
+            "type": "integer",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "order_dow",
+            "type": "integer",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "order_hour_of_day",
+            "type": "integer",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "days_since_prior_order",
+            "type": "double",
+            "nullable": true,
+            "metadata": {}
+          }
+        ]
+      },
+      "null_counts": {
+        "order_id": 0,
+        "user_id": 0,
+        "eval_set": 0,
+        "order_number": 0,
+        "order_dow": 0,
+        "order_hour_of_day": 0,
+        "days_since_prior_order": 2182
+      },
+      "key_null_counts": {
+        "order_id": 0
+      },
+      "invalid_counts": {
+        "order_id": 0,
+        "user_id": 0,
+        "eval_set": 0,
+        "order_number": 0,
+        "order_dow": 0,
+        "order_hour_of_day": 0,
+        "days_since_prior_order": 0,
+        "days_since_prior_order_consistency": 0
+      },
+      "duplicate_key_groups": 0,
+      "duplicate_excess_rows": 0,
+      "checks": {
+        "nonempty": true,
+        "schema": true,
+        "required_nulls": true,
+        "duplicate_keys": true,
+        "domains": true
+      },
+      "status": "PASS",
+      "uri": "hdfs://namenode:9000/instacart/runs/hdfs_etl_20261016T083208Z_887f71ba/raw/orders.csv",
+      "sample_sha256": "3a0d3171b414ebaff3d3ceb6f58660b0fbe62541503b614e2d1320da98ffeb44"
+    },
+    "order_products_prior": {
+      "row_count": 325321,
+      "schema": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "order_id",
+            "type": "integer",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "product_id",
+            "type": "integer",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "add_to_cart_order",
+            "type": "integer",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "reordered",
+            "type": "integer",
+            "nullable": true,
+            "metadata": {}
+          }
+        ]
+      },
+      "null_counts": {
+        "order_id": 0,
+        "product_id": 0,
+        "add_to_cart_order": 0,
+        "reordered": 0
+      },
+      "key_null_counts": {
+        "order_id": 0,
+        "product_id": 0
+      },
+      "invalid_counts": {
+        "order_id": 0,
+        "product_id": 0,
+        "add_to_cart_order": 0,
+        "reordered": 0
+      },
+      "duplicate_key_groups": 0,
+      "duplicate_excess_rows": 0,
+      "checks": {
+        "nonempty": true,
+        "schema": true,
+        "required_nulls": true,
+        "duplicate_keys": true,
+        "domains": true
+      },
+      "status": "PASS",
+      "uri": "hdfs://namenode:9000/instacart/runs/hdfs_etl_20261016T083208Z_887f71ba/raw/order_products__prior.csv",
+      "sample_sha256": "2a07e0832638e96c43420edf25f4ab14d0899b02b7a006c0c400999572271f5a"
+    },
+    "order_products_train": {
+      "row_count": 13844,
+      "schema": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "order_id",
+            "type": "integer",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "product_id",
+            "type": "integer",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "add_to_cart_order",
+            "type": "integer",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "reordered",
+            "type": "integer",
+            "nullable": true,
+            "metadata": {}
+          }
+        ]
+      },
+      "null_counts": {
+        "order_id": 0,
+        "product_id": 0,
+        "add_to_cart_order": 0,
+        "reordered": 0
+      },
+      "key_null_counts": {
+        "order_id": 0,
+        "product_id": 0
+      },
+      "invalid_counts": {
+        "order_id": 0,
+        "product_id": 0,
+        "add_to_cart_order": 0,
+        "reordered": 0
+      },
+      "duplicate_key_groups": 0,
+      "duplicate_excess_rows": 0,
+      "checks": {
+        "nonempty": true,
+        "schema": true,
+        "required_nulls": true,
+        "duplicate_keys": true,
+        "domains": true
+      },
+      "status": "PASS",
+      "uri": "hdfs://namenode:9000/instacart/runs/hdfs_etl_20261016T083208Z_887f71ba/raw/order_products__train.csv",
+      "sample_sha256": "7530aa9ab30d796dcf4116fa90a29bd4523c18dd417eb8cabb443c6807845beb"
+    }
+  },
+  "bronze": {
+    "aisles": {
+      "uri": "hdfs://namenode:9000/instacart/runs/hdfs_etl_20261016T083208Z_887f71ba/bronze/aisles",
+      "rows": 134,
+      "bytes": 4746,
+      "schema": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "aisle_id",
+            "type": "integer",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "aisle",
+            "type": "string",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "ingestion_time",
+            "type": "timestamp",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "source_file",
+            "type": "string",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "run_id",
+            "type": "string",
+            "nullable": true,
+            "metadata": {}
+          }
+        ]
+      },
+      "schema_check": "full type tree; Parquet nullability flags ignored",
+      "status": "PASS",
+      "metadata_null_rows": 0,
+      "final_read_rows": 134
+    },
+    "departments": {
+      "uri": "hdfs://namenode:9000/instacart/runs/hdfs_etl_20261016T083208Z_887f71ba/bronze/departments",
+      "rows": 21,
+      "bytes": 2699,
+      "schema": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "department_id",
+            "type": "integer",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "department",
+            "type": "string",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "ingestion_time",
+            "type": "timestamp",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "source_file",
+            "type": "string",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "run_id",
+            "type": "string",
+            "nullable": true,
+            "metadata": {}
+          }
+        ]
+      },
+      "schema_check": "full type tree; Parquet nullability flags ignored",
+      "status": "PASS",
+      "metadata_null_rows": 0,
+      "final_read_rows": 21
+    },
+    "products": {
+      "uri": "hdfs://namenode:9000/instacart/runs/hdfs_etl_20261016T083208Z_887f71ba/bronze/products",
+      "rows": 49688,
+      "bytes": 1347668,
+      "schema": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "product_id",
+            "type": "integer",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "product_name",
+            "type": "string",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "aisle_id",
+            "type": "integer",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "department_id",
+            "type": "integer",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "ingestion_time",
+            "type": "timestamp",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "source_file",
+            "type": "string",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "run_id",
+            "type": "string",
+            "nullable": true,
+            "metadata": {}
+          }
+        ]
+      },
+      "schema_check": "full type tree; Parquet nullability flags ignored",
+      "status": "PASS",
+      "metadata_null_rows": 0,
+      "final_read_rows": 49688
+    },
+    "orders": {
+      "uri": "hdfs://namenode:9000/instacart/runs/hdfs_etl_20261016T083208Z_887f71ba/bronze/orders",
+      "rows": 34299,
+      "bytes": 372530,
+      "schema": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "order_id",
+            "type": "integer",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "user_id",
+            "type": "integer",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "eval_set",
+            "type": "string",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "order_number",
+            "type": "integer",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "order_dow",
+            "type": "integer",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "order_hour_of_day",
+            "type": "integer",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "days_since_prior_order",
+            "type": "double",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "ingestion_time",
+            "type": "timestamp",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "source_file",
+            "type": "string",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "run_id",
+            "type": "string",
+            "nullable": true,
+            "metadata": {}
+          }
+        ]
+      },
+      "schema_check": "full type tree; Parquet nullability flags ignored",
+      "status": "PASS",
+      "metadata_null_rows": 0,
+      "final_read_rows": 34299
+    },
+    "order_products_prior": {
+      "uri": "hdfs://namenode:9000/instacart/runs/hdfs_etl_20261016T083208Z_887f71ba/bronze/order_products_prior",
+      "rows": 325321,
+      "bytes": 1228466,
+      "schema": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "order_id",
+            "type": "integer",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "product_id",
+            "type": "integer",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "add_to_cart_order",
+            "type": "integer",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "reordered",
+            "type": "integer",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "ingestion_time",
+            "type": "timestamp",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "source_file",
+            "type": "string",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "run_id",
+            "type": "string",
+            "nullable": true,
+            "metadata": {}
+          }
+        ]
+      },
+      "schema_check": "full type tree; Parquet nullability flags ignored",
+      "status": "PASS",
+      "metadata_null_rows": 0,
+      "final_read_rows": 325321
+    },
+    "order_products_train": {
+      "uri": "hdfs://namenode:9000/instacart/runs/hdfs_etl_20261016T083208Z_887f71ba/bronze/order_products_train",
+      "rows": 13844,
+      "bytes": 67088,
+      "schema": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "order_id",
+            "type": "integer",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "product_id",
+            "type": "integer",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "add_to_cart_order",
+            "type": "integer",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "reordered",
+            "type": "integer",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "ingestion_time",
+            "type": "timestamp",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "source_file",
+            "type": "string",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "run_id",
+            "type": "string",
+            "nullable": true,
+            "metadata": {}
+          }
+        ]
+      },
+      "schema_check": "full type tree; Parquet nullability flags ignored",
+      "status": "PASS",
+      "metadata_null_rows": 0,
+      "final_read_rows": 13844
+    }
+  },
+  "foreign_keys": {
+    "products_aisle": 0,
+    "products_department": 0,
+    "order_products_prior_order": 0,
+    "order_products_prior_product": 0,
+    "order_products_prior_eval_set": 0,
+    "order_products_train_order": 0,
+    "order_products_train_product": 0,
+    "order_products_train_eval_set": 0
+  },
+  "silver": {
+    "orders": {
+      "uri": "hdfs://namenode:9000/instacart/runs/hdfs_etl_20261016T083208Z_887f71ba/silver/orders",
+      "rows": 34299,
+      "bytes": 370200,
+      "schema": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "order_id",
+            "type": "integer",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "user_id",
+            "type": "integer",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "eval_set",
+            "type": "string",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "order_number",
+            "type": "integer",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "order_dow",
+            "type": "integer",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "order_hour_of_day",
+            "type": "integer",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "days_since_prior_order",
+            "type": "double",
+            "nullable": true,
+            "metadata": {}
+          }
+        ]
+      },
+      "schema_check": "full type tree; Parquet nullability flags ignored",
+      "status": "PASS",
+      "final_read_rows": 34299
+    },
+    "products": {
+      "uri": "hdfs://namenode:9000/instacart/runs/hdfs_etl_20261016T083208Z_887f71ba/silver/products",
+      "rows": 49688,
+      "bytes": 1428964,
+      "schema": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "product_id",
+            "type": "integer",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "product_name",
+            "type": "string",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "aisle_id",
+            "type": "integer",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "aisle",
+            "type": "string",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "department_id",
+            "type": "integer",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "department",
+            "type": "string",
+            "nullable": true,
+            "metadata": {}
+          }
+        ]
+      },
+      "schema_check": "full type tree; Parquet nullability flags ignored",
+      "status": "PASS",
+      "final_read_rows": 49688
+    },
+    "order_items": {
+      "uri": "hdfs://namenode:9000/instacart/runs/hdfs_etl_20261016T083208Z_887f71ba/silver/order_items",
+      "rows": 339165,
+      "bytes": 1810341,
+      "schema": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "order_id",
+            "type": "integer",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "product_id",
+            "type": "integer",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "add_to_cart_order",
+            "type": "integer",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "reordered",
+            "type": "integer",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "eval_set",
+            "type": "string",
+            "nullable": true,
+            "metadata": {}
+          }
+        ]
+      },
+      "schema_check": "full type tree; Parquet nullability flags ignored",
+      "status": "PASS",
+      "final_read_rows": 339165
+    },
+    "order_items_enriched": {
+      "uri": "hdfs://namenode:9000/instacart/runs/hdfs_etl_20261016T083208Z_887f71ba/silver/order_items_enriched",
+      "rows": 339165,
+      "bytes": 5623721,
+      "schema": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "order_id",
+            "type": "integer",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "user_id",
+            "type": "integer",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "product_id",
+            "type": "integer",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "product_name",
+            "type": "string",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "aisle_id",
+            "type": "integer",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "aisle",
+            "type": "string",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "department_id",
+            "type": "integer",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "department",
+            "type": "string",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "eval_set",
+            "type": "string",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "order_number",
+            "type": "integer",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "order_dow",
+            "type": "integer",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "order_hour_of_day",
+            "type": "integer",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "days_since_prior_order",
+            "type": "double",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "add_to_cart_order",
+            "type": "integer",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "reordered",
+            "type": "integer",
+            "nullable": true,
+            "metadata": {}
+          }
+        ]
+      },
+      "schema_check": "full type tree; Parquet nullability flags ignored",
+      "status": "PASS",
+      "final_read_rows": 339165
+    },
+    "baskets": {
+      "uri": "hdfs://namenode:9000/instacart/runs/hdfs_etl_20261016T083208Z_887f71ba/silver/baskets",
+      "rows": 33523,
+      "bytes": 1139828,
+      "schema": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "order_id",
+            "type": "integer",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "user_id",
+            "type": "integer",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "items",
+            "type": {
+              "type": "array",
+              "elementType": "integer",
+              "containsNull": true
+            },
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "basket_size",
+            "type": "integer",
+            "nullable": true,
+            "metadata": {}
+          }
+        ]
+      },
+      "schema_check": "full type tree; Parquet nullability flags ignored",
+      "status": "PASS",
+      "final_read_rows": 33523
+    }
+  },
+  "basket_integrity": {
+    "total_items": 339165,
+    "invalid": 0
+  },
+  "gold": {
+    "kpi_summary": {
+      "uri": "hdfs://namenode:9000/instacart/runs/hdfs_etl_20261016T083208Z_887f71ba/gold/kpi_summary",
+      "rows": 1,
+      "bytes": 5147,
+      "schema": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "total_orders",
+            "type": "long",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "total_users",
+            "type": "long",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "avg_days_between_orders",
+            "type": "double",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "total_order_items",
+            "type": "long",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "reorder_rate",
+            "type": "double",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "observed_baskets",
+            "type": "long",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "avg_basket_size",
+            "type": "double",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "median_basket_size",
+            "type": "double",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "basket_item_total",
+            "type": "long",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "total_products",
+            "type": "long",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "avg_orders_per_user",
+            "type": "double",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "orders_without_observed_items",
+            "type": "long",
+            "nullable": true,
+            "metadata": {}
+          }
+        ]
+      },
+      "schema_check": "full type tree; Parquet nullability flags ignored",
+      "status": "PASS",
+      "final_read_rows": 1
+    },
+    "product_catalog": {
+      "uri": "hdfs://namenode:9000/instacart/runs/hdfs_etl_20261016T083208Z_887f71ba/gold/product_catalog",
+      "rows": 49688,
+      "bytes": 1294374,
+      "schema": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "product_id",
+            "type": "integer",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "product_name",
+            "type": "string",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "department",
+            "type": "string",
+            "nullable": true,
+            "metadata": {}
+          }
+        ]
+      },
+      "schema_check": "full type tree; Parquet nullability flags ignored",
+      "status": "PASS",
+      "final_read_rows": 49688
+    }
+  },
+  "kpi": {
+    "total_orders": 34299,
+    "total_users": 29607,
+    "avg_days_between_orders": 11.065915247376779,
+    "total_order_items": 339165,
+    "reorder_rate": 0.5908363186059883,
+    "observed_baskets": 33523,
+    "avg_basket_size": 10.117382095874474,
+    "median_basket_size": 8.0,
+    "basket_item_total": 339165,
+    "total_products": 49688,
+    "avg_orders_per_user": 1.1584760360725503,
+    "orders_without_observed_items": 776
+  },
+  "charts": [
+    {
+      "name": "orders_by_hour",
+      "rows": 24,
+      "csv": "/app/outputs/hdfs_runs/hdfs_etl_20261016T083208Z_887f71ba/outputs/metrics/orders_by_hour.csv",
+      "png": "/app/outputs/hdfs_runs/hdfs_etl_20261016T083208Z_887f71ba/outputs/figures/orders_by_hour.png",
+      "html": "/app/outputs/hdfs_runs/hdfs_etl_20261016T083208Z_887f71ba/outputs/figures/orders_by_hour.html"
+    },
+    {
+      "name": "orders_by_dow",
+      "rows": 7,
+      "csv": "/app/outputs/hdfs_runs/hdfs_etl_20261016T083208Z_887f71ba/outputs/metrics/orders_by_dow.csv",
+      "png": "/app/outputs/hdfs_runs/hdfs_etl_20261016T083208Z_887f71ba/outputs/figures/orders_by_dow.png",
+      "html": "/app/outputs/hdfs_runs/hdfs_etl_20261016T083208Z_887f71ba/outputs/figures/orders_by_dow.html"
+    },
+    {
+      "name": "top_20_products",
+      "rows": 20,
+      "csv": "/app/outputs/hdfs_runs/hdfs_etl_20261016T083208Z_887f71ba/outputs/metrics/top_20_products.csv",
+      "png": "/app/outputs/hdfs_runs/hdfs_etl_20261016T083208Z_887f71ba/outputs/figures/top_20_products.png",
+      "html": "/app/outputs/hdfs_runs/hdfs_etl_20261016T083208Z_887f71ba/outputs/figures/top_20_products.html"
+    },
+    {
+      "name": "top_departments",
+      "rows": 15,
+      "csv": "/app/outputs/hdfs_runs/hdfs_etl_20261016T083208Z_887f71ba/outputs/metrics/top_departments.csv",
+      "png": "/app/outputs/hdfs_runs/hdfs_etl_20261016T083208Z_887f71ba/outputs/figures/top_departments.png",
+      "html": "/app/outputs/hdfs_runs/hdfs_etl_20261016T083208Z_887f71ba/outputs/figures/top_departments.html"
+    },
+    {
+      "name": "basket_sizes",
+      "rows": 67,
+      "csv": "/app/outputs/hdfs_runs/hdfs_etl_20261016T083208Z_887f71ba/outputs/metrics/basket_sizes.csv",
+      "png": "/app/outputs/hdfs_runs/hdfs_etl_20261016T083208Z_887f71ba/outputs/figures/basket_sizes.png",
+      "html": "/app/outputs/hdfs_runs/hdfs_etl_20261016T083208Z_887f71ba/outputs/figures/basket_sizes.html"
+    }
+  ],
+  "ended_at": "2026-10-16T08:33:00.926816+00:00",
+  "seconds": 52.849
+}

@@ -1,0 +1,206 @@
+{
+  "status": "PASS",
+  "evaluation_run_id": "eval_20261016T135439Z_163e5bb7",
+  "gold": {
+    "frequent_itemsets": {
+      "uri": "hdfs://namenode:9000/instacart/runs/hdfs_etl_20261016T083208Z_887f71ba/evaluations/eval_20261016T135439Z_163e5bb7/work/export_b078dc33/gold/frequent_itemsets",
+      "rows": 4503,
+      "bytes": 25931,
+      "schema": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "items",
+            "type": {
+              "type": "array",
+              "elementType": "integer",
+              "containsNull": true
+            },
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "freq",
+            "type": "long",
+            "nullable": true,
+            "metadata": {}
+          }
+        ]
+      },
+      "schema_check": "full type tree; Parquet nullability flags ignored",
+      "status": "PASS"
+    },
+    "association_rules": {
+      "uri": "hdfs://namenode:9000/instacart/runs/hdfs_etl_20261016T083208Z_887f71ba/evaluations/eval_20261016T135439Z_163e5bb7/work/export_b078dc33/gold/association_rules",
+      "rows": 1180,
+      "bytes": 154283,
+      "schema": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "rule_id",
+            "type": "string",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "antecedent",
+            "type": {
+              "type": "array",
+              "elementType": "integer",
+              "containsNull": true
+            },
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "consequent",
+            "type": {
+              "type": "array",
+              "elementType": "integer",
+              "containsNull": true
+            },
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "support",
+            "type": "double",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "confidence",
+            "type": "double",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "lift",
+            "type": "double",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "antecedent_names",
+            "type": {
+              "type": "array",
+              "elementType": "string",
+              "containsNull": true
+            },
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "consequent_names",
+            "type": {
+              "type": "array",
+              "elementType": "string",
+              "containsNull": true
+            },
+            "nullable": true,
+            "metadata": {}
+          }
+        ]
+      },
+      "schema_check": "full type tree; Parquet nullability flags ignored",
+      "status": "PASS"
+    },
+    "recommendation_lookup": {
+      "uri": "hdfs://namenode:9000/instacart/runs/hdfs_etl_20261016T083208Z_887f71ba/evaluations/eval_20261016T135439Z_163e5bb7/work/export_b078dc33/gold/recommendation_lookup",
+      "rows": 1783,
+      "bytes": 177721,
+      "schema": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "rule_id",
+            "type": "string",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "antecedent",
+            "type": {
+              "type": "array",
+              "elementType": "integer",
+              "containsNull": true
+            },
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "consequent",
+            "type": {
+              "type": "array",
+              "elementType": "integer",
+              "containsNull": true
+            },
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "support",
+            "type": "double",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "confidence",
+            "type": "double",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "lift",
+            "type": "double",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "antecedent_names",
+            "type": {
+              "type": "array",
+              "elementType": "string",
+              "containsNull": true
+            },
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "consequent_names",
+            "type": {
+              "type": "array",
+              "elementType": "string",
+              "containsNull": true
+            },
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "antecedent_size",
+            "type": "integer",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "antecedent_product_id",
+            "type": "integer",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "recommended_product_id",
+            "type": "integer",
+            "nullable": true,
+            "metadata": {}
+          }
+        ]
+      },
+      "schema_check": "full type tree; Parquet nullability flags ignored",
+      "status": "PASS"
+    }
+  },
+  "locked_config_sha256": "4f25a5c9f29a7bc99a3f479cec76c23b7a28c1827d477a4df1432c5e6bb74e7d",
+  "test_report_sha256": "47fdb7f40cdcb40244877bd8a7480fde0d212ecde20e049c6310f7fdd915e3fe"
+}

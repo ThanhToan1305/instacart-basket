@@ -1,0 +1,396 @@
+{
+  "status": "PASS",
+  "export_id": "export_20261016T104646Z_efd67c4c",
+  "created_at": "2026-10-16T10:47:27.366325+00:00",
+  "etl_run_id": "hdfs_etl_20261016T083208Z_887f71ba",
+  "model_run_id": "hdfs_model_20261016T092052Z_e64bbcc6",
+  "publication_id": "pub_20261016T102223Z_816c1801",
+  "etl_root": "hdfs://namenode:9000/instacart/runs/hdfs_etl_20261016T083208Z_887f71ba",
+  "publication_manifest_uri": "hdfs://namenode:9000/instacart/runs/hdfs_etl_20261016T083208Z_887f71ba/models/hdfs_model_20261016T092052Z_e64bbcc6/gold/pub_20261016T102223Z_816c1801/publication_manifest.json",
+  "publication_report_sha256": "5388abc7c3e8b743d67316cba1b8914a2bcc62092158a56a4b171a3f353884c5",
+  "mode": "Gold export từ HDFS",
+  "execution_mode": "SAMPLE",
+  "evaluation_status": "NOT_EVALUATED",
+  "model_config": {
+    "min_support": 0.002,
+    "min_confidence": 0.2,
+    "num_partitions": 8,
+    "max_itemsets": 200000,
+    "max_rules": 500000,
+    "worker_timeout_seconds": 1200
+  },
+  "publication_min_confidence": 0.2,
+  "compute": "Spark local[2], task.cpus=1, driver=1g; HDFS on one Docker host",
+  "tables": {
+    "product_catalog": {
+      "uri": "hdfs://namenode:9000/instacart/runs/hdfs_etl_20261016T083208Z_887f71ba/gold/product_catalog",
+      "rows": 49688,
+      "bytes": 1294374,
+      "schema": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "product_id",
+            "type": "integer",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "product_name",
+            "type": "string",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "department",
+            "type": "string",
+            "nullable": true,
+            "metadata": {}
+          }
+        ]
+      },
+      "schema_check": "full type tree; Parquet nullability flags ignored",
+      "status": "PASS",
+      "final_read_rows": 49688,
+      "arrow_schema": "product_id: int32\nproduct_name: string\ndepartment: string",
+      "reconciliation": "PASS; full keyed value comparison"
+    },
+    "kpi_summary": {
+      "uri": "hdfs://namenode:9000/instacart/runs/hdfs_etl_20261016T083208Z_887f71ba/gold/kpi_summary",
+      "rows": 1,
+      "bytes": 5147,
+      "schema": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "total_orders",
+            "type": "long",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "total_users",
+            "type": "long",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "avg_days_between_orders",
+            "type": "double",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "total_order_items",
+            "type": "long",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "reorder_rate",
+            "type": "double",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "observed_baskets",
+            "type": "long",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "avg_basket_size",
+            "type": "double",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "median_basket_size",
+            "type": "double",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "basket_item_total",
+            "type": "long",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "total_products",
+            "type": "long",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "avg_orders_per_user",
+            "type": "double",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "orders_without_observed_items",
+            "type": "long",
+            "nullable": true,
+            "metadata": {}
+          }
+        ]
+      },
+      "schema_check": "full type tree; Parquet nullability flags ignored",
+      "status": "PASS",
+      "final_read_rows": 1,
+      "arrow_schema": "total_orders: int64\ntotal_users: int64\navg_days_between_orders: double\ntotal_order_items: int64\nreorder_rate: double\nobserved_baskets: int64\navg_basket_size: double\nmedian_basket_size: double\nbasket_item_total: int64\ntotal_products: int64\navg_orders_per_user: double\norders_without_observed_items: int64",
+      "reconciliation": "PASS; full keyed value comparison"
+    },
+    "association_rules": {
+      "uri": "hdfs://namenode:9000/instacart/runs/hdfs_etl_20261016T083208Z_887f71ba/models/hdfs_model_20261016T092052Z_e64bbcc6/gold/pub_20261016T102223Z_816c1801/association_rules",
+      "rows": 279,
+      "bytes": 60193,
+      "schema": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "rule_id",
+            "type": "string",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "antecedent",
+            "type": {
+              "type": "array",
+              "elementType": "integer",
+              "containsNull": true
+            },
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "consequent",
+            "type": {
+              "type": "array",
+              "elementType": "integer",
+              "containsNull": true
+            },
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "support",
+            "type": "double",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "confidence",
+            "type": "double",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "lift",
+            "type": "double",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "antecedent_names",
+            "type": {
+              "type": "array",
+              "elementType": "string",
+              "containsNull": true
+            },
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "consequent_names",
+            "type": {
+              "type": "array",
+              "elementType": "string",
+              "containsNull": true
+            },
+            "nullable": true,
+            "metadata": {}
+          }
+        ]
+      },
+      "schema_check": "full type tree; Parquet nullability flags ignored",
+      "status": "PASS",
+      "arrow_schema": "rule_id: string\nantecedent: list<element: int32>\n  child 0, element: int32\nconsequent: list<element: int32>\n  child 0, element: int32\nsupport: double\nconfidence: double\nlift: double\nantecedent_names: list<element: string>\n  child 0, element: string\nconsequent_names: list<element: string>\n  child 0, element: string",
+      "reconciliation": "PASS; full keyed value comparison"
+    },
+    "recommendation_lookup": {
+      "uri": "hdfs://namenode:9000/instacart/runs/hdfs_etl_20261016T083208Z_887f71ba/models/hdfs_model_20261016T092052Z_e64bbcc6/gold/pub_20261016T102223Z_816c1801/recommendation_lookup",
+      "rows": 347,
+      "bytes": 71437,
+      "schema": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "rule_id",
+            "type": "string",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "antecedent",
+            "type": {
+              "type": "array",
+              "elementType": "integer",
+              "containsNull": true
+            },
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "consequent",
+            "type": {
+              "type": "array",
+              "elementType": "integer",
+              "containsNull": true
+            },
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "support",
+            "type": "double",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "confidence",
+            "type": "double",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "lift",
+            "type": "double",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "antecedent_names",
+            "type": {
+              "type": "array",
+              "elementType": "string",
+              "containsNull": true
+            },
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "consequent_names",
+            "type": {
+              "type": "array",
+              "elementType": "string",
+              "containsNull": true
+            },
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "antecedent_size",
+            "type": "integer",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "antecedent_product_id",
+            "type": "integer",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "recommended_product_id",
+            "type": "integer",
+            "nullable": true,
+            "metadata": {}
+          }
+        ]
+      },
+      "schema_check": "full type tree; Parquet nullability flags ignored",
+      "status": "PASS",
+      "arrow_schema": "rule_id: string\nantecedent: list<element: int32>\n  child 0, element: int32\nconsequent: list<element: int32>\n  child 0, element: int32\nsupport: double\nconfidence: double\nlift: double\nantecedent_names: list<element: string>\n  child 0, element: string\nconsequent_names: list<element: string>\n  child 0, element: string\nantecedent_size: int32\nantecedent_product_id: int32\nrecommended_product_id: int32",
+      "reconciliation": "PASS; full keyed value comparison"
+    }
+  },
+  "aggregates": {
+    "orders_by_hour": {
+      "rows": 24,
+      "source": "hdfs://namenode:9000/instacart/runs/hdfs_etl_20261016T083208Z_887f71ba",
+      "bounded_maximum": 500
+    },
+    "orders_by_dow": {
+      "rows": 7,
+      "source": "hdfs://namenode:9000/instacart/runs/hdfs_etl_20261016T083208Z_887f71ba",
+      "bounded_maximum": 500
+    },
+    "top_20_products": {
+      "rows": 20,
+      "source": "hdfs://namenode:9000/instacart/runs/hdfs_etl_20261016T083208Z_887f71ba",
+      "bounded_maximum": 500
+    },
+    "top_15_departments": {
+      "rows": 15,
+      "source": "hdfs://namenode:9000/instacart/runs/hdfs_etl_20261016T083208Z_887f71ba",
+      "bounded_maximum": 500
+    },
+    "basket_size_distribution": {
+      "rows": 67,
+      "source": "hdfs://namenode:9000/instacart/runs/hdfs_etl_20261016T083208Z_887f71ba",
+      "bounded_maximum": 500
+    },
+    "reorder_by_department": {
+      "rows": 21,
+      "source": "hdfs://namenode:9000/instacart/runs/hdfs_etl_20261016T083208Z_887f71ba",
+      "bounded_maximum": 500
+    }
+  },
+  "integration": {
+    "status": "PASS",
+    "rule_case": true,
+    "fallback_case": true,
+    "scope": "functional checks only; not evaluation"
+  },
+  "checksum_definition": "SHA-256 of local copied files; logical rows compared separately via Spark keyed full join",
+  "files": {
+    "data/gold/association_rules/_SUCCESS": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "data/gold/association_rules/part-00000-ed457497-3c32-48dd-b960-10c60832bae0-c000.snappy.parquet": "51018df0290499b7b72a18d6993e3cdeaeaf9346dc90728968039a9d69664cae",
+    "data/gold/association_rules/part-00001-ed457497-3c32-48dd-b960-10c60832bae0-c000.snappy.parquet": "a0388bb192f5be41e7b87028a3802dd6f86b4b0fe25421f29e9a0b2cf7fcd7a2",
+    "data/gold/association_rules/part-00002-ed457497-3c32-48dd-b960-10c60832bae0-c000.snappy.parquet": "1065ac7554a3e8c458ef017ad06ddc2471307bb864eee25637eeefaca76f6445",
+    "data/gold/association_rules/part-00003-ed457497-3c32-48dd-b960-10c60832bae0-c000.snappy.parquet": "215d46080b0a130c33dfb4e4e6a3463e67d50ba98de688a40c0bbba9661f6db9",
+    "data/gold/association_rules/part-00004-ed457497-3c32-48dd-b960-10c60832bae0-c000.snappy.parquet": "f2292eeeae4d7d421f6740b34587b3b260831bf5eeb4eda12801c6c265a21f6f",
+    "data/gold/association_rules/part-00005-ed457497-3c32-48dd-b960-10c60832bae0-c000.snappy.parquet": "f54b280c3502e1a362ed018faaa1fd7bb91fda4923cee9d4be16d863a77f504a",
+    "data/gold/association_rules/part-00006-ed457497-3c32-48dd-b960-10c60832bae0-c000.snappy.parquet": "5247072aa2b59ccb11edd6375188403051a71a1264632a1ea0abc43be5390d29",
+    "data/gold/association_rules/part-00007-ed457497-3c32-48dd-b960-10c60832bae0-c000.snappy.parquet": "9a19fd22853d4d3762de6f32621c0e921d443c7091cc6d49ce8d6a29c6dab876",
+    "data/gold/kpi_summary/_SUCCESS": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "data/gold/kpi_summary/part-00000-34ee3581-abb0-464a-8c16-250a10a47c59-c000.snappy.parquet": "66f91f5f4cbd875039e17b2835f7dcd9a750a8c717edadd0c278861f5d37424c",
+    "data/gold/kpi_summary/part-00001-34ee3581-abb0-464a-8c16-250a10a47c59-c000.snappy.parquet": "8880301dad2b60aea99ad2ffcecfa363be4cb295c3d36266a91bf4dc1976a4f9",
+    "data/gold/product_catalog/_SUCCESS": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "data/gold/product_catalog/part-00000-b931427f-5d9a-47d5-8547-8be8a28d6b30-c000.snappy.parquet": "59c2417d0ea67b1abeb6644ba9a1bf31cdf48c62cdf581c413a154ce3ac0189a",
+    "data/gold/recommendation_lookup/_SUCCESS": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "data/gold/recommendation_lookup/part-00000-7f5deee4-3cfe-45bb-abfa-17bdcf24b42f-c000.snappy.parquet": "6d46cc252ce305855d8378b2f8472187d1061764ed04f78eb843614b4f1341d7",
+    "data/gold/recommendation_lookup/part-00001-7f5deee4-3cfe-45bb-abfa-17bdcf24b42f-c000.snappy.parquet": "834dca198b40227668469f782178fbd81bae4d501570d4d70c62bd2d51e89080",
+    "data/gold/recommendation_lookup/part-00002-7f5deee4-3cfe-45bb-abfa-17bdcf24b42f-c000.snappy.parquet": "f1ab349c740df51e6cb7f299c027e103f55a124138f296cae2d30e370ef8672a",
+    "data/gold/recommendation_lookup/part-00003-7f5deee4-3cfe-45bb-abfa-17bdcf24b42f-c000.snappy.parquet": "66c5cb6ff8dc8040cdfc9708812049e080638f3ccb8f0899946eb27be917d8cf",
+    "data/gold/recommendation_lookup/part-00004-7f5deee4-3cfe-45bb-abfa-17bdcf24b42f-c000.snappy.parquet": "4d26d42fce8cab5800638e12e28fcbd95c08069d21df40e3e6a3afc121995e5b",
+    "data/gold/recommendation_lookup/part-00005-7f5deee4-3cfe-45bb-abfa-17bdcf24b42f-c000.snappy.parquet": "819d0d98bb27adbaa6f4d52dc6eabfbf308069a90bfd76b4b14ab97a9477039a",
+    "data/gold/recommendation_lookup/part-00006-7f5deee4-3cfe-45bb-abfa-17bdcf24b42f-c000.snappy.parquet": "77b33fa4cac0184964ecb8b7918e2e89df60454dbe0a83b6901a7c48feb166ea",
+    "data/gold/recommendation_lookup/part-00007-7f5deee4-3cfe-45bb-abfa-17bdcf24b42f-c000.snappy.parquet": "7777882797386b9e4a8386dd0595ba969108a0e6d1bd21468ada4ea81a8cd500",
+    "outputs/metrics/basket_size_distribution.csv": "83c4cb4cdde64a765c168d13c49acaa13ee5278983a69fd5c12d111dbb5f8bfe",
+    "outputs/metrics/demo_cases.json": "5599199b30fcbcd3a0eb6be74fddd7f7b088df6c3f7e1bc740940434f7390b7c",
+    "outputs/metrics/eda_summary.json": "9f033e41b727fe765b6eb5d922b826093d852ebbd7219344bf5fd1051cda0878",
+    "outputs/metrics/hdfs_export_counts.csv": "90c139fd81275381b38d0736f7bed21554695b1fddf6615c644e143092d38287",
+    "outputs/metrics/hdfs_stage_timings.csv": "287ce51e134a11fc488b04338f1793094bdddf3fec28b5dda3f45a5467b9b6e6",
+    "outputs/metrics/hdfs_system.json": "cb4a39a4e3f1065c76b64d04bce5a2c9eeb475663b41854680b4e95fdd6ff395",
+    "outputs/metrics/model_summary.json": "a2f22ecf8f8ca6b5012a9814b858b23a23e3a6bd0438c63d216697a746eb529d",
+    "outputs/metrics/orders_by_dow.csv": "dc47fd17728e47d46060e7ebe0e83dc14e4b6f437093832a2cca83a75e553771",
+    "outputs/metrics/orders_by_hour.csv": "042bad6b589aef0ca32d9e53666f3072ec7b9ea643c5d6d2d51d247f9a796597",
+    "outputs/metrics/reorder_by_department.csv": "9b682478bfa522c192bfd2cd6e7e67cab7f3c52075f40081936729e6e56ca518",
+    "outputs/metrics/top_15_departments.csv": "a80a77dbee314e13f75757b678ef1d704c08e4726088203a47bc5c35b9dbe9ef",
+    "outputs/metrics/top_20_products.csv": "208ccedeceb31d8820772265e15851550fcde80a9282a3d5229ca797d2c66dd4"
+  }
+}

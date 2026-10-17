@@ -1,0 +1,7 @@
+﻿stage,status,seconds
+sample_real_csv,PASS,8.988
+raw_to_bronze_hdfs,PASS,14.372
+bronze_to_silver_hdfs,PASS,11.516
+silver_to_gold_hdfs,PASS,3.662
+charts_from_hdfs_silver,PASS,6.593
+final_read_reconciliation,PASS,1.436

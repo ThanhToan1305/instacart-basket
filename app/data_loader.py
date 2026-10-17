@@ -1,5 +1,6 @@
 """Cached, bounded reads of Gold and precomputed metrics; never starts Spark."""
 import json
+import os
 from pathlib import Path
 import pandas as pd
 import pyarrow.parquet as pq
@@ -11,13 +12,38 @@ class DataUnavailable(RuntimeError):
     pass
 
 
+def serving_context():
+    if not os.environ.get('HDFS_SERVING_DIR'):
+        return None
+    from app.serving import read_manifest
+    try:
+        return read_manifest(Path(os.environ['HDFS_SERVING_DIR']))
+    except ValueError as error:
+        raise DataUnavailable(str(error)) from error
+
+
+def active_root():
+    return Path(os.environ['HDFS_SERVING_DIR']).resolve() if os.environ.get('HDFS_SERVING_DIR') else ROOT
+
+
 def _path(relative):
-    path = (ROOT / relative).resolve()
-    allowed = (ROOT / 'data/gold', ROOT / 'outputs/metrics')
+    context = serving_context()
+    root = active_root()
+    path = (root / relative).resolve()
+    allowed = (root / 'data/gold', root / 'outputs/metrics')
     if not any(path.is_relative_to(folder) for folder in allowed):
         raise DataUnavailable('Dashboard chỉ được đọc data/gold và outputs/metrics.')
     if not path.exists():
         raise DataUnavailable(f'Thiếu dữ liệu: {relative}')
+    if context:
+        from app.serving import verify_file
+        try:
+            files = sorted(path.rglob('*')) if path.is_dir() else [path]
+            for file in files:
+                if file.is_file():
+                    verify_file(root, file, context)
+        except ValueError as error:
+            raise DataUnavailable(str(error)) from error
     return path
 
 
@@ -26,7 +52,11 @@ def signature(relative):
     files = sorted(path.rglob('*.parquet')) if path.is_dir() else [path]
     if not files:
         raise DataUnavailable(f'Không có Parquet: {relative}')
-    return tuple((str(p), p.stat().st_mtime_ns, p.stat().st_size) for p in files)
+    stamp = tuple((str(p), p.stat().st_mtime_ns, p.stat().st_size) for p in files)
+    if os.environ.get('HDFS_SERVING_DIR'):
+        manifest = active_root() / 'serving_manifest.json'
+        stamp += ((str(manifest), manifest.stat().st_mtime_ns, manifest.stat().st_size),)
+    return stamp
 
 
 @st.cache_data(show_spinner=False, max_entries=32)
@@ -41,6 +71,12 @@ def _read(relative, stamp):
         rows = sum(pq.read_metadata(f.path).num_rows for f in table.fragments)
         if rows > 100_000:
             raise DataUnavailable(f'{relative}: vượt giới hạn 100.000 dòng cho dữ liệu dashboard.')
+        context = serving_context()
+        if context:
+            name = path.name
+            expected = context['tables'][name]
+            if rows != expected['rows'] or str(table.schema.remove_metadata()) != expected['arrow_schema']:
+                raise DataUnavailable(f'{relative}: schema/count không khớp serving manifest.')
         return table.read().to_pandas()
     except DataUnavailable:
         raise

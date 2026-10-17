@@ -1,0 +1,7 @@
+fpgrowth:
+  min_support: 0.002
+  min_confidence: 0.20
+  num_partitions: 8
+  max_itemsets: 200000
+  max_rules: 500000
+  worker_timeout_seconds: 1200

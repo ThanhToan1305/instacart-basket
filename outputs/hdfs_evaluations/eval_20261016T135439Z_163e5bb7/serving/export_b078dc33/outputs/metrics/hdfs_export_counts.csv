@@ -1,0 +1,6 @@
+Bảng,Dòng,URI
+product_catalog,49688,hdfs://namenode:9000/instacart/runs/hdfs_etl_20261016T083208Z_887f71ba/gold/product_catalog
+kpi_summary,1,hdfs://namenode:9000/instacart/runs/hdfs_etl_20261016T083208Z_887f71ba/gold/kpi_summary
+association_rules,1180,hdfs://namenode:9000/instacart/runs/hdfs_etl_20261016T083208Z_887f71ba/evaluations/eval_20261016T135439Z_163e5bb7/work/export_b078dc33/gold/association_rules
+recommendation_lookup,1783,hdfs://namenode:9000/instacart/runs/hdfs_etl_20261016T083208Z_887f71ba/evaluations/eval_20261016T135439Z_163e5bb7/work/export_b078dc33/gold/recommendation_lookup
+train_popularity,22512,hdfs://namenode:9000/instacart/runs/hdfs_etl_20261016T083208Z_887f71ba/evaluations/eval_20261016T135439Z_163e5bb7/work/split_5972c049/train_popularity

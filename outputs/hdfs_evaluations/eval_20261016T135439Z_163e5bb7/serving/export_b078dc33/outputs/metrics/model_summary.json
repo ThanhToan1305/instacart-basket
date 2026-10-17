@@ -1,0 +1,17 @@
+{
+  "status": "PASS",
+  "config": {
+    "min_confidence": 0.2,
+    "num_partitions": 8,
+    "max_itemsets": 200000,
+    "max_rules": 500000,
+    "worker_timeout_seconds": 1200,
+    "min_support": 0.001
+  },
+  "counts": {
+    "frequent_itemsets": 4503,
+    "association_rules": 1180,
+    "recommendation_lookup": 1783
+  },
+  "evaluation_status": "EVALUATED_BASKET_COMPLETION"
+}

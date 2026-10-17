@@ -1,0 +1,31 @@
+Run,Stage,Giây,Trạng thái
+ETL,sample_real_csv,8.988,PASS
+ETL,raw_to_bronze_hdfs,14.372,PASS
+ETL,bronze_to_silver_hdfs,11.516,PASS
+ETL,silver_to_gold_hdfs,3.662,PASS
+ETL,charts_from_hdfs_silver,6.593,PASS
+ETL,final_read_reconciliation,1.436,PASS
+Model pilot,verify_hdfs_silver,5.241,PASS
+Model pilot,validate_prior_baskets,7.293,PASS
+Model pilot,save_training_baskets,2.46,PASS
+Model pilot,fit_pilot_fpgrowth,7.825,PASS
+Model pilot,save_frequent_itemsets,1.529,PASS
+Model pilot,save_rules,1.389,PASS
+Model pilot,final_read_reconciliation,1.325,PASS
+Publication,verify_model_artifacts,3.575,PASS
+Publication,verify_etl_catalog,0.242,PASS
+Publication,build_useful_rules_and_lookup,3.624,PASS
+Publication,write_staging_and_readback,5.435,PASS
+Publication,validate_staging_values,7.967,PASS
+Publication,charts_from_real_rules,2.956,PASS
+Publication,real_basket_integration,2.387,PASS
+Publication,atomic_rename,0.122,PASS
+Publication,final_hdfs_reconciliation,8.11,PASS
+Export,verify_hdfs_commit,0.308,PASS
+Export,export_product_catalog,6.675,PASS
+Export,export_kpi_summary,1.368,PASS
+Export,export_association_rules,3.542,PASS
+Export,export_recommendation_lookup,3.371,PASS
+Export,validate_local_gold,13.529,PASS
+Export,silver_hdfs_aggregates,4.366,PASS
+Export,local_recommendation_and_fallback,0.476,PASS

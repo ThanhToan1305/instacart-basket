@@ -1,0 +1,76 @@
+# Merge with the existing compose.yaml; do not replace it.
+x-hdfs-node: &hdfs-node
+  image: instacart-hdfs:3.5.0
+  platform: linux/amd64
+  build:
+    context: .
+    dockerfile: infra/hdfs-docker/Dockerfile
+  init: true
+  profiles: ["hdfs"]
+  environment:
+    JAVA_HOME: /usr/lib/jvm/java-17-openjdk-amd64
+    HADOOP_HOME: /opt/hadoop
+    HADOOP_CONF_DIR: /etc/instacart-hdfs
+    HADOOP_HEAPSIZE_MAX: "256"
+    PATH: /opt/hadoop/bin:/app/.venv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+  mem_limit: 768m
+  stop_grace_period: 30s
+
+services:
+  namenode:
+    <<: *hdfs-node
+    hostname: namenode
+    command: ["namenode"]
+    ports:
+      - "127.0.0.1:9870:9870"
+    volumes:
+      - hdfs_name:/hdfs/name
+      - ./infra/hdfs-docker/conf:/etc/instacart-hdfs:ro
+      - ./data/raw:/input/raw:ro
+    healthcheck:
+      test: ["CMD", "python", "/opt/instacart-hdfs/health.py", "namenode"]
+      interval: 15s
+      timeout: 20s
+      retries: 8
+      start_period: 30s
+
+  datanode:
+    <<: *hdfs-node
+    hostname: datanode
+    command: ["datanode"]
+    depends_on:
+      namenode:
+        condition: service_healthy
+    volumes:
+      - hdfs_data:/hdfs/data
+      - ./infra/hdfs-docker/conf:/etc/instacart-hdfs:ro
+    healthcheck:
+      test: ["CMD", "python", "/opt/instacart-hdfs/health.py", "datanode"]
+      interval: 15s
+      timeout: 20s
+      retries: 8
+      start_period: 30s
+
+  hdfs-smoke:
+    image: instacart-basket:1.0
+    profiles: ["hdfs"]
+    init: true
+    entrypoint: ["python", "/opt/instacart-hdfs/smoke.py"]
+    command: []
+    environment:
+      HADOOP_CONF_DIR: /etc/instacart-hdfs
+      SPARK_LOCAL_IP: 127.0.0.1
+    depends_on:
+      namenode:
+        condition: service_healthy
+      datanode:
+        condition: service_healthy
+    volumes:
+      - ./infra/hdfs-docker/smoke.py:/opt/instacart-hdfs/smoke.py:ro
+      - ./infra/hdfs-docker/conf:/etc/instacart-hdfs:ro
+      - ./outputs:/app/outputs
+    mem_limit: 2g
+
+volumes:
+  hdfs_name:
+  hdfs_data:

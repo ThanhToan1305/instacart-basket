@@ -1,0 +1,60 @@
+{
+  "cases": [
+    {
+      "label": "Luật • order_id=2",
+      "context": [
+        1819,
+        9327,
+        17794,
+        28985,
+        30035,
+        33120,
+        40141,
+        43668,
+        45918
+      ]
+    },
+    {
+      "label": "Fallback • product_id=1",
+      "context": [
+        1
+      ]
+    }
+  ],
+  "checks": [
+    {
+      "case": "real_rule_basket",
+      "context": [
+        1819,
+        9327,
+        17794,
+        28985,
+        30035,
+        33120,
+        40141,
+        43668,
+        45918
+      ],
+      "products": [
+        24852,
+        21903
+      ],
+      "source": "Luật kết hợp"
+    },
+    {
+      "case": "real_catalog_fallback",
+      "context": [
+        1
+      ],
+      "products": [
+        24852,
+        13176,
+        21137,
+        21903,
+        47209
+      ],
+      "source": "Fallback phổ biến",
+      "frequency_source": "ETL observed prior+train item counts; not independent training popularity"
+    }
+  ]
+}

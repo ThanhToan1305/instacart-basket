@@ -1,0 +1,2051 @@
+{
+  "status": "PASS",
+  "action": "validation",
+  "support": null,
+  "run_dir": "/app/outputs/hdfs_evaluations/eval_20261016T135439Z_163e5bb7",
+  "stages": [
+    {
+      "name": "validation",
+      "status": "PASS",
+      "started_at": "2026-10-16T14:10:37.136457+00:00",
+      "seconds": 49.251
+    }
+  ],
+  "started_at": "2026-10-16T14:10:36.474639+00:00",
+  "spark_version": "4.2.0",
+  "hadoop_version": "3.5.0",
+  "hdfs_prefix": "hdfs://namenode:9000/instacart/runs/hdfs_etl_20261016T083208Z_887f71ba/evaluations/eval_20261016T135439Z_163e5bb7/work/validation_233bcd16",
+  "configurations": [
+    {
+      "config_id": "s0.002_c0.2",
+      "status": "PASS",
+      "min_support": 0.002,
+      "min_confidence": 0.2,
+      "rule_only": {
+        "method": "rule_only",
+        "eligible_cases": 4103,
+        "hit_rate_at_5": 0.1479405313185474,
+        "precision_at_5": 0.032805264440653334,
+        "recall_at_5": 0.026110071237362448,
+        "recommendation_coverage": 0.5422861320984645,
+        "rule_coverage": 0.5422861320984645,
+        "zero_recommendation_cases": 1878,
+        "fewer_than_5_cases": 3979,
+        "rule_recommendations": 5046,
+        "popularity_recommendations": 0
+      },
+      "fit_report": "jobs/fit_0_002_1f671939/report.json",
+      "fit_report_sha256": "fbe1f8ca88cbe6041503098ee173f88db7743bd467a806ec4219e2a71682979b",
+      "batch_seconds": 8.282
+    },
+    {
+      "config_id": "s0.002_c0.3",
+      "status": "PASS",
+      "min_support": 0.002,
+      "min_confidence": 0.3,
+      "rule_only": {
+        "method": "rule_only",
+        "eligible_cases": 4103,
+        "hit_rate_at_5": 0.05069461369729466,
+        "precision_at_5": 0.010285157202047262,
+        "recall_at_5": 0.007416938858593341,
+        "recommendation_coverage": 0.21252741896173533,
+        "rule_coverage": 0.21252741896173533,
+        "zero_recommendation_cases": 3231,
+        "fewer_than_5_cases": 4103,
+        "rule_recommendations": 985,
+        "popularity_recommendations": 0
+      },
+      "fit_report": "jobs/fit_0_002_1f671939/report.json",
+      "fit_report_sha256": "fbe1f8ca88cbe6041503098ee173f88db7743bd467a806ec4219e2a71682979b",
+      "batch_seconds": 4.544
+    },
+    {
+      "config_id": "s0.002_c0.4",
+      "status": "PASS",
+      "min_support": 0.002,
+      "min_confidence": 0.4,
+      "rule_only": {
+        "method": "rule_only",
+        "eligible_cases": 4103,
+        "hit_rate_at_5": 0.003412137460394833,
+        "precision_at_5": 0.0006824274920789665,
+        "recall_at_5": 0.0003453535678502836,
+        "recommendation_coverage": 0.012917377528637582,
+        "rule_coverage": 0.012917377528637582,
+        "zero_recommendation_cases": 4050,
+        "fewer_than_5_cases": 4103,
+        "rule_recommendations": 53,
+        "popularity_recommendations": 0
+      },
+      "fit_report": "jobs/fit_0_002_1f671939/report.json",
+      "fit_report_sha256": "fbe1f8ca88cbe6041503098ee173f88db7743bd467a806ec4219e2a71682979b",
+      "batch_seconds": 3.736
+    },
+    {
+      "config_id": "s0.001_c0.2",
+      "status": "PASS",
+      "min_support": 0.001,
+      "min_confidence": 0.2,
+      "rule_only": {
+        "method": "rule_only",
+        "eligible_cases": 4103,
+        "hit_rate_at_5": 0.1786497684621009,
+        "precision_at_5": 0.0407994150621499,
+        "recall_at_5": 0.03288836976097836,
+        "recommendation_coverage": 0.6556178406044357,
+        "rule_coverage": 0.6556178406044357,
+        "zero_recommendation_cases": 1413,
+        "fewer_than_5_cases": 3790,
+        "rule_recommendations": 6824,
+        "popularity_recommendations": 0
+      },
+      "fit_report": "jobs/fit_0_001_7302c76d/report.json",
+      "fit_report_sha256": "1781b3dec3d2be705d268807ef5783b7df736149fa3f993032c454111979d0d2",
+      "batch_seconds": 4.462
+    },
+    {
+      "config_id": "s0.001_c0.3",
+      "status": "PASS",
+      "min_support": 0.001,
+      "min_confidence": 0.3,
+      "rule_only": {
+        "method": "rule_only",
+        "eligible_cases": 4103,
+        "hit_rate_at_5": 0.07506702412868632,
+        "precision_at_5": 0.015647087496953423,
+        "recall_at_5": 0.011483510615733954,
+        "recommendation_coverage": 0.3085547160614185,
+        "rule_coverage": 0.3085547160614185,
+        "zero_recommendation_cases": 2837,
+        "fewer_than_5_cases": 4099,
+        "rule_recommendations": 1697,
+        "popularity_recommendations": 0
+      },
+      "fit_report": "jobs/fit_0_001_7302c76d/report.json",
+      "fit_report_sha256": "1781b3dec3d2be705d268807ef5783b7df736149fa3f993032c454111979d0d2",
+      "batch_seconds": 4.093
+    },
+    {
+      "config_id": "s0.001_c0.4",
+      "status": "PASS",
+      "min_support": 0.001,
+      "min_confidence": 0.4,
+      "rule_only": {
+        "method": "rule_only",
+        "eligible_cases": 4103,
+        "hit_rate_at_5": 0.014867170363148916,
+        "precision_at_5": 0.0029734340726297846,
+        "recall_at_5": 0.0017691957911075689,
+        "recommendation_coverage": 0.05703144040945649,
+        "rule_coverage": 0.05703144040945649,
+        "zero_recommendation_cases": 3869,
+        "fewer_than_5_cases": 4103,
+        "rule_recommendations": 255,
+        "popularity_recommendations": 0
+      },
+      "fit_report": "jobs/fit_0_001_7302c76d/report.json",
+      "fit_report_sha256": "1781b3dec3d2be705d268807ef5783b7df736149fa3f993032c454111979d0d2",
+      "batch_seconds": 4.055
+    }
+  ],
+  "evaluations": {
+    "s0.002_c0.2": {
+      "methods": [
+        {
+          "method": "hybrid",
+          "eligible_cases": 4103,
+          "hit_rate_at_5": 0.2461613453570558,
+          "precision_at_5": 0.056690226663417484,
+          "recall_at_5": 0.053168969073593045,
+          "recommendation_coverage": 1.0,
+          "rule_coverage": 0.5422861320984645,
+          "zero_recommendation_cases": 0,
+          "fewer_than_5_cases": 0,
+          "rule_recommendations": 5046,
+          "popularity_recommendations": 15469
+        },
+        {
+          "method": "popularity",
+          "eligible_cases": 4103,
+          "hit_rate_at_5": 0.23909334633195223,
+          "precision_at_5": 0.05459419936631777,
+          "recall_at_5": 0.052141714436863634,
+          "recommendation_coverage": 1.0,
+          "rule_coverage": 0.0,
+          "zero_recommendation_cases": 0,
+          "fewer_than_5_cases": 0,
+          "rule_recommendations": 0,
+          "popularity_recommendations": 20515
+        },
+        {
+          "method": "rule_only",
+          "eligible_cases": 4103,
+          "hit_rate_at_5": 0.1479405313185474,
+          "precision_at_5": 0.032805264440653334,
+          "recall_at_5": 0.026110071237362448,
+          "recommendation_coverage": 0.5422861320984645,
+          "rule_coverage": 0.5422861320984645,
+          "zero_recommendation_cases": 1878,
+          "fewer_than_5_cases": 3979,
+          "rule_recommendations": 5046,
+          "popularity_recommendations": 0
+        }
+      ],
+      "predictions": {
+        "uri": "hdfs://namenode:9000/instacart/runs/hdfs_etl_20261016T083208Z_887f71ba/evaluations/eval_20261016T135439Z_163e5bb7/work/validation_233bcd16/s0.002_c0.2/predictions",
+        "rows": 12309,
+        "bytes": 404868,
+        "schema": {
+          "type": "struct",
+          "fields": [
+            {
+              "name": "order_id",
+              "type": "integer",
+              "nullable": true,
+              "metadata": {}
+            },
+            {
+              "name": "user_id",
+              "type": "integer",
+              "nullable": true,
+              "metadata": {}
+            },
+            {
+              "name": "context_items",
+              "type": {
+                "type": "array",
+                "elementType": "integer",
+                "containsNull": true
+              },
+              "nullable": true,
+              "metadata": {}
+            },
+            {
+              "name": "method",
+              "type": "string",
+              "nullable": true,
+              "metadata": {}
+            },
+            {
+              "name": "recommendations",
+              "type": {
+                "type": "array",
+                "elementType": {
+                  "type": "struct",
+                  "fields": [
+                    {
+                      "name": "product_id",
+                      "type": "integer",
+                      "nullable": true,
+                      "metadata": {}
+                    },
+                    {
+                      "name": "source",
+                      "type": "string",
+                      "nullable": true,
+                      "metadata": {}
+                    },
+                    {
+                      "name": "rule_id",
+                      "type": "string",
+                      "nullable": true,
+                      "metadata": {}
+                    },
+                    {
+                      "name": "confidence",
+                      "type": "double",
+                      "nullable": true,
+                      "metadata": {}
+                    },
+                    {
+                      "name": "lift",
+                      "type": "double",
+                      "nullable": true,
+                      "metadata": {}
+                    },
+                    {
+                      "name": "support",
+                      "type": "double",
+                      "nullable": true,
+                      "metadata": {}
+                    },
+                    {
+                      "name": "basket_count",
+                      "type": "long",
+                      "nullable": true,
+                      "metadata": {}
+                    }
+                  ]
+                },
+                "containsNull": true
+              },
+              "nullable": true,
+              "metadata": {}
+            }
+          ]
+        },
+        "schema_check": "full type tree; Parquet nullability flags ignored",
+        "status": "PASS"
+      },
+      "per_case_scores": {
+        "uri": "hdfs://namenode:9000/instacart/runs/hdfs_etl_20261016T083208Z_887f71ba/evaluations/eval_20261016T135439Z_163e5bb7/work/validation_233bcd16/s0.002_c0.2/per_case_scores",
+        "rows": 12309,
+        "bytes": 616178,
+        "schema": {
+          "type": "struct",
+          "fields": [
+            {
+              "name": "order_id",
+              "type": "integer",
+              "nullable": true,
+              "metadata": {}
+            },
+            {
+              "name": "user_id",
+              "type": "integer",
+              "nullable": true,
+              "metadata": {}
+            },
+            {
+              "name": "context_items",
+              "type": {
+                "type": "array",
+                "elementType": "integer",
+                "containsNull": true
+              },
+              "nullable": true,
+              "metadata": {}
+            },
+            {
+              "name": "method",
+              "type": "string",
+              "nullable": true,
+              "metadata": {}
+            },
+            {
+              "name": "recommendations",
+              "type": {
+                "type": "array",
+                "elementType": {
+                  "type": "struct",
+                  "fields": [
+                    {
+                      "name": "product_id",
+                      "type": "integer",
+                      "nullable": true,
+                      "metadata": {}
+                    },
+                    {
+                      "name": "source",
+                      "type": "string",
+                      "nullable": true,
+                      "metadata": {}
+                    },
+                    {
+                      "name": "rule_id",
+                      "type": "string",
+                      "nullable": true,
+                      "metadata": {}
+                    },
+                    {
+                      "name": "confidence",
+                      "type": "double",
+                      "nullable": true,
+                      "metadata": {}
+                    },
+                    {
+                      "name": "lift",
+                      "type": "double",
+                      "nullable": true,
+                      "metadata": {}
+                    },
+                    {
+                      "name": "support",
+                      "type": "double",
+                      "nullable": true,
+                      "metadata": {}
+                    },
+                    {
+                      "name": "basket_count",
+                      "type": "long",
+                      "nullable": true,
+                      "metadata": {}
+                    }
+                  ]
+                },
+                "containsNull": true
+              },
+              "nullable": true,
+              "metadata": {}
+            },
+            {
+              "name": "target_items",
+              "type": {
+                "type": "array",
+                "elementType": "integer",
+                "containsNull": true
+              },
+              "nullable": true,
+              "metadata": {}
+            },
+            {
+              "name": "recommended_ids",
+              "type": {
+                "type": "array",
+                "elementType": "integer",
+                "containsNull": true
+              },
+              "nullable": true,
+              "metadata": {}
+            },
+            {
+              "name": "hit_items",
+              "type": {
+                "type": "array",
+                "elementType": "integer",
+                "containsNull": true
+              },
+              "nullable": true,
+              "metadata": {}
+            },
+            {
+              "name": "hit_count",
+              "type": "integer",
+              "nullable": true,
+              "metadata": {}
+            },
+            {
+              "name": "hit",
+              "type": "double",
+              "nullable": true,
+              "metadata": {}
+            },
+            {
+              "name": "precision_at_5",
+              "type": "double",
+              "nullable": true,
+              "metadata": {}
+            },
+            {
+              "name": "recall_at_5",
+              "type": "double",
+              "nullable": true,
+              "metadata": {}
+            },
+            {
+              "name": "recommendation_count",
+              "type": "integer",
+              "nullable": true,
+              "metadata": {}
+            },
+            {
+              "name": "rule_count",
+              "type": "integer",
+              "nullable": true,
+              "metadata": {}
+            },
+            {
+              "name": "popularity_count",
+              "type": "integer",
+              "nullable": true,
+              "metadata": {}
+            }
+          ]
+        },
+        "schema_check": "full type tree; Parquet nullability flags ignored",
+        "status": "PASS"
+      },
+      "cold_target_occurrences": 863,
+      "target_occurrences": 22450,
+      "cold_target_exposure_rate": 0.03844097995545657,
+      "batch_seconds": 8.282,
+      "timing_scope": "Spark batch predict+write+score+readback; not per-request latency"
+    },
+    "s0.002_c0.3": {
+      "methods": [
+        {
+          "method": "hybrid",
+          "eligible_cases": 4103,
+          "hit_rate_at_5": 0.2415305873750914,
+          "precision_at_5": 0.05552035096271067,
+          "recall_at_5": 0.052552906482433305,
+          "recommendation_coverage": 1.0,
+          "rule_coverage": 0.21252741896173533,
+          "zero_recommendation_cases": 0,
+          "fewer_than_5_cases": 0,
+          "rule_recommendations": 985,
+          "popularity_recommendations": 19530
+        },
+        {
+          "method": "popularity",
+          "eligible_cases": 4103,
+          "hit_rate_at_5": 0.23909334633195223,
+          "precision_at_5": 0.05459419936631777,
+          "recall_at_5": 0.052141714436863634,
+          "recommendation_coverage": 1.0,
+          "rule_coverage": 0.0,
+          "zero_recommendation_cases": 0,
+          "fewer_than_5_cases": 0,
+          "rule_recommendations": 0,
+          "popularity_recommendations": 20515
+        },
+        {
+          "method": "rule_only",
+          "eligible_cases": 4103,
+          "hit_rate_at_5": 0.05069461369729466,
+          "precision_at_5": 0.010285157202047262,
+          "recall_at_5": 0.007416938858593341,
+          "recommendation_coverage": 0.21252741896173533,
+          "rule_coverage": 0.21252741896173533,
+          "zero_recommendation_cases": 3231,
+          "fewer_than_5_cases": 4103,
+          "rule_recommendations": 985,
+          "popularity_recommendations": 0
+        }
+      ],
+      "predictions": {
+        "uri": "hdfs://namenode:9000/instacart/runs/hdfs_etl_20261016T083208Z_887f71ba/evaluations/eval_20261016T135439Z_163e5bb7/work/validation_233bcd16/s0.002_c0.3/predictions",
+        "rows": 12309,
+        "bytes": 286942,
+        "schema": {
+          "type": "struct",
+          "fields": [
+            {
+              "name": "order_id",
+              "type": "integer",
+              "nullable": true,
+              "metadata": {}
+            },
+            {
+              "name": "user_id",
+              "type": "integer",
+              "nullable": true,
+              "metadata": {}
+            },
+            {
+              "name": "context_items",
+              "type": {
+                "type": "array",
+                "elementType": "integer",
+                "containsNull": true
+              },
+              "nullable": true,
+              "metadata": {}
+            },
+            {
+              "name": "method",
+              "type": "string",
+              "nullable": true,
+              "metadata": {}
+            },
+            {
+              "name": "recommendations",
+              "type": {
+                "type": "array",
+                "elementType": {
+                  "type": "struct",
+                  "fields": [
+                    {
+                      "name": "product_id",
+                      "type": "integer",
+                      "nullable": true,
+                      "metadata": {}
+                    },
+                    {
+                      "name": "source",
+                      "type": "string",
+                      "nullable": true,
+                      "metadata": {}
+                    },
+                    {
+                      "name": "rule_id",
+                      "type": "string",
+                      "nullable": true,
+                      "metadata": {}
+                    },
+                    {
+                      "name": "confidence",
+                      "type": "double",
+                      "nullable": true,
+                      "metadata": {}
+                    },
+                    {
+                      "name": "lift",
+                      "type": "double",
+                      "nullable": true,
+                      "metadata": {}
+                    },
+                    {
+                      "name": "support",
+                      "type": "double",
+                      "nullable": true,
+                      "metadata": {}
+                    },
+                    {
+                      "name": "basket_count",
+                      "type": "long",
+                      "nullable": true,
+                      "metadata": {}
+                    }
+                  ]
+                },
+                "containsNull": true
+              },
+              "nullable": true,
+              "metadata": {}
+            }
+          ]
+        },
+        "schema_check": "full type tree; Parquet nullability flags ignored",
+        "status": "PASS"
+      },
+      "per_case_scores": {
+        "uri": "hdfs://namenode:9000/instacart/runs/hdfs_etl_20261016T083208Z_887f71ba/evaluations/eval_20261016T135439Z_163e5bb7/work/validation_233bcd16/s0.002_c0.3/per_case_scores",
+        "rows": 12309,
+        "bytes": 481623,
+        "schema": {
+          "type": "struct",
+          "fields": [
+            {
+              "name": "order_id",
+              "type": "integer",
+              "nullable": true,
+              "metadata": {}
+            },
+            {
+              "name": "user_id",
+              "type": "integer",
+              "nullable": true,
+              "metadata": {}
+            },
+            {
+              "name": "context_items",
+              "type": {
+                "type": "array",
+                "elementType": "integer",
+                "containsNull": true
+              },
+              "nullable": true,
+              "metadata": {}
+            },
+            {
+              "name": "method",
+              "type": "string",
+              "nullable": true,
+              "metadata": {}
+            },
+            {
+              "name": "recommendations",
+              "type": {
+                "type": "array",
+                "elementType": {
+                  "type": "struct",
+                  "fields": [
+                    {
+                      "name": "product_id",
+                      "type": "integer",
+                      "nullable": true,
+                      "metadata": {}
+                    },
+                    {
+                      "name": "source",
+                      "type": "string",
+                      "nullable": true,
+                      "metadata": {}
+                    },
+                    {
+                      "name": "rule_id",
+                      "type": "string",
+                      "nullable": true,
+                      "metadata": {}
+                    },
+                    {
+                      "name": "confidence",
+                      "type": "double",
+                      "nullable": true,
+                      "metadata": {}
+                    },
+                    {
+                      "name": "lift",
+                      "type": "double",
+                      "nullable": true,
+                      "metadata": {}
+                    },
+                    {
+                      "name": "support",
+                      "type": "double",
+                      "nullable": true,
+                      "metadata": {}
+                    },
+                    {
+                      "name": "basket_count",
+                      "type": "long",
+                      "nullable": true,
+                      "metadata": {}
+                    }
+                  ]
+                },
+                "containsNull": true
+              },
+              "nullable": true,
+              "metadata": {}
+            },
+            {
+              "name": "target_items",
+              "type": {
+                "type": "array",
+                "elementType": "integer",
+                "containsNull": true
+              },
+              "nullable": true,
+              "metadata": {}
+            },
+            {
+              "name": "recommended_ids",
+              "type": {
+                "type": "array",
+                "elementType": "integer",
+                "containsNull": true
+              },
+              "nullable": true,
+              "metadata": {}
+            },
+            {
+              "name": "hit_items",
+              "type": {
+                "type": "array",
+                "elementType": "integer",
+                "containsNull": true
+              },
+              "nullable": true,
+              "metadata": {}
+            },
+            {
+              "name": "hit_count",
+              "type": "integer",
+              "nullable": true,
+              "metadata": {}
+            },
+            {
+              "name": "hit",
+              "type": "double",
+              "nullable": true,
+              "metadata": {}
+            },
+            {
+              "name": "precision_at_5",
+              "type": "double",
+              "nullable": true,
+              "metadata": {}
+            },
+            {
+              "name": "recall_at_5",
+              "type": "double",
+              "nullable": true,
+              "metadata": {}
+            },
+            {
+              "name": "recommendation_count",
+              "type": "integer",
+              "nullable": true,
+              "metadata": {}
+            },
+            {
+              "name": "rule_count",
+              "type": "integer",
+              "nullable": true,
+              "metadata": {}
+            },
+            {
+              "name": "popularity_count",
+              "type": "integer",
+              "nullable": true,
+              "metadata": {}
+            }
+          ]
+        },
+        "schema_check": "full type tree; Parquet nullability flags ignored",
+        "status": "PASS"
+      },
+      "cold_target_occurrences": 863,
+      "target_occurrences": 22450,
+      "cold_target_exposure_rate": 0.03844097995545657,
+      "batch_seconds": 4.544,
+      "timing_scope": "Spark batch predict+write+score+readback; not per-request latency"
+    },
+    "s0.002_c0.4": {
+      "methods": [
+        {
+          "method": "hybrid",
+          "eligible_cases": 4103,
+          "hit_rate_at_5": 0.23958079454058007,
+          "precision_at_5": 0.054789178649768906,
+          "recall_at_5": 0.05220762417894101,
+          "recommendation_coverage": 1.0,
+          "rule_coverage": 0.012917377528637582,
+          "zero_recommendation_cases": 0,
+          "fewer_than_5_cases": 0,
+          "rule_recommendations": 53,
+          "popularity_recommendations": 20462
+        },
+        {
+          "method": "popularity",
+          "eligible_cases": 4103,
+          "hit_rate_at_5": 0.23909334633195223,
+          "precision_at_5": 0.05459419936631777,
+          "recall_at_5": 0.052141714436863634,
+          "recommendation_coverage": 1.0,
+          "rule_coverage": 0.0,
+          "zero_recommendation_cases": 0,
+          "fewer_than_5_cases": 0,
+          "rule_recommendations": 0,
+          "popularity_recommendations": 20515
+        },
+        {
+          "method": "rule_only",
+          "eligible_cases": 4103,
+          "hit_rate_at_5": 0.003412137460394833,
+          "precision_at_5": 0.0006824274920789665,
+          "recall_at_5": 0.0003453535678502836,
+          "recommendation_coverage": 0.012917377528637582,
+          "rule_coverage": 0.012917377528637582,
+          "zero_recommendation_cases": 4050,
+          "fewer_than_5_cases": 4103,
+          "rule_recommendations": 53,
+          "popularity_recommendations": 0
+        }
+      ],
+      "predictions": {
+        "uri": "hdfs://namenode:9000/instacart/runs/hdfs_etl_20261016T083208Z_887f71ba/evaluations/eval_20261016T135439Z_163e5bb7/work/validation_233bcd16/s0.002_c0.4/predictions",
+        "rows": 12309,
+        "bytes": 244742,
+        "schema": {
+          "type": "struct",
+          "fields": [
+            {
+              "name": "order_id",
+              "type": "integer",
+              "nullable": true,
+              "metadata": {}
+            },
+            {
+              "name": "user_id",
+              "type": "integer",
+              "nullable": true,
+              "metadata": {}
+            },
+            {
+              "name": "context_items",
+              "type": {
+                "type": "array",
+                "elementType": "integer",
+                "containsNull": true
+              },
+              "nullable": true,
+              "metadata": {}
+            },
+            {
+              "name": "method",
+              "type": "string",
+              "nullable": true,
+              "metadata": {}
+            },
+            {
+              "name": "recommendations",
+              "type": {
+                "type": "array",
+                "elementType": {
+                  "type": "struct",
+                  "fields": [
+                    {
+                      "name": "product_id",
+                      "type": "integer",
+                      "nullable": true,
+                      "metadata": {}
+                    },
+                    {
+                      "name": "source",
+                      "type": "string",
+                      "nullable": true,
+                      "metadata": {}
+                    },
+                    {
+                      "name": "rule_id",
+                      "type": "string",
+                      "nullable": true,
+                      "metadata": {}
+                    },
+                    {
+                      "name": "confidence",
+                      "type": "double",
+                      "nullable": true,
+                      "metadata": {}
+                    },
+                    {
+                      "name": "lift",
+                      "type": "double",
+                      "nullable": true,
+                      "metadata": {}
+                    },
+                    {
+                      "name": "support",
+                      "type": "double",
+                      "nullable": true,
+                      "metadata": {}
+                    },
+                    {
+                      "name": "basket_count",
+                      "type": "long",
+                      "nullable": true,
+                      "metadata": {}
+                    }
+                  ]
+                },
+                "containsNull": true
+              },
+              "nullable": true,
+              "metadata": {}
+            }
+          ]
+        },
+        "schema_check": "full type tree; Parquet nullability flags ignored",
+        "status": "PASS"
+      },
+      "per_case_scores": {
+        "uri": "hdfs://namenode:9000/instacart/runs/hdfs_etl_20261016T083208Z_887f71ba/evaluations/eval_20261016T135439Z_163e5bb7/work/validation_233bcd16/s0.002_c0.4/per_case_scores",
+        "rows": 12309,
+        "bytes": 428395,
+        "schema": {
+          "type": "struct",
+          "fields": [
+            {
+              "name": "order_id",
+              "type": "integer",
+              "nullable": true,
+              "metadata": {}
+            },
+            {
+              "name": "user_id",
+              "type": "integer",
+              "nullable": true,
+              "metadata": {}
+            },
+            {
+              "name": "context_items",
+              "type": {
+                "type": "array",
+                "elementType": "integer",
+                "containsNull": true
+              },
+              "nullable": true,
+              "metadata": {}
+            },
+            {
+              "name": "method",
+              "type": "string",
+              "nullable": true,
+              "metadata": {}
+            },
+            {
+              "name": "recommendations",
+              "type": {
+                "type": "array",
+                "elementType": {
+                  "type": "struct",
+                  "fields": [
+                    {
+                      "name": "product_id",
+                      "type": "integer",
+                      "nullable": true,
+                      "metadata": {}
+                    },
+                    {
+                      "name": "source",
+                      "type": "string",
+                      "nullable": true,
+                      "metadata": {}
+                    },
+                    {
+                      "name": "rule_id",
+                      "type": "string",
+                      "nullable": true,
+                      "metadata": {}
+                    },
+                    {
+                      "name": "confidence",
+                      "type": "double",
+                      "nullable": true,
+                      "metadata": {}
+                    },
+                    {
+                      "name": "lift",
+                      "type": "double",
+                      "nullable": true,
+                      "metadata": {}
+                    },
+                    {
+                      "name": "support",
+                      "type": "double",
+                      "nullable": true,
+                      "metadata": {}
+                    },
+                    {
+                      "name": "basket_count",
+                      "type": "long",
+                      "nullable": true,
+                      "metadata": {}
+                    }
+                  ]
+                },
+                "containsNull": true
+              },
+              "nullable": true,
+              "metadata": {}
+            },
+            {
+              "name": "target_items",
+              "type": {
+                "type": "array",
+                "elementType": "integer",
+                "containsNull": true
+              },
+              "nullable": true,
+              "metadata": {}
+            },
+            {
+              "name": "recommended_ids",
+              "type": {
+                "type": "array",
+                "elementType": "integer",
+                "containsNull": true
+              },
+              "nullable": true,
+              "metadata": {}
+            },
+            {
+              "name": "hit_items",
+              "type": {
+                "type": "array",
+                "elementType": "integer",
+                "containsNull": true
+              },
+              "nullable": true,
+              "metadata": {}
+            },
+            {
+              "name": "hit_count",
+              "type": "integer",
+              "nullable": true,
+              "metadata": {}
+            },
+            {
+              "name": "hit",
+              "type": "double",
+              "nullable": true,
+              "metadata": {}
+            },
+            {
+              "name": "precision_at_5",
+              "type": "double",
+              "nullable": true,
+              "metadata": {}
+            },
+            {
+              "name": "recall_at_5",
+              "type": "double",
+              "nullable": true,
+              "metadata": {}
+            },
+            {
+              "name": "recommendation_count",
+              "type": "integer",
+              "nullable": true,
+              "metadata": {}
+            },
+            {
+              "name": "rule_count",
+              "type": "integer",
+              "nullable": true,
+              "metadata": {}
+            },
+            {
+              "name": "popularity_count",
+              "type": "integer",
+              "nullable": true,
+              "metadata": {}
+            }
+          ]
+        },
+        "schema_check": "full type tree; Parquet nullability flags ignored",
+        "status": "PASS"
+      },
+      "cold_target_occurrences": 863,
+      "target_occurrences": 22450,
+      "cold_target_exposure_rate": 0.03844097995545657,
+      "batch_seconds": 3.736,
+      "timing_scope": "Spark batch predict+write+score+readback; not per-request latency"
+    },
+    "s0.001_c0.2": {
+      "methods": [
+        {
+          "method": "hybrid",
+          "eligible_cases": 4103,
+          "hit_rate_at_5": 0.2537167925907872,
+          "precision_at_5": 0.05902997806483111,
+          "recall_at_5": 0.05524821008299654,
+          "recommendation_coverage": 1.0,
+          "rule_coverage": 0.6556178406044357,
+          "zero_recommendation_cases": 0,
+          "fewer_than_5_cases": 0,
+          "rule_recommendations": 6824,
+          "popularity_recommendations": 13691
+        },
+        {
+          "method": "popularity",
+          "eligible_cases": 4103,
+          "hit_rate_at_5": 0.23909334633195223,
+          "precision_at_5": 0.05459419936631777,
+          "recall_at_5": 0.052141714436863634,
+          "recommendation_coverage": 1.0,
+          "rule_coverage": 0.0,
+          "zero_recommendation_cases": 0,
+          "fewer_than_5_cases": 0,
+          "rule_recommendations": 0,
+          "popularity_recommendations": 20515
+        },
+        {
+          "method": "rule_only",
+          "eligible_cases": 4103,
+          "hit_rate_at_5": 0.1786497684621009,
+          "precision_at_5": 0.0407994150621499,
+          "recall_at_5": 0.03288836976097836,
+          "recommendation_coverage": 0.6556178406044357,
+          "rule_coverage": 0.6556178406044357,
+          "zero_recommendation_cases": 1413,
+          "fewer_than_5_cases": 3790,
+          "rule_recommendations": 6824,
+          "popularity_recommendations": 0
+        }
+      ],
+      "predictions": {
+        "uri": "hdfs://namenode:9000/instacart/runs/hdfs_etl_20261016T083208Z_887f71ba/evaluations/eval_20261016T135439Z_163e5bb7/work/validation_233bcd16/s0.001_c0.2/predictions",
+        "rows": 12309,
+        "bytes": 526625,
+        "schema": {
+          "type": "struct",
+          "fields": [
+            {
+              "name": "order_id",
+              "type": "integer",
+              "nullable": true,
+              "metadata": {}
+            },
+            {
+              "name": "user_id",
+              "type": "integer",
+              "nullable": true,
+              "metadata": {}
+            },
+            {
+              "name": "context_items",
+              "type": {
+                "type": "array",
+                "elementType": "integer",
+                "containsNull": true
+              },
+              "nullable": true,
+              "metadata": {}
+            },
+            {
+              "name": "method",
+              "type": "string",
+              "nullable": true,
+              "metadata": {}
+            },
+            {
+              "name": "recommendations",
+              "type": {
+                "type": "array",
+                "elementType": {
+                  "type": "struct",
+                  "fields": [
+                    {
+                      "name": "product_id",
+                      "type": "integer",
+                      "nullable": true,
+                      "metadata": {}
+                    },
+                    {
+                      "name": "source",
+                      "type": "string",
+                      "nullable": true,
+                      "metadata": {}
+                    },
+                    {
+                      "name": "rule_id",
+                      "type": "string",
+                      "nullable": true,
+                      "metadata": {}
+                    },
+                    {
+                      "name": "confidence",
+                      "type": "double",
+                      "nullable": true,
+                      "metadata": {}
+                    },
+                    {
+                      "name": "lift",
+                      "type": "double",
+                      "nullable": true,
+                      "metadata": {}
+                    },
+                    {
+                      "name": "support",
+                      "type": "double",
+                      "nullable": true,
+                      "metadata": {}
+                    },
+                    {
+                      "name": "basket_count",
+                      "type": "long",
+                      "nullable": true,
+                      "metadata": {}
+                    }
+                  ]
+                },
+                "containsNull": true
+              },
+              "nullable": true,
+              "metadata": {}
+            }
+          ]
+        },
+        "schema_check": "full type tree; Parquet nullability flags ignored",
+        "status": "PASS"
+      },
+      "per_case_scores": {
+        "uri": "hdfs://namenode:9000/instacart/runs/hdfs_etl_20261016T083208Z_887f71ba/evaluations/eval_20261016T135439Z_163e5bb7/work/validation_233bcd16/s0.001_c0.2/per_case_scores",
+        "rows": 12309,
+        "bytes": 743815,
+        "schema": {
+          "type": "struct",
+          "fields": [
+            {
+              "name": "order_id",
+              "type": "integer",
+              "nullable": true,
+              "metadata": {}
+            },
+            {
+              "name": "user_id",
+              "type": "integer",
+              "nullable": true,
+              "metadata": {}
+            },
+            {
+              "name": "context_items",
+              "type": {
+                "type": "array",
+                "elementType": "integer",
+                "containsNull": true
+              },
+              "nullable": true,
+              "metadata": {}
+            },
+            {
+              "name": "method",
+              "type": "string",
+              "nullable": true,
+              "metadata": {}
+            },
+            {
+              "name": "recommendations",
+              "type": {
+                "type": "array",
+                "elementType": {
+                  "type": "struct",
+                  "fields": [
+                    {
+                      "name": "product_id",
+                      "type": "integer",
+                      "nullable": true,
+                      "metadata": {}
+                    },
+                    {
+                      "name": "source",
+                      "type": "string",
+                      "nullable": true,
+                      "metadata": {}
+                    },
+                    {
+                      "name": "rule_id",
+                      "type": "string",
+                      "nullable": true,
+                      "metadata": {}
+                    },
+                    {
+                      "name": "confidence",
+                      "type": "double",
+                      "nullable": true,
+                      "metadata": {}
+                    },
+                    {
+                      "name": "lift",
+                      "type": "double",
+                      "nullable": true,
+                      "metadata": {}
+                    },
+                    {
+                      "name": "support",
+                      "type": "double",
+                      "nullable": true,
+                      "metadata": {}
+                    },
+                    {
+                      "name": "basket_count",
+                      "type": "long",
+                      "nullable": true,
+                      "metadata": {}
+                    }
+                  ]
+                },
+                "containsNull": true
+              },
+              "nullable": true,
+              "metadata": {}
+            },
+            {
+              "name": "target_items",
+              "type": {
+                "type": "array",
+                "elementType": "integer",
+                "containsNull": true
+              },
+              "nullable": true,
+              "metadata": {}
+            },
+            {
+              "name": "recommended_ids",
+              "type": {
+                "type": "array",
+                "elementType": "integer",
+                "containsNull": true
+              },
+              "nullable": true,
+              "metadata": {}
+            },
+            {
+              "name": "hit_items",
+              "type": {
+                "type": "array",
+                "elementType": "integer",
+                "containsNull": true
+              },
+              "nullable": true,
+              "metadata": {}
+            },
+            {
+              "name": "hit_count",
+              "type": "integer",
+              "nullable": true,
+              "metadata": {}
+            },
+            {
+              "name": "hit",
+              "type": "double",
+              "nullable": true,
+              "metadata": {}
+            },
+            {
+              "name": "precision_at_5",
+              "type": "double",
+              "nullable": true,
+              "metadata": {}
+            },
+            {
+              "name": "recall_at_5",
+              "type": "double",
+              "nullable": true,
+              "metadata": {}
+            },
+            {
+              "name": "recommendation_count",
+              "type": "integer",
+              "nullable": true,
+              "metadata": {}
+            },
+            {
+              "name": "rule_count",
+              "type": "integer",
+              "nullable": true,
+              "metadata": {}
+            },
+            {
+              "name": "popularity_count",
+              "type": "integer",
+              "nullable": true,
+              "metadata": {}
+            }
+          ]
+        },
+        "schema_check": "full type tree; Parquet nullability flags ignored",
+        "status": "PASS"
+      },
+      "cold_target_occurrences": 863,
+      "target_occurrences": 22450,
+      "cold_target_exposure_rate": 0.03844097995545657,
+      "batch_seconds": 4.462,
+      "timing_scope": "Spark batch predict+write+score+readback; not per-request latency"
+    },
+    "s0.001_c0.3": {
+      "methods": [
+        {
+          "method": "hybrid",
+          "eligible_cases": 4103,
+          "hit_rate_at_5": 0.24591762125274189,
+          "precision_at_5": 0.056933950767731396,
+          "recall_at_5": 0.053783340085841756,
+          "recommendation_coverage": 1.0,
+          "rule_coverage": 0.3085547160614185,
+          "zero_recommendation_cases": 0,
+          "fewer_than_5_cases": 0,
+          "rule_recommendations": 1697,
+          "popularity_recommendations": 18818
+        },
+        {
+          "method": "popularity",
+          "eligible_cases": 4103,
+          "hit_rate_at_5": 0.23909334633195223,
+          "precision_at_5": 0.05459419936631777,
+          "recall_at_5": 0.052141714436863634,
+          "recommendation_coverage": 1.0,
+          "rule_coverage": 0.0,
+          "zero_recommendation_cases": 0,
+          "fewer_than_5_cases": 0,
+          "rule_recommendations": 0,
+          "popularity_recommendations": 20515
+        },
+        {
+          "method": "rule_only",
+          "eligible_cases": 4103,
+          "hit_rate_at_5": 0.07506702412868632,
+          "precision_at_5": 0.015647087496953423,
+          "recall_at_5": 0.011483510615733954,
+          "recommendation_coverage": 0.3085547160614185,
+          "rule_coverage": 0.3085547160614185,
+          "zero_recommendation_cases": 2837,
+          "fewer_than_5_cases": 4099,
+          "rule_recommendations": 1697,
+          "popularity_recommendations": 0
+        }
+      ],
+      "predictions": {
+        "uri": "hdfs://namenode:9000/instacart/runs/hdfs_etl_20261016T083208Z_887f71ba/evaluations/eval_20261016T135439Z_163e5bb7/work/validation_233bcd16/s0.001_c0.3/predictions",
+        "rows": 12309,
+        "bytes": 343559,
+        "schema": {
+          "type": "struct",
+          "fields": [
+            {
+              "name": "order_id",
+              "type": "integer",
+              "nullable": true,
+              "metadata": {}
+            },
+            {
+              "name": "user_id",
+              "type": "integer",
+              "nullable": true,
+              "metadata": {}
+            },
+            {
+              "name": "context_items",
+              "type": {
+                "type": "array",
+                "elementType": "integer",
+                "containsNull": true
+              },
+              "nullable": true,
+              "metadata": {}
+            },
+            {
+              "name": "method",
+              "type": "string",
+              "nullable": true,
+              "metadata": {}
+            },
+            {
+              "name": "recommendations",
+              "type": {
+                "type": "array",
+                "elementType": {
+                  "type": "struct",
+                  "fields": [
+                    {
+                      "name": "product_id",
+                      "type": "integer",
+                      "nullable": true,
+                      "metadata": {}
+                    },
+                    {
+                      "name": "source",
+                      "type": "string",
+                      "nullable": true,
+                      "metadata": {}
+                    },
+                    {
+                      "name": "rule_id",
+                      "type": "string",
+                      "nullable": true,
+                      "metadata": {}
+                    },
+                    {
+                      "name": "confidence",
+                      "type": "double",
+                      "nullable": true,
+                      "metadata": {}
+                    },
+                    {
+                      "name": "lift",
+                      "type": "double",
+                      "nullable": true,
+                      "metadata": {}
+                    },
+                    {
+                      "name": "support",
+                      "type": "double",
+                      "nullable": true,
+                      "metadata": {}
+                    },
+                    {
+                      "name": "basket_count",
+                      "type": "long",
+                      "nullable": true,
+                      "metadata": {}
+                    }
+                  ]
+                },
+                "containsNull": true
+              },
+              "nullable": true,
+              "metadata": {}
+            }
+          ]
+        },
+        "schema_check": "full type tree; Parquet nullability flags ignored",
+        "status": "PASS"
+      },
+      "per_case_scores": {
+        "uri": "hdfs://namenode:9000/instacart/runs/hdfs_etl_20261016T083208Z_887f71ba/evaluations/eval_20261016T135439Z_163e5bb7/work/validation_233bcd16/s0.001_c0.3/per_case_scores",
+        "rows": 12309,
+        "bytes": 544933,
+        "schema": {
+          "type": "struct",
+          "fields": [
+            {
+              "name": "order_id",
+              "type": "integer",
+              "nullable": true,
+              "metadata": {}
+            },
+            {
+              "name": "user_id",
+              "type": "integer",
+              "nullable": true,
+              "metadata": {}
+            },
+            {
+              "name": "context_items",
+              "type": {
+                "type": "array",
+                "elementType": "integer",
+                "containsNull": true
+              },
+              "nullable": true,
+              "metadata": {}
+            },
+            {
+              "name": "method",
+              "type": "string",
+              "nullable": true,
+              "metadata": {}
+            },
+            {
+              "name": "recommendations",
+              "type": {
+                "type": "array",
+                "elementType": {
+                  "type": "struct",
+                  "fields": [
+                    {
+                      "name": "product_id",
+                      "type": "integer",
+                      "nullable": true,
+                      "metadata": {}
+                    },
+                    {
+                      "name": "source",
+                      "type": "string",
+                      "nullable": true,
+                      "metadata": {}
+                    },
+                    {
+                      "name": "rule_id",
+                      "type": "string",
+                      "nullable": true,
+                      "metadata": {}
+                    },
+                    {
+                      "name": "confidence",
+                      "type": "double",
+                      "nullable": true,
+                      "metadata": {}
+                    },
+                    {
+                      "name": "lift",
+                      "type": "double",
+                      "nullable": true,
+                      "metadata": {}
+                    },
+                    {
+                      "name": "support",
+                      "type": "double",
+                      "nullable": true,
+                      "metadata": {}
+                    },
+                    {
+                      "name": "basket_count",
+                      "type": "long",
+                      "nullable": true,
+                      "metadata": {}
+                    }
+                  ]
+                },
+                "containsNull": true
+              },
+              "nullable": true,
+              "metadata": {}
+            },
+            {
+              "name": "target_items",
+              "type": {
+                "type": "array",
+                "elementType": "integer",
+                "containsNull": true
+              },
+              "nullable": true,
+              "metadata": {}
+            },
+            {
+              "name": "recommended_ids",
+              "type": {
+                "type": "array",
+                "elementType": "integer",
+                "containsNull": true
+              },
+              "nullable": true,
+              "metadata": {}
+            },
+            {
+              "name": "hit_items",
+              "type": {
+                "type": "array",
+                "elementType": "integer",
+                "containsNull": true
+              },
+              "nullable": true,
+              "metadata": {}
+            },
+            {
+              "name": "hit_count",
+              "type": "integer",
+              "nullable": true,
+              "metadata": {}
+            },
+            {
+              "name": "hit",
+              "type": "double",
+              "nullable": true,
+              "metadata": {}
+            },
+            {
+              "name": "precision_at_5",
+              "type": "double",
+              "nullable": true,
+              "metadata": {}
+            },
+            {
+              "name": "recall_at_5",
+              "type": "double",
+              "nullable": true,
+              "metadata": {}
+            },
+            {
+              "name": "recommendation_count",
+              "type": "integer",
+              "nullable": true,
+              "metadata": {}
+            },
+            {
+              "name": "rule_count",
+              "type": "integer",
+              "nullable": true,
+              "metadata": {}
+            },
+            {
+              "name": "popularity_count",
+              "type": "integer",
+              "nullable": true,
+              "metadata": {}
+            }
+          ]
+        },
+        "schema_check": "full type tree; Parquet nullability flags ignored",
+        "status": "PASS"
+      },
+      "cold_target_occurrences": 863,
+      "target_occurrences": 22450,
+      "cold_target_exposure_rate": 0.03844097995545657,
+      "batch_seconds": 4.093,
+      "timing_scope": "Spark batch predict+write+score+readback; not per-request latency"
+    },
+    "s0.001_c0.4": {
+      "methods": [
+        {
+          "method": "hybrid",
+          "eligible_cases": 4103,
+          "hit_rate_at_5": 0.2417743114794053,
+          "precision_at_5": 0.055422861320985096,
+          "recall_at_5": 0.05268599258931039,
+          "recommendation_coverage": 1.0,
+          "rule_coverage": 0.05703144040945649,
+          "zero_recommendation_cases": 0,
+          "fewer_than_5_cases": 0,
+          "rule_recommendations": 255,
+          "popularity_recommendations": 20260
+        },
+        {
+          "method": "popularity",
+          "eligible_cases": 4103,
+          "hit_rate_at_5": 0.23909334633195223,
+          "precision_at_5": 0.05459419936631777,
+          "recall_at_5": 0.052141714436863634,
+          "recommendation_coverage": 1.0,
+          "rule_coverage": 0.0,
+          "zero_recommendation_cases": 0,
+          "fewer_than_5_cases": 0,
+          "rule_recommendations": 0,
+          "popularity_recommendations": 20515
+        },
+        {
+          "method": "rule_only",
+          "eligible_cases": 4103,
+          "hit_rate_at_5": 0.014867170363148916,
+          "precision_at_5": 0.0029734340726297846,
+          "recall_at_5": 0.0017691957911075689,
+          "recommendation_coverage": 0.05703144040945649,
+          "rule_coverage": 0.05703144040945649,
+          "zero_recommendation_cases": 3869,
+          "fewer_than_5_cases": 4103,
+          "rule_recommendations": 255,
+          "popularity_recommendations": 0
+        }
+      ],
+      "predictions": {
+        "uri": "hdfs://namenode:9000/instacart/runs/hdfs_etl_20261016T083208Z_887f71ba/evaluations/eval_20261016T135439Z_163e5bb7/work/validation_233bcd16/s0.001_c0.4/predictions",
+        "rows": 12309,
+        "bytes": 265263,
+        "schema": {
+          "type": "struct",
+          "fields": [
+            {
+              "name": "order_id",
+              "type": "integer",
+              "nullable": true,
+              "metadata": {}
+            },
+            {
+              "name": "user_id",
+              "type": "integer",
+              "nullable": true,
+              "metadata": {}
+            },
+            {
+              "name": "context_items",
+              "type": {
+                "type": "array",
+                "elementType": "integer",
+                "containsNull": true
+              },
+              "nullable": true,
+              "metadata": {}
+            },
+            {
+              "name": "method",
+              "type": "string",
+              "nullable": true,
+              "metadata": {}
+            },
+            {
+              "name": "recommendations",
+              "type": {
+                "type": "array",
+                "elementType": {
+                  "type": "struct",
+                  "fields": [
+                    {
+                      "name": "product_id",
+                      "type": "integer",
+                      "nullable": true,
+                      "metadata": {}
+                    },
+                    {
+                      "name": "source",
+                      "type": "string",
+                      "nullable": true,
+                      "metadata": {}
+                    },
+                    {
+                      "name": "rule_id",
+                      "type": "string",
+                      "nullable": true,
+                      "metadata": {}
+                    },
+                    {
+                      "name": "confidence",
+                      "type": "double",
+                      "nullable": true,
+                      "metadata": {}
+                    },
+                    {
+                      "name": "lift",
+                      "type": "double",
+                      "nullable": true,
+                      "metadata": {}
+                    },
+                    {
+                      "name": "support",
+                      "type": "double",
+                      "nullable": true,
+                      "metadata": {}
+                    },
+                    {
+                      "name": "basket_count",
+                      "type": "long",
+                      "nullable": true,
+                      "metadata": {}
+                    }
+                  ]
+                },
+                "containsNull": true
+              },
+              "nullable": true,
+              "metadata": {}
+            }
+          ]
+        },
+        "schema_check": "full type tree; Parquet nullability flags ignored",
+        "status": "PASS"
+      },
+      "per_case_scores": {
+        "uri": "hdfs://namenode:9000/instacart/runs/hdfs_etl_20261016T083208Z_887f71ba/evaluations/eval_20261016T135439Z_163e5bb7/work/validation_233bcd16/s0.001_c0.4/per_case_scores",
+        "rows": 12309,
+        "bytes": 453757,
+        "schema": {
+          "type": "struct",
+          "fields": [
+            {
+              "name": "order_id",
+              "type": "integer",
+              "nullable": true,
+              "metadata": {}
+            },
+            {
+              "name": "user_id",
+              "type": "integer",
+              "nullable": true,
+              "metadata": {}
+            },
+            {
+              "name": "context_items",
+              "type": {
+                "type": "array",
+                "elementType": "integer",
+                "containsNull": true
+              },
+              "nullable": true,
+              "metadata": {}
+            },
+            {
+              "name": "method",
+              "type": "string",
+              "nullable": true,
+              "metadata": {}
+            },
+            {
+              "name": "recommendations",
+              "type": {
+                "type": "array",
+                "elementType": {
+                  "type": "struct",
+                  "fields": [
+                    {
+                      "name": "product_id",
+                      "type": "integer",
+                      "nullable": true,
+                      "metadata": {}
+                    },
+                    {
+                      "name": "source",
+                      "type": "string",
+                      "nullable": true,
+                      "metadata": {}
+                    },
+                    {
+                      "name": "rule_id",
+                      "type": "string",
+                      "nullable": true,
+                      "metadata": {}
+                    },
+                    {
+                      "name": "confidence",
+                      "type": "double",
+                      "nullable": true,
+                      "metadata": {}
+                    },
+                    {
+                      "name": "lift",
+                      "type": "double",
+                      "nullable": true,
+                      "metadata": {}
+                    },
+                    {
+                      "name": "support",
+                      "type": "double",
+                      "nullable": true,
+                      "metadata": {}
+                    },
+                    {
+                      "name": "basket_count",
+                      "type": "long",
+                      "nullable": true,
+                      "metadata": {}
+                    }
+                  ]
+                },
+                "containsNull": true
+              },
+              "nullable": true,
+              "metadata": {}
+            },
+            {
+              "name": "target_items",
+              "type": {
+                "type": "array",
+                "elementType": "integer",
+                "containsNull": true
+              },
+              "nullable": true,
+              "metadata": {}
+            },
+            {
+              "name": "recommended_ids",
+              "type": {
+                "type": "array",
+                "elementType": "integer",
+                "containsNull": true
+              },
+              "nullable": true,
+              "metadata": {}
+            },
+            {
+              "name": "hit_items",
+              "type": {
+                "type": "array",
+                "elementType": "integer",
+                "containsNull": true
+              },
+              "nullable": true,
+              "metadata": {}
+            },
+            {
+              "name": "hit_count",
+              "type": "integer",
+              "nullable": true,
+              "metadata": {}
+            },
+            {
+              "name": "hit",
+              "type": "double",
+              "nullable": true,
+              "metadata": {}
+            },
+            {
+              "name": "precision_at_5",
+              "type": "double",
+              "nullable": true,
+              "metadata": {}
+            },
+            {
+              "name": "recall_at_5",
+              "type": "double",
+              "nullable": true,
+              "metadata": {}
+            },
+            {
+              "name": "recommendation_count",
+              "type": "integer",
+              "nullable": true,
+              "metadata": {}
+            },
+            {
+              "name": "rule_count",
+              "type": "integer",
+              "nullable": true,
+              "metadata": {}
+            },
+            {
+              "name": "popularity_count",
+              "type": "integer",
+              "nullable": true,
+              "metadata": {}
+            }
+          ]
+        },
+        "schema_check": "full type tree; Parquet nullability flags ignored",
+        "status": "PASS"
+      },
+      "cold_target_occurrences": 863,
+      "target_occurrences": 22450,
+      "cold_target_exposure_rate": 0.03844097995545657,
+      "batch_seconds": 4.055,
+      "timing_scope": "Spark batch predict+write+score+readback; not per-request latency"
+    }
+  },
+  "selected": {
+    "config_id": "s0.001_c0.2",
+    "status": "PASS",
+    "min_support": 0.001,
+    "min_confidence": 0.2,
+    "rule_only": {
+      "method": "rule_only",
+      "eligible_cases": 4103,
+      "hit_rate_at_5": 0.1786497684621009,
+      "precision_at_5": 0.0407994150621499,
+      "recall_at_5": 0.03288836976097836,
+      "recommendation_coverage": 0.6556178406044357,
+      "rule_coverage": 0.6556178406044357,
+      "zero_recommendation_cases": 1413,
+      "fewer_than_5_cases": 3790,
+      "rule_recommendations": 6824,
+      "popularity_recommendations": 0
+    },
+    "fit_report": "jobs/fit_0_001_7302c76d/report.json",
+    "fit_report_sha256": "1781b3dec3d2be705d268807ef5783b7df736149fa3f993032c454111979d0d2",
+    "batch_seconds": 4.462
+  },
+  "locked_config_sha256": "4f25a5c9f29a7bc99a3f479cec76c23b7a28c1827d477a4df1432c5e6bb74e7d",
+  "seconds": 49.329,
+  "ended_at": "2026-10-16T14:11:26.460471+00:00"
+}

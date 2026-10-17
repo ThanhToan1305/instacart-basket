@@ -1,0 +1,5 @@
+2026/10/16-22:13:22.727 2b68 Creating DB D:\School\BigData\instacart-basket\outputs\hdfs_evaluations\eval_20261016T135439Z_163e5bb7\evidence\capture_20261016T151318Z\browser-profile\Default\EdgeCoupons/coupons_data.db since it was missing.
+2026/10/16-22:13:22.735 2b68 Reusing MANIFEST D:\School\BigData\instacart-basket\outputs\hdfs_evaluations\eval_20261016T135439Z_163e5bb7\evidence\capture_20261016T151318Z\browser-profile\Default\EdgeCoupons/coupons_data.db/MANIFEST-000001
+2026/10/16-22:13:22.867 4ca4 Level-0 table #5: started
+2026/10/16-22:13:22.870 4ca4 Level-0 table #5: 683273 bytes OK
+2026/10/16-22:13:22.878 4ca4 Delete type=0 #3

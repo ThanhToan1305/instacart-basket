@@ -1,0 +1,7 @@
+{
+  "run_id": "hdfs_etl_20261016T083208Z_887f71ba",
+  "status": "PASS",
+  "report": "/app/outputs/hdfs_runs/hdfs_etl_20261016T083208Z_887f71ba/report.json",
+  "hdfs_root": "hdfs://namenode:9000/instacart/runs/hdfs_etl_20261016T083208Z_887f71ba",
+  "scope": "ETL: raw, six Bronze tables, five Silver tables, Gold KPI and catalog"
+}

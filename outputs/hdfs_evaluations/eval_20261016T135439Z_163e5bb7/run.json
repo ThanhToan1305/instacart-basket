@@ -1,0 +1,68 @@
+{
+  "status": "PASS",
+  "evaluation_run_id": "eval_20261016T135439Z_163e5bb7",
+  "etl_run_id": "hdfs_etl_20261016T083208Z_887f71ba",
+  "etl_root": "hdfs://namenode:9000/instacart/runs/hdfs_etl_20261016T083208Z_887f71ba",
+  "hdfs_root": "hdfs://namenode:9000/instacart/runs/hdfs_etl_20261016T083208Z_887f71ba/evaluations/eval_20261016T135439Z_163e5bb7",
+  "protocol_sha256": "d46b0c0db2dc1302b21d3ad2222baaa10419137aaedecebdf3116c365460c3f5",
+  "etl_report_sha256": "a29c0f88d205b16225ebc862e8fedc65b72896ed7211b5fad7a3e95646f7287a",
+  "seed": 20261016,
+  "k": 5,
+  "supports": [
+    0.002,
+    0.001
+  ],
+  "confidences": [
+    0.2,
+    0.3,
+    0.4
+  ],
+  "checkpoints": {
+    "split": "jobs/split_5972c049/report.json",
+    "fit_0_002": "jobs/fit_0_002_1f671939/report.json",
+    "fit_0_001": "jobs/fit_0_001_7302c76d/report.json",
+    "validation": "jobs/validation_233bcd16/report.json",
+    "test": "jobs/test_1642163a/report.json",
+    "export": "jobs/export_b078dc33/report.json"
+  },
+  "attempts": [
+    {
+      "action": "split",
+      "report": "jobs/split_5972c049/report.json",
+      "status": "PASS",
+      "failure_reason": null
+    },
+    {
+      "action": "fit_0_002",
+      "report": "jobs/fit_0_002_1f671939/report.json",
+      "status": "PASS",
+      "failure_reason": null
+    },
+    {
+      "action": "fit_0_001",
+      "report": "jobs/fit_0_001_7302c76d/report.json",
+      "status": "PASS",
+      "failure_reason": null
+    },
+    {
+      "action": "validation",
+      "report": "jobs/validation_233bcd16/report.json",
+      "status": "PASS",
+      "failure_reason": null
+    },
+    {
+      "action": "test",
+      "report": "jobs/test_1642163a/report.json",
+      "status": "PASS",
+      "failure_reason": null
+    },
+    {
+      "action": "export",
+      "report": "jobs/export_b078dc33/report.json",
+      "status": "PASS",
+      "failure_reason": null
+    }
+  ],
+  "started_at": "2026-10-16T13:54:39.097583+00:00",
+  "updated_at": "2026-10-16T14:25:56.241687+00:00"
+}

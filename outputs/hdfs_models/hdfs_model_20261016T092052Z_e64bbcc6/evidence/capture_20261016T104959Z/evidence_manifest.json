@@ -1,0 +1,40 @@
+﻿{
+    "etl_run_id":  "hdfs_etl_20261016T083208Z_887f71ba",
+    "capture_id":  "capture_20261016T104959Z",
+    "model_run_id":  "hdfs_model_20261016T092052Z_e64bbcc6",
+    "images":  [
+                   {
+                       "captured_at":  "2026-10-16T10:50:06.6578622Z",
+                       "export_id":  "export_20261016T104646Z_efd67c4c",
+                       "max_height":  3500,
+                       "kind":  "real browser screenshot",
+                       "publication_id":  "pub_20261016T102223Z_816c1801",
+                       "url":  "http://127.0.0.1:8503",
+                       "file":  "01_overview.png"
+                   },
+                   {
+                       "captured_at":  "2026-10-16T10:50:08.8349296Z",
+                       "export_id":  "export_20261016T104646Z_efd67c4c",
+                       "max_height":  3500,
+                       "kind":  "real browser screenshot",
+                       "publication_id":  "pub_20261016T102223Z_816c1801",
+                       "url":  "http://127.0.0.1:8503",
+                       "file":  "02_behavior.png"
+                   },
+                   {
+                       "captured_at":  "2026-10-16T10:50:11.0260603Z",
+                       "export_id":  "export_20261016T104646Z_efd67c4c",
+                       "max_height":  3500,
+                       "kind":  "real browser screenshot",
+                       "publication_id":  "pub_20261016T102223Z_816c1801",
+                       "url":  "http://127.0.0.1:8503",
+                       "file":  "03_rules.png"
+                   }
+               ],
+    "created_at":  "2026-10-16T10:50:12.3966896Z",
+    "browser":  "Microsoft Edge headless via CDP",
+    "publication_id":  "pub_20261016T102223Z_816c1801",
+    "status":  "FAIL",
+    "error":  "Missing demo selector",
+    "export_id":  "export_20261016T104646Z_efd67c4c"
+}

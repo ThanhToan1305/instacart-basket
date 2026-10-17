@@ -1,0 +1,907 @@
+{
+  "status": "PASS",
+  "action": "split",
+  "support": null,
+  "run_dir": "/app/outputs/hdfs_evaluations/eval_20261016T135439Z_163e5bb7",
+  "stages": [
+    {
+      "name": "split",
+      "status": "PASS",
+      "started_at": "2026-10-16T13:54:39.921506+00:00",
+      "seconds": 45.153
+    }
+  ],
+  "started_at": "2026-10-16T13:54:39.194076+00:00",
+  "spark_version": "4.2.0",
+  "hadoop_version": "3.5.0",
+  "hdfs_prefix": "hdfs://namenode:9000/instacart/runs/hdfs_etl_20261016T083208Z_887f71ba/evaluations/eval_20261016T135439Z_163e5bb7/work/split_5972c049",
+  "input_fingerprints": {
+    "orders": {
+      "algorithm": "count,sum(decimal(xxhash64)),min,max; order-independent, not cryptographic",
+      "values": {
+        "rows": 34299,
+        "sum": "152595825829783741730",
+        "min": -9223206977047348456,
+        "max": 9221559592598026906
+      },
+      "schema": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "order_id",
+            "type": "integer",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "user_id",
+            "type": "integer",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "eval_set",
+            "type": "string",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "order_number",
+            "type": "integer",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "order_dow",
+            "type": "integer",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "order_hour_of_day",
+            "type": "integer",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "days_since_prior_order",
+            "type": "double",
+            "nullable": true,
+            "metadata": {}
+          }
+        ]
+      }
+    },
+    "baskets": {
+      "algorithm": "count,sum(decimal(xxhash64)),min,max; order-independent, not cryptographic",
+      "values": {
+        "rows": 33523,
+        "sum": "-334857414353111054251",
+        "min": -9222910668547978520,
+        "max": 9222966420837032951
+      },
+      "schema": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "order_id",
+            "type": "integer",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "user_id",
+            "type": "integer",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "items",
+            "type": {
+              "type": "array",
+              "elementType": "integer",
+              "containsNull": true
+            },
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "basket_size",
+            "type": "integer",
+            "nullable": true,
+            "metadata": {}
+          }
+        ]
+      }
+    }
+  },
+  "cohorts": {
+    "validation": {
+      "eligible_cases": 4103,
+      "selected_sources": {
+        "prior": 3923,
+        "train": 180
+      }
+    },
+    "test": {
+      "eligible_cases": 4164,
+      "selected_sources": {
+        "prior": 3985,
+        "train": 179
+      }
+    },
+    "users": {
+      "validation": 4372,
+      "test": 4454,
+      "train": 20781
+    },
+    "training": {
+      "source_baskets": 33523,
+      "source_orders": 34299,
+      "prior_baskets": 22628,
+      "training_baskets": 21530,
+      "excluded_single_item_baskets": 1098
+    },
+    "eligible_users_total": 27662
+  },
+  "seed": 20261016,
+  "split_rule": "SHA256 user-v1, first8hex %10000; 70/15/15",
+  "tables": {
+    "users": {
+      "uri": "hdfs://namenode:9000/instacart/runs/hdfs_etl_20261016T083208Z_887f71ba/evaluations/eval_20261016T135439Z_163e5bb7/work/split_5972c049/users",
+      "rows": 29607,
+      "bytes": 248113,
+      "schema": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "user_id",
+            "type": "integer",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "bucket",
+            "type": "long",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "split",
+            "type": "string",
+            "nullable": true,
+            "metadata": {}
+          }
+        ]
+      },
+      "schema_check": "full type tree; Parquet nullability flags ignored",
+      "status": "PASS",
+      "fingerprint": {
+        "algorithm": "count,sum(decimal(xxhash64)),min,max; order-independent, not cryptographic",
+        "values": {
+          "rows": 29607,
+          "sum": "488073775318875360010",
+          "min": -9222981284224395818,
+          "max": 9223216654341054475
+        },
+        "schema": {
+          "type": "struct",
+          "fields": [
+            {
+              "name": "user_id",
+              "type": "integer",
+              "nullable": true,
+              "metadata": {}
+            },
+            {
+              "name": "bucket",
+              "type": "long",
+              "nullable": true,
+              "metadata": {}
+            },
+            {
+              "name": "split",
+              "type": "string",
+              "nullable": true,
+              "metadata": {}
+            }
+          ]
+        }
+      }
+    },
+    "order_splits": {
+      "uri": "hdfs://namenode:9000/instacart/runs/hdfs_etl_20261016T083208Z_887f71ba/evaluations/eval_20261016T135439Z_163e5bb7/work/split_5972c049/order_splits",
+      "rows": 34299,
+      "bytes": 498898,
+      "schema": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "user_id",
+            "type": "integer",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "order_id",
+            "type": "integer",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "eval_set",
+            "type": "string",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "order_number",
+            "type": "integer",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "bucket",
+            "type": "long",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "split",
+            "type": "string",
+            "nullable": true,
+            "metadata": {}
+          }
+        ]
+      },
+      "schema_check": "full type tree; Parquet nullability flags ignored",
+      "status": "PASS",
+      "fingerprint": {
+        "algorithm": "count,sum(decimal(xxhash64)),min,max; order-independent, not cryptographic",
+        "values": {
+          "rows": 34299,
+          "sum": "-892949204228706265066",
+          "min": -9223144466025604389,
+          "max": 9222699097530670150
+        },
+        "schema": {
+          "type": "struct",
+          "fields": [
+            {
+              "name": "user_id",
+              "type": "integer",
+              "nullable": true,
+              "metadata": {}
+            },
+            {
+              "name": "order_id",
+              "type": "integer",
+              "nullable": true,
+              "metadata": {}
+            },
+            {
+              "name": "eval_set",
+              "type": "string",
+              "nullable": true,
+              "metadata": {}
+            },
+            {
+              "name": "order_number",
+              "type": "integer",
+              "nullable": true,
+              "metadata": {}
+            },
+            {
+              "name": "bucket",
+              "type": "long",
+              "nullable": true,
+              "metadata": {}
+            },
+            {
+              "name": "split",
+              "type": "string",
+              "nullable": true,
+              "metadata": {}
+            }
+          ]
+        }
+      }
+    },
+    "training_baskets": {
+      "uri": "hdfs://namenode:9000/instacart/runs/hdfs_etl_20261016T083208Z_887f71ba/evaluations/eval_20261016T135439Z_163e5bb7/work/split_5972c049/training_baskets",
+      "rows": 21530,
+      "bytes": 887202,
+      "schema": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "order_id",
+            "type": "integer",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "user_id",
+            "type": "integer",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "items",
+            "type": {
+              "type": "array",
+              "elementType": "integer",
+              "containsNull": true
+            },
+            "nullable": true,
+            "metadata": {}
+          }
+        ]
+      },
+      "schema_check": "full type tree; Parquet nullability flags ignored",
+      "status": "PASS",
+      "fingerprint": {
+        "algorithm": "count,sum(decimal(xxhash64)),min,max; order-independent, not cryptographic",
+        "values": {
+          "rows": 21530,
+          "sum": "-74868457551463781709",
+          "min": -9223112265159393114,
+          "max": 9222384899247046707
+        },
+        "schema": {
+          "type": "struct",
+          "fields": [
+            {
+              "name": "order_id",
+              "type": "integer",
+              "nullable": true,
+              "metadata": {}
+            },
+            {
+              "name": "user_id",
+              "type": "integer",
+              "nullable": true,
+              "metadata": {}
+            },
+            {
+              "name": "items",
+              "type": {
+                "type": "array",
+                "elementType": "integer",
+                "containsNull": true
+              },
+              "nullable": true,
+              "metadata": {}
+            }
+          ]
+        }
+      }
+    },
+    "validation_contexts": {
+      "uri": "hdfs://namenode:9000/instacart/runs/hdfs_etl_20261016T083208Z_887f71ba/evaluations/eval_20261016T135439Z_163e5bb7/work/split_5972c049/validation_contexts",
+      "rows": 4103,
+      "bytes": 120526,
+      "schema": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "order_id",
+            "type": "integer",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "user_id",
+            "type": "integer",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "context_items",
+            "type": {
+              "type": "array",
+              "elementType": "integer",
+              "containsNull": true
+            },
+            "nullable": true,
+            "metadata": {}
+          }
+        ]
+      },
+      "schema_check": "full type tree; Parquet nullability flags ignored",
+      "status": "PASS",
+      "fingerprint": {
+        "algorithm": "count,sum(decimal(xxhash64)),min,max; order-independent, not cryptographic",
+        "values": {
+          "rows": 4103,
+          "sum": "-201131933373886333681",
+          "min": -9220376085200508578,
+          "max": 9219588420115597196
+        },
+        "schema": {
+          "type": "struct",
+          "fields": [
+            {
+              "name": "order_id",
+              "type": "integer",
+              "nullable": true,
+              "metadata": {}
+            },
+            {
+              "name": "user_id",
+              "type": "integer",
+              "nullable": true,
+              "metadata": {}
+            },
+            {
+              "name": "context_items",
+              "type": {
+                "type": "array",
+                "elementType": "integer",
+                "containsNull": true
+              },
+              "nullable": true,
+              "metadata": {}
+            }
+          ]
+        }
+      }
+    },
+    "validation_targets": {
+      "uri": "hdfs://namenode:9000/instacart/runs/hdfs_etl_20261016T083208Z_887f71ba/evaluations/eval_20261016T135439Z_163e5bb7/work/split_5972c049/validation_targets",
+      "rows": 4103,
+      "bytes": 133113,
+      "schema": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "order_id",
+            "type": "integer",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "user_id",
+            "type": "integer",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "target_items",
+            "type": {
+              "type": "array",
+              "elementType": "integer",
+              "containsNull": true
+            },
+            "nullable": true,
+            "metadata": {}
+          }
+        ]
+      },
+      "schema_check": "full type tree; Parquet nullability flags ignored",
+      "status": "PASS",
+      "fingerprint": {
+        "algorithm": "count,sum(decimal(xxhash64)),min,max; order-independent, not cryptographic",
+        "values": {
+          "rows": 4103,
+          "sum": "245672658212714593523",
+          "min": -9215510671685121643,
+          "max": 9220326312637043555
+        },
+        "schema": {
+          "type": "struct",
+          "fields": [
+            {
+              "name": "order_id",
+              "type": "integer",
+              "nullable": true,
+              "metadata": {}
+            },
+            {
+              "name": "user_id",
+              "type": "integer",
+              "nullable": true,
+              "metadata": {}
+            },
+            {
+              "name": "target_items",
+              "type": {
+                "type": "array",
+                "elementType": "integer",
+                "containsNull": true
+              },
+              "nullable": true,
+              "metadata": {}
+            }
+          ]
+        }
+      }
+    },
+    "validation_selected_baskets": {
+      "uri": "hdfs://namenode:9000/instacart/runs/hdfs_etl_20261016T083208Z_887f71ba/evaluations/eval_20261016T135439Z_163e5bb7/work/split_5972c049/validation_selected_baskets",
+      "rows": 4103,
+      "bytes": 219227,
+      "schema": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "order_id",
+            "type": "integer",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "user_id",
+            "type": "integer",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "eval_set",
+            "type": "string",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "order_number",
+            "type": "integer",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "items",
+            "type": {
+              "type": "array",
+              "elementType": "integer",
+              "containsNull": true
+            },
+            "nullable": true,
+            "metadata": {}
+          }
+        ]
+      },
+      "schema_check": "full type tree; Parquet nullability flags ignored",
+      "status": "PASS",
+      "fingerprint": {
+        "algorithm": "count,sum(decimal(xxhash64)),min,max; order-independent, not cryptographic",
+        "values": {
+          "rows": 4103,
+          "sum": "-108363212360968948492",
+          "min": -9222774946621451875,
+          "max": 9221798306909778229
+        },
+        "schema": {
+          "type": "struct",
+          "fields": [
+            {
+              "name": "order_id",
+              "type": "integer",
+              "nullable": true,
+              "metadata": {}
+            },
+            {
+              "name": "user_id",
+              "type": "integer",
+              "nullable": true,
+              "metadata": {}
+            },
+            {
+              "name": "eval_set",
+              "type": "string",
+              "nullable": true,
+              "metadata": {}
+            },
+            {
+              "name": "order_number",
+              "type": "integer",
+              "nullable": true,
+              "metadata": {}
+            },
+            {
+              "name": "items",
+              "type": {
+                "type": "array",
+                "elementType": "integer",
+                "containsNull": true
+              },
+              "nullable": true,
+              "metadata": {}
+            }
+          ]
+        }
+      }
+    },
+    "test_contexts": {
+      "uri": "hdfs://namenode:9000/instacart/runs/hdfs_etl_20261016T083208Z_887f71ba/evaluations/eval_20261016T135439Z_163e5bb7/work/split_5972c049/test_contexts",
+      "rows": 4164,
+      "bytes": 127494,
+      "schema": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "order_id",
+            "type": "integer",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "user_id",
+            "type": "integer",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "context_items",
+            "type": {
+              "type": "array",
+              "elementType": "integer",
+              "containsNull": true
+            },
+            "nullable": true,
+            "metadata": {}
+          }
+        ]
+      },
+      "schema_check": "full type tree; Parquet nullability flags ignored",
+      "status": "PASS",
+      "fingerprint": {
+        "algorithm": "count,sum(decimal(xxhash64)),min,max; order-independent, not cryptographic",
+        "values": {
+          "rows": 4164,
+          "sum": "16144207982630084188",
+          "min": -9222092467601833215,
+          "max": 9213421168600841935
+        },
+        "schema": {
+          "type": "struct",
+          "fields": [
+            {
+              "name": "order_id",
+              "type": "integer",
+              "nullable": true,
+              "metadata": {}
+            },
+            {
+              "name": "user_id",
+              "type": "integer",
+              "nullable": true,
+              "metadata": {}
+            },
+            {
+              "name": "context_items",
+              "type": {
+                "type": "array",
+                "elementType": "integer",
+                "containsNull": true
+              },
+              "nullable": true,
+              "metadata": {}
+            }
+          ]
+        }
+      }
+    },
+    "test_targets": {
+      "uri": "hdfs://namenode:9000/instacart/runs/hdfs_etl_20261016T083208Z_887f71ba/evaluations/eval_20261016T135439Z_163e5bb7/work/split_5972c049/test_targets",
+      "rows": 4164,
+      "bytes": 136536,
+      "schema": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "order_id",
+            "type": "integer",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "user_id",
+            "type": "integer",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "target_items",
+            "type": {
+              "type": "array",
+              "elementType": "integer",
+              "containsNull": true
+            },
+            "nullable": true,
+            "metadata": {}
+          }
+        ]
+      },
+      "schema_check": "full type tree; Parquet nullability flags ignored",
+      "status": "PASS",
+      "fingerprint": {
+        "algorithm": "count,sum(decimal(xxhash64)),min,max; order-independent, not cryptographic",
+        "values": {
+          "rows": 4164,
+          "sum": "-672621394789601637538",
+          "min": -9223235176216325497,
+          "max": 9218365166414648272
+        },
+        "schema": {
+          "type": "struct",
+          "fields": [
+            {
+              "name": "order_id",
+              "type": "integer",
+              "nullable": true,
+              "metadata": {}
+            },
+            {
+              "name": "user_id",
+              "type": "integer",
+              "nullable": true,
+              "metadata": {}
+            },
+            {
+              "name": "target_items",
+              "type": {
+                "type": "array",
+                "elementType": "integer",
+                "containsNull": true
+              },
+              "nullable": true,
+              "metadata": {}
+            }
+          ]
+        }
+      }
+    },
+    "test_selected_baskets": {
+      "uri": "hdfs://namenode:9000/instacart/runs/hdfs_etl_20261016T083208Z_887f71ba/evaluations/eval_20261016T135439Z_163e5bb7/work/split_5972c049/test_selected_baskets",
+      "rows": 4164,
+      "bytes": 222132,
+      "schema": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "order_id",
+            "type": "integer",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "user_id",
+            "type": "integer",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "eval_set",
+            "type": "string",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "order_number",
+            "type": "integer",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "items",
+            "type": {
+              "type": "array",
+              "elementType": "integer",
+              "containsNull": true
+            },
+            "nullable": true,
+            "metadata": {}
+          }
+        ]
+      },
+      "schema_check": "full type tree; Parquet nullability flags ignored",
+      "status": "PASS",
+      "fingerprint": {
+        "algorithm": "count,sum(decimal(xxhash64)),min,max; order-independent, not cryptographic",
+        "values": {
+          "rows": 4164,
+          "sum": "226704160589430727413",
+          "min": -9219666812710161128,
+          "max": 9221204113241056592
+        },
+        "schema": {
+          "type": "struct",
+          "fields": [
+            {
+              "name": "order_id",
+              "type": "integer",
+              "nullable": true,
+              "metadata": {}
+            },
+            {
+              "name": "user_id",
+              "type": "integer",
+              "nullable": true,
+              "metadata": {}
+            },
+            {
+              "name": "eval_set",
+              "type": "string",
+              "nullable": true,
+              "metadata": {}
+            },
+            {
+              "name": "order_number",
+              "type": "integer",
+              "nullable": true,
+              "metadata": {}
+            },
+            {
+              "name": "items",
+              "type": {
+                "type": "array",
+                "elementType": "integer",
+                "containsNull": true
+              },
+              "nullable": true,
+              "metadata": {}
+            }
+          ]
+        }
+      }
+    },
+    "train_popularity": {
+      "uri": "hdfs://namenode:9000/instacart/runs/hdfs_etl_20261016T083208Z_887f71ba/evaluations/eval_20261016T135439Z_163e5bb7/work/split_5972c049/train_popularity",
+      "rows": 22512,
+      "bytes": 118902,
+      "schema": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "product_id",
+            "type": "integer",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "basket_count",
+            "type": "long",
+            "nullable": true,
+            "metadata": {}
+          }
+        ]
+      },
+      "schema_check": "full type tree; Parquet nullability flags ignored",
+      "status": "PASS",
+      "fingerprint": {
+        "algorithm": "count,sum(decimal(xxhash64)),min,max; order-independent, not cryptographic",
+        "values": {
+          "rows": 22512,
+          "sum": "507401449204912749849",
+          "min": -9222048231332557344,
+          "max": 9221434185131229937
+        },
+        "schema": {
+          "type": "struct",
+          "fields": [
+            {
+              "name": "product_id",
+              "type": "integer",
+              "nullable": true,
+              "metadata": {}
+            },
+            {
+              "name": "basket_count",
+              "type": "long",
+              "nullable": true,
+              "metadata": {}
+            }
+          ]
+        }
+      }
+    }
+  },
+  "audits": {
+    "user_disjointness": "PASS; one SHA split per distinct user",
+    "prior_train_only": "PASS",
+    "context_target_disjoint_reconstruction": "PASS",
+    "targets_separate_from_features": "PASS"
+  },
+  "seconds": 45.34,
+  "ended_at": "2026-10-16T13:55:25.258293+00:00"
+}

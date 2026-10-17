@@ -1,0 +1,10 @@
+method,metric,value
+hybrid,hit_rate_at_5,0.2537167925907872
+popularity,hit_rate_at_5,0.23909334633195223
+rule_only,hit_rate_at_5,0.1786497684621009
+hybrid,precision_at_5,0.05902997806483111
+popularity,precision_at_5,0.05459419936631777
+rule_only,precision_at_5,0.0407994150621499
+hybrid,recall_at_5,0.05524821008299654
+popularity,recall_at_5,0.052141714436863634
+rule_only,recall_at_5,0.03288836976097836

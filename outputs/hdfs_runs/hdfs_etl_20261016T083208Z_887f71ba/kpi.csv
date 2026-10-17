@@ -1,0 +1,2 @@
+﻿total_orders,total_users,avg_days_between_orders,total_order_items,reorder_rate,observed_baskets,avg_basket_size,median_basket_size,basket_item_total,total_products,avg_orders_per_user,orders_without_observed_items
+34299,29607,11.065915247376779,339165,0.5908363186059883,33523,10.117382095874474,8.0,339165,49688,1.1584760360725503,776

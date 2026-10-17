@@ -1,0 +1,473 @@
+{
+  "status": "PASS",
+  "started_at": "2026-10-16T10:22:23.961564+00:00",
+  "stages": [
+    {
+      "name": "verify_model_artifacts",
+      "status": "PASS",
+      "started_at": "2026-10-16T10:22:30.628125+00:00",
+      "seconds": 3.575,
+      "ended_at": "2026-10-16T10:22:34.215900+00:00"
+    },
+    {
+      "name": "verify_etl_catalog",
+      "status": "PASS",
+      "started_at": "2026-10-16T10:22:34.224019+00:00",
+      "seconds": 0.242,
+      "ended_at": "2026-10-16T10:22:34.473827+00:00"
+    },
+    {
+      "name": "build_useful_rules_and_lookup",
+      "status": "PASS",
+      "started_at": "2026-10-16T10:22:36.825791+00:00",
+      "seconds": 3.624,
+      "ended_at": "2026-10-16T10:22:40.465188+00:00"
+    },
+    {
+      "name": "write_staging_and_readback",
+      "status": "PASS",
+      "started_at": "2026-10-16T10:22:40.752633+00:00",
+      "seconds": 5.435,
+      "ended_at": "2026-10-16T10:22:46.198067+00:00"
+    },
+    {
+      "name": "validate_staging_values",
+      "status": "PASS",
+      "started_at": "2026-10-16T10:22:46.205395+00:00",
+      "seconds": 7.967,
+      "ended_at": "2026-10-16T10:22:54.181479+00:00"
+    },
+    {
+      "name": "charts_from_real_rules",
+      "status": "PASS",
+      "started_at": "2026-10-16T10:22:54.191825+00:00",
+      "seconds": 2.956,
+      "ended_at": "2026-10-16T10:22:57.156868+00:00"
+    },
+    {
+      "name": "real_basket_integration",
+      "status": "PASS",
+      "started_at": "2026-10-16T10:22:57.163470+00:00",
+      "seconds": 2.387,
+      "ended_at": "2026-10-16T10:22:59.557806+00:00"
+    },
+    {
+      "name": "atomic_rename",
+      "status": "PASS",
+      "started_at": "2026-10-16T10:22:59.577558+00:00",
+      "seconds": 0.122,
+      "ended_at": "2026-10-16T10:22:59.708613+00:00"
+    },
+    {
+      "name": "final_hdfs_reconciliation",
+      "status": "PASS",
+      "started_at": "2026-10-16T10:22:59.717205+00:00",
+      "seconds": 8.11,
+      "ended_at": "2026-10-16T10:23:07.829776+00:00"
+    }
+  ],
+  "publication_id": "pub_20261016T102223Z_816c1801",
+  "model_run_id": "hdfs_model_20261016T092052Z_e64bbcc6",
+  "etl_run_id": "hdfs_etl_20261016T083208Z_887f71ba",
+  "model_root": "hdfs://namenode:9000/instacart/runs/hdfs_etl_20261016T083208Z_887f71ba/models/hdfs_model_20261016T092052Z_e64bbcc6",
+  "etl_root": "hdfs://namenode:9000/instacart/runs/hdfs_etl_20261016T083208Z_887f71ba",
+  "inputs": {
+    "training_baskets": {
+      "uri": "hdfs://namenode:9000/instacart/runs/hdfs_etl_20261016T083208Z_887f71ba/models/hdfs_model_20261016T092052Z_e64bbcc6/artifacts/training_baskets",
+      "rows": 30673,
+      "bytes": 1199350,
+      "schema": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "order_id",
+            "type": "integer",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "user_id",
+            "type": "integer",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "items",
+            "type": {
+              "type": "array",
+              "elementType": "integer",
+              "containsNull": true
+            },
+            "nullable": true,
+            "metadata": {}
+          }
+        ]
+      },
+      "schema_check": "full type tree; Parquet nullability flags ignored",
+      "status": "PASS"
+    },
+    "frequent_itemsets": {
+      "uri": "hdfs://namenode:9000/instacart/runs/hdfs_etl_20261016T083208Z_887f71ba/models/hdfs_model_20261016T092052Z_e64bbcc6/artifacts/frequent_itemsets",
+      "rows": 1553,
+      "bytes": 18926,
+      "schema": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "items",
+            "type": {
+              "type": "array",
+              "elementType": "integer",
+              "containsNull": true
+            },
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "freq",
+            "type": "long",
+            "nullable": true,
+            "metadata": {}
+          }
+        ]
+      },
+      "schema_check": "full type tree; Parquet nullability flags ignored",
+      "status": "PASS"
+    },
+    "rules": {
+      "uri": "hdfs://namenode:9000/instacart/runs/hdfs_etl_20261016T083208Z_887f71ba/models/hdfs_model_20261016T092052Z_e64bbcc6/artifacts/rules",
+      "rows": 279,
+      "bytes": 22494,
+      "schema": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "antecedent",
+            "type": {
+              "type": "array",
+              "elementType": "integer",
+              "containsNull": true
+            },
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "consequent",
+            "type": {
+              "type": "array",
+              "elementType": "integer",
+              "containsNull": true
+            },
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "confidence",
+            "type": "double",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "lift",
+            "type": "double",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "support",
+            "type": "double",
+            "nullable": true,
+            "metadata": {}
+          }
+        ]
+      },
+      "schema_check": "full type tree; Parquet nullability flags ignored",
+      "status": "PASS"
+    }
+  },
+  "catalog_input": {
+    "uri": "hdfs://namenode:9000/instacart/runs/hdfs_etl_20261016T083208Z_887f71ba/gold/product_catalog",
+    "rows": 49688,
+    "bytes": 1294374,
+    "schema": {
+      "type": "struct",
+      "fields": [
+        {
+          "name": "product_id",
+          "type": "integer",
+          "nullable": true,
+          "metadata": {}
+        },
+        {
+          "name": "product_name",
+          "type": "string",
+          "nullable": true,
+          "metadata": {}
+        },
+        {
+          "name": "department",
+          "type": "string",
+          "nullable": true,
+          "metadata": {}
+        }
+      ]
+    },
+    "schema_check": "full type tree; Parquet nullability flags ignored",
+    "status": "PASS",
+    "final_read_rows": 49688
+  },
+  "model_report_sha256": "2bcc46a51fdc0eeaa4d2cba83c0766a1d85cee79bf512886ccd0120361010f3b",
+  "etl_report_sha256": "a29c0f88d205b16225ebc862e8fedc65b72896ed7211b5fad7a3e95646f7287a",
+  "training_baskets": 30673,
+  "model_config": {
+    "min_support": 0.002,
+    "min_confidence": 0.2,
+    "num_partitions": 8,
+    "max_itemsets": 200000,
+    "max_rules": 500000,
+    "worker_timeout_seconds": 1200
+  },
+  "min_confidence": 0.2,
+  "plot_min_support": 0.002,
+  "filter": "nonempty antecedent; single consequent; disjoint; positive unique IDs; lift>1; confidence threshold",
+  "staging_suffix": ".publish_staging/pub_20261016T102223Z_816c1801",
+  "final_suffix": "gold/pub_20261016T102223Z_816c1801",
+  "scope": "sample pilot publication; no refit; no label-based evaluation",
+  "compute": "Spark local[2], one Docker host",
+  "worker_log": "/app/outputs/hdfs_models/hdfs_model_20261016T092052Z_e64bbcc6/publications/pub_20261016T102223Z_816c1801/worker.log",
+  "spark_version": "4.2.0",
+  "hadoop_client_version": "3.5.0",
+  "adaptive_enabled": false,
+  "gold": {
+    "frequent_itemsets": {
+      "uri": "hdfs://namenode:9000/instacart/runs/hdfs_etl_20261016T083208Z_887f71ba/models/hdfs_model_20261016T092052Z_e64bbcc6/gold/pub_20261016T102223Z_816c1801/frequent_itemsets",
+      "rows": 1553,
+      "bytes": 11558,
+      "schema": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "items",
+            "type": {
+              "type": "array",
+              "elementType": "integer",
+              "containsNull": true
+            },
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "freq",
+            "type": "long",
+            "nullable": true,
+            "metadata": {}
+          }
+        ]
+      },
+      "schema_check": "full type tree; Parquet nullability flags ignored",
+      "status": "PASS"
+    },
+    "association_rules": {
+      "uri": "hdfs://namenode:9000/instacart/runs/hdfs_etl_20261016T083208Z_887f71ba/models/hdfs_model_20261016T092052Z_e64bbcc6/gold/pub_20261016T102223Z_816c1801/association_rules",
+      "rows": 279,
+      "bytes": 60193,
+      "schema": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "rule_id",
+            "type": "string",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "antecedent",
+            "type": {
+              "type": "array",
+              "elementType": "integer",
+              "containsNull": true
+            },
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "consequent",
+            "type": {
+              "type": "array",
+              "elementType": "integer",
+              "containsNull": true
+            },
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "support",
+            "type": "double",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "confidence",
+            "type": "double",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "lift",
+            "type": "double",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "antecedent_names",
+            "type": {
+              "type": "array",
+              "elementType": "string",
+              "containsNull": true
+            },
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "consequent_names",
+            "type": {
+              "type": "array",
+              "elementType": "string",
+              "containsNull": true
+            },
+            "nullable": true,
+            "metadata": {}
+          }
+        ]
+      },
+      "schema_check": "full type tree; Parquet nullability flags ignored",
+      "status": "PASS"
+    },
+    "recommendation_lookup": {
+      "uri": "hdfs://namenode:9000/instacart/runs/hdfs_etl_20261016T083208Z_887f71ba/models/hdfs_model_20261016T092052Z_e64bbcc6/gold/pub_20261016T102223Z_816c1801/recommendation_lookup",
+      "rows": 347,
+      "bytes": 71437,
+      "schema": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "rule_id",
+            "type": "string",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "antecedent",
+            "type": {
+              "type": "array",
+              "elementType": "integer",
+              "containsNull": true
+            },
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "consequent",
+            "type": {
+              "type": "array",
+              "elementType": "integer",
+              "containsNull": true
+            },
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "support",
+            "type": "double",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "confidence",
+            "type": "double",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "lift",
+            "type": "double",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "antecedent_names",
+            "type": {
+              "type": "array",
+              "elementType": "string",
+              "containsNull": true
+            },
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "consequent_names",
+            "type": {
+              "type": "array",
+              "elementType": "string",
+              "containsNull": true
+            },
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "antecedent_size",
+            "type": "integer",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "antecedent_product_id",
+            "type": "integer",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "recommended_product_id",
+            "type": "integer",
+            "nullable": true,
+            "metadata": {}
+          }
+        ]
+      },
+      "schema_check": "full type tree; Parquet nullability flags ignored",
+      "status": "PASS"
+    }
+  },
+  "counts": {
+    "frequent_itemsets": 1553,
+    "association_rules": 279,
+    "recommendation_lookup": 347
+  },
+  "charts": [
+    {
+      "name": "lift_distribution",
+      "rows": 10,
+      "csv": "/app/outputs/hdfs_models/hdfs_model_20261016T092052Z_e64bbcc6/publications/pub_20261016T102223Z_816c1801/lift_distribution.csv",
+      "png": "/app/outputs/hdfs_models/hdfs_model_20261016T092052Z_e64bbcc6/publications/pub_20261016T102223Z_816c1801/lift_distribution.png",
+      "html": "/app/outputs/hdfs_models/hdfs_model_20261016T092052Z_e64bbcc6/publications/pub_20261016T102223Z_816c1801/lift_distribution.html"
+    },
+    {
+      "name": "top_rules",
+      "rows": 20,
+      "csv": "/app/outputs/hdfs_models/hdfs_model_20261016T092052Z_e64bbcc6/publications/pub_20261016T102223Z_816c1801/top_rules.csv",
+      "png": "/app/outputs/hdfs_models/hdfs_model_20261016T092052Z_e64bbcc6/publications/pub_20261016T102223Z_816c1801/top_rules.png",
+      "html": "/app/outputs/hdfs_models/hdfs_model_20261016T092052Z_e64bbcc6/publications/pub_20261016T102223Z_816c1801/top_rules.html"
+    }
+  ],
+  "integration": {
+    "status": "PASS",
+    "cases": 15,
+    "cases_with_rules": 10,
+    "scope": "functional integration only; no quality metrics or target labels",
+    "artifact": "/app/outputs/hdfs_models/hdfs_model_20261016T092052Z_e64bbcc6/publications/pub_20261016T102223Z_816c1801/integration_cases.json"
+  },
+  "availability": "USEFUL_RULES",
+  "ended_at": "2026-10-16T10:23:07.839578+00:00",
+  "seconds": 43.048,
+  "hdfs_manifest_uri": "hdfs://namenode:9000/instacart/runs/hdfs_etl_20261016T083208Z_887f71ba/models/hdfs_model_20261016T092052Z_e64bbcc6/gold/pub_20261016T102223Z_816c1801/publication_manifest.json"
+}

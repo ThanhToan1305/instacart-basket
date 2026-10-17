@@ -1,0 +1,24 @@
+# Additive overlay: keep compose.yaml and compose.hdfs.yaml unchanged.
+services:
+  hdfs-etl:
+    image: instacart-basket:1.0
+    profiles: ["hdfs"]
+    init: true
+    entrypoint: ["python", "-u", "/opt/instacart-hdfs/etl.py"]
+    command: ["--sample-fraction", "0.01"]
+    environment:
+      HADOOP_CONF_DIR: /etc/instacart-hdfs
+      SPARK_LOCAL_IP: 127.0.0.1
+      PYTHONUNBUFFERED: "1"
+    depends_on:
+      namenode:
+        condition: service_healthy
+      datanode:
+        condition: service_healthy
+    volumes:
+      - ./src:/app/src:ro
+      - ./infra/hdfs-docker/etl.py:/opt/instacart-hdfs/etl.py:ro
+      - ./infra/hdfs-docker/conf:/etc/instacart-hdfs:ro
+      - ./data/raw:/app/data/raw:ro
+      - ./outputs:/app/outputs
+    mem_limit: 3g

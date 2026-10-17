@@ -1,0 +1,414 @@
+{
+  "status": "FAIL",
+  "started_at": "2026-10-16T09:47:31.892118+00:00",
+  "stages": [
+    {
+      "name": "verify_model_artifacts",
+      "status": "PASS",
+      "started_at": "2026-10-16T09:47:38.708160+00:00",
+      "seconds": 3.77,
+      "ended_at": "2026-10-16T09:47:42.492570+00:00"
+    },
+    {
+      "name": "verify_etl_catalog",
+      "status": "PASS",
+      "started_at": "2026-10-16T09:47:42.499720+00:00",
+      "seconds": 0.375,
+      "ended_at": "2026-10-16T09:47:42.881570+00:00"
+    },
+    {
+      "name": "build_useful_rules_and_lookup",
+      "status": "PASS",
+      "started_at": "2026-10-16T09:47:45.419041+00:00",
+      "seconds": 3.319,
+      "ended_at": "2026-10-16T09:47:48.745320+00:00"
+    },
+    {
+      "name": "write_staging_and_readback",
+      "status": "PASS",
+      "started_at": "2026-10-16T09:47:48.997153+00:00",
+      "seconds": 4.793,
+      "ended_at": "2026-10-16T09:47:53.799157+00:00"
+    },
+    {
+      "name": "validate_staging_values",
+      "status": "FAIL",
+      "started_at": "2026-10-16T09:47:53.807590+00:00",
+      "error": "WORKER_FAILED"
+    }
+  ],
+  "publication_id": "pub_20261016T094731Z_eaa5563f",
+  "model_run_id": "hdfs_model_20261016T092052Z_e64bbcc6",
+  "etl_run_id": "hdfs_etl_20261016T083208Z_887f71ba",
+  "model_root": "hdfs://namenode:9000/instacart/runs/hdfs_etl_20261016T083208Z_887f71ba/models/hdfs_model_20261016T092052Z_e64bbcc6",
+  "etl_root": "hdfs://namenode:9000/instacart/runs/hdfs_etl_20261016T083208Z_887f71ba",
+  "inputs": {
+    "training_baskets": {
+      "uri": "hdfs://namenode:9000/instacart/runs/hdfs_etl_20261016T083208Z_887f71ba/models/hdfs_model_20261016T092052Z_e64bbcc6/artifacts/training_baskets",
+      "rows": 30673,
+      "bytes": 1199350,
+      "schema": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "order_id",
+            "type": "integer",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "user_id",
+            "type": "integer",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "items",
+            "type": {
+              "type": "array",
+              "elementType": "integer",
+              "containsNull": true
+            },
+            "nullable": true,
+            "metadata": {}
+          }
+        ]
+      },
+      "schema_check": "full type tree; Parquet nullability flags ignored",
+      "status": "PASS"
+    },
+    "frequent_itemsets": {
+      "uri": "hdfs://namenode:9000/instacart/runs/hdfs_etl_20261016T083208Z_887f71ba/models/hdfs_model_20261016T092052Z_e64bbcc6/artifacts/frequent_itemsets",
+      "rows": 1553,
+      "bytes": 18926,
+      "schema": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "items",
+            "type": {
+              "type": "array",
+              "elementType": "integer",
+              "containsNull": true
+            },
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "freq",
+            "type": "long",
+            "nullable": true,
+            "metadata": {}
+          }
+        ]
+      },
+      "schema_check": "full type tree; Parquet nullability flags ignored",
+      "status": "PASS"
+    },
+    "rules": {
+      "uri": "hdfs://namenode:9000/instacart/runs/hdfs_etl_20261016T083208Z_887f71ba/models/hdfs_model_20261016T092052Z_e64bbcc6/artifacts/rules",
+      "rows": 279,
+      "bytes": 22494,
+      "schema": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "antecedent",
+            "type": {
+              "type": "array",
+              "elementType": "integer",
+              "containsNull": true
+            },
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "consequent",
+            "type": {
+              "type": "array",
+              "elementType": "integer",
+              "containsNull": true
+            },
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "confidence",
+            "type": "double",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "lift",
+            "type": "double",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "support",
+            "type": "double",
+            "nullable": true,
+            "metadata": {}
+          }
+        ]
+      },
+      "schema_check": "full type tree; Parquet nullability flags ignored",
+      "status": "PASS"
+    }
+  },
+  "catalog_input": {
+    "uri": "hdfs://namenode:9000/instacart/runs/hdfs_etl_20261016T083208Z_887f71ba/gold/product_catalog",
+    "rows": 49688,
+    "bytes": 1294374,
+    "schema": {
+      "type": "struct",
+      "fields": [
+        {
+          "name": "product_id",
+          "type": "integer",
+          "nullable": true,
+          "metadata": {}
+        },
+        {
+          "name": "product_name",
+          "type": "string",
+          "nullable": true,
+          "metadata": {}
+        },
+        {
+          "name": "department",
+          "type": "string",
+          "nullable": true,
+          "metadata": {}
+        }
+      ]
+    },
+    "schema_check": "full type tree; Parquet nullability flags ignored",
+    "status": "PASS",
+    "final_read_rows": 49688
+  },
+  "model_report_sha256": "2bcc46a51fdc0eeaa4d2cba83c0766a1d85cee79bf512886ccd0120361010f3b",
+  "etl_report_sha256": "a29c0f88d205b16225ebc862e8fedc65b72896ed7211b5fad7a3e95646f7287a",
+  "training_baskets": 30673,
+  "model_config": {
+    "min_support": 0.002,
+    "min_confidence": 0.2,
+    "num_partitions": 8,
+    "max_itemsets": 200000,
+    "max_rules": 500000,
+    "worker_timeout_seconds": 1200
+  },
+  "min_confidence": 0.2,
+  "plot_min_support": 0.002,
+  "filter": "nonempty antecedent; single consequent; disjoint; positive unique IDs; lift>1; confidence threshold",
+  "staging_suffix": ".publish_staging/pub_20261016T094731Z_eaa5563f",
+  "final_suffix": "gold/pub_20261016T094731Z_eaa5563f",
+  "scope": "sample pilot publication; no refit; no label-based evaluation",
+  "compute": "Spark local[2], one Docker host",
+  "worker_log": "/app/outputs/hdfs_models/hdfs_model_20261016T092052Z_e64bbcc6/publications/pub_20261016T094731Z_eaa5563f/worker.log",
+  "spark_version": "4.2.0",
+  "hadoop_client_version": "3.5.0",
+  "gold": {
+    "frequent_itemsets": {
+      "uri": "hdfs://namenode:9000/instacart/runs/hdfs_etl_20261016T083208Z_887f71ba/models/hdfs_model_20261016T092052Z_e64bbcc6/gold/pub_20261016T094731Z_eaa5563f/frequent_itemsets",
+      "rows": 1553,
+      "bytes": 11558,
+      "schema": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "items",
+            "type": {
+              "type": "array",
+              "elementType": "integer",
+              "containsNull": true
+            },
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "freq",
+            "type": "long",
+            "nullable": true,
+            "metadata": {}
+          }
+        ]
+      },
+      "schema_check": "full type tree; Parquet nullability flags ignored",
+      "status": "PASS"
+    },
+    "association_rules": {
+      "uri": "hdfs://namenode:9000/instacart/runs/hdfs_etl_20261016T083208Z_887f71ba/models/hdfs_model_20261016T092052Z_e64bbcc6/gold/pub_20261016T094731Z_eaa5563f/association_rules",
+      "rows": 279,
+      "bytes": 60222,
+      "schema": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "rule_id",
+            "type": "string",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "antecedent",
+            "type": {
+              "type": "array",
+              "elementType": "integer",
+              "containsNull": true
+            },
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "consequent",
+            "type": {
+              "type": "array",
+              "elementType": "integer",
+              "containsNull": true
+            },
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "support",
+            "type": "double",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "confidence",
+            "type": "double",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "lift",
+            "type": "double",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "antecedent_names",
+            "type": {
+              "type": "array",
+              "elementType": "string",
+              "containsNull": true
+            },
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "consequent_names",
+            "type": {
+              "type": "array",
+              "elementType": "string",
+              "containsNull": true
+            },
+            "nullable": true,
+            "metadata": {}
+          }
+        ]
+      },
+      "schema_check": "full type tree; Parquet nullability flags ignored",
+      "status": "PASS"
+    },
+    "recommendation_lookup": {
+      "uri": "hdfs://namenode:9000/instacart/runs/hdfs_etl_20261016T083208Z_887f71ba/models/hdfs_model_20261016T092052Z_e64bbcc6/gold/pub_20261016T094731Z_eaa5563f/recommendation_lookup",
+      "rows": 347,
+      "bytes": 71420,
+      "schema": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "rule_id",
+            "type": "string",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "antecedent",
+            "type": {
+              "type": "array",
+              "elementType": "integer",
+              "containsNull": true
+            },
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "consequent",
+            "type": {
+              "type": "array",
+              "elementType": "integer",
+              "containsNull": true
+            },
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "support",
+            "type": "double",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "confidence",
+            "type": "double",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "lift",
+            "type": "double",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "antecedent_names",
+            "type": {
+              "type": "array",
+              "elementType": "string",
+              "containsNull": true
+            },
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "consequent_names",
+            "type": {
+              "type": "array",
+              "elementType": "string",
+              "containsNull": true
+            },
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "antecedent_size",
+            "type": "integer",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "antecedent_product_id",
+            "type": "integer",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "recommended_product_id",
+            "type": "integer",
+            "nullable": true,
+            "metadata": {}
+          }
+        ]
+      },
+      "schema_check": "full type tree; Parquet nullability flags ignored",
+      "status": "PASS"
+    }
+  },
+  "failure_reason": "WORKER_FAILED",
+  "exit_code": -15,
+  "ended_at": "2026-10-16T09:57:19.426112+00:00"
+}

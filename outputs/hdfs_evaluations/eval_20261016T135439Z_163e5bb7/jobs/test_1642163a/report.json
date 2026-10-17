@@ -1,0 +1,361 @@
+{
+  "status": "PASS",
+  "action": "test",
+  "support": null,
+  "run_dir": "/app/outputs/hdfs_evaluations/eval_20261016T135439Z_163e5bb7",
+  "stages": [
+    {
+      "name": "test",
+      "status": "PASS",
+      "started_at": "2026-10-16T14:21:13.057746+00:00",
+      "seconds": 23.398
+    }
+  ],
+  "started_at": "2026-10-16T14:21:12.327868+00:00",
+  "spark_version": "4.2.0",
+  "hadoop_version": "3.5.0",
+  "hdfs_prefix": "hdfs://namenode:9000/instacart/runs/hdfs_etl_20261016T083208Z_887f71ba/evaluations/eval_20261016T135439Z_163e5bb7/work/test_1642163a",
+  "evaluation": {
+    "methods": [
+      {
+        "method": "hybrid",
+        "eligible_cases": 4164,
+        "hit_rate_at_5": 0.26248799231508163,
+        "precision_at_5": 0.06191162343900141,
+        "recall_at_5": 0.05746734890243516,
+        "recommendation_coverage": 1.0,
+        "rule_coverage": 0.6618635926993276,
+        "zero_recommendation_cases": 0,
+        "fewer_than_5_cases": 0,
+        "rule_recommendations": 7138,
+        "popularity_recommendations": 13682
+      },
+      {
+        "method": "popularity",
+        "eligible_cases": 4164,
+        "hit_rate_at_5": 0.2430355427473583,
+        "precision_at_5": 0.055955811719500946,
+        "recall_at_5": 0.051966277669944286,
+        "recommendation_coverage": 1.0,
+        "rule_coverage": 0.0,
+        "zero_recommendation_cases": 0,
+        "fewer_than_5_cases": 0,
+        "rule_recommendations": 0,
+        "popularity_recommendations": 20820
+      },
+      {
+        "method": "rule_only",
+        "eligible_cases": 4164,
+        "hit_rate_at_5": 0.18131604226705092,
+        "precision_at_5": 0.041690682036503626,
+        "recall_at_5": 0.03266113926907906,
+        "recommendation_coverage": 0.6618635926993276,
+        "rule_coverage": 0.6618635926993276,
+        "zero_recommendation_cases": 1408,
+        "fewer_than_5_cases": 3823,
+        "rule_recommendations": 7138,
+        "popularity_recommendations": 0
+      }
+    ],
+    "predictions": {
+      "uri": "hdfs://namenode:9000/instacart/runs/hdfs_etl_20261016T083208Z_887f71ba/evaluations/eval_20261016T135439Z_163e5bb7/work/test_1642163a/predictions",
+      "rows": 12492,
+      "bytes": 539019,
+      "schema": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "order_id",
+            "type": "integer",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "user_id",
+            "type": "integer",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "context_items",
+            "type": {
+              "type": "array",
+              "elementType": "integer",
+              "containsNull": true
+            },
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "method",
+            "type": "string",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "recommendations",
+            "type": {
+              "type": "array",
+              "elementType": {
+                "type": "struct",
+                "fields": [
+                  {
+                    "name": "product_id",
+                    "type": "integer",
+                    "nullable": true,
+                    "metadata": {}
+                  },
+                  {
+                    "name": "source",
+                    "type": "string",
+                    "nullable": true,
+                    "metadata": {}
+                  },
+                  {
+                    "name": "rule_id",
+                    "type": "string",
+                    "nullable": true,
+                    "metadata": {}
+                  },
+                  {
+                    "name": "confidence",
+                    "type": "double",
+                    "nullable": true,
+                    "metadata": {}
+                  },
+                  {
+                    "name": "lift",
+                    "type": "double",
+                    "nullable": true,
+                    "metadata": {}
+                  },
+                  {
+                    "name": "support",
+                    "type": "double",
+                    "nullable": true,
+                    "metadata": {}
+                  },
+                  {
+                    "name": "basket_count",
+                    "type": "long",
+                    "nullable": true,
+                    "metadata": {}
+                  }
+                ]
+              },
+              "containsNull": true
+            },
+            "nullable": true,
+            "metadata": {}
+          }
+        ]
+      },
+      "schema_check": "full type tree; Parquet nullability flags ignored",
+      "status": "PASS"
+    },
+    "per_case_scores": {
+      "uri": "hdfs://namenode:9000/instacart/runs/hdfs_etl_20261016T083208Z_887f71ba/evaluations/eval_20261016T135439Z_163e5bb7/work/test_1642163a/per_case_scores",
+      "rows": 12492,
+      "bytes": 761581,
+      "schema": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "order_id",
+            "type": "integer",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "user_id",
+            "type": "integer",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "context_items",
+            "type": {
+              "type": "array",
+              "elementType": "integer",
+              "containsNull": true
+            },
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "method",
+            "type": "string",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "recommendations",
+            "type": {
+              "type": "array",
+              "elementType": {
+                "type": "struct",
+                "fields": [
+                  {
+                    "name": "product_id",
+                    "type": "integer",
+                    "nullable": true,
+                    "metadata": {}
+                  },
+                  {
+                    "name": "source",
+                    "type": "string",
+                    "nullable": true,
+                    "metadata": {}
+                  },
+                  {
+                    "name": "rule_id",
+                    "type": "string",
+                    "nullable": true,
+                    "metadata": {}
+                  },
+                  {
+                    "name": "confidence",
+                    "type": "double",
+                    "nullable": true,
+                    "metadata": {}
+                  },
+                  {
+                    "name": "lift",
+                    "type": "double",
+                    "nullable": true,
+                    "metadata": {}
+                  },
+                  {
+                    "name": "support",
+                    "type": "double",
+                    "nullable": true,
+                    "metadata": {}
+                  },
+                  {
+                    "name": "basket_count",
+                    "type": "long",
+                    "nullable": true,
+                    "metadata": {}
+                  }
+                ]
+              },
+              "containsNull": true
+            },
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "target_items",
+            "type": {
+              "type": "array",
+              "elementType": "integer",
+              "containsNull": true
+            },
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "recommended_ids",
+            "type": {
+              "type": "array",
+              "elementType": "integer",
+              "containsNull": true
+            },
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "hit_items",
+            "type": {
+              "type": "array",
+              "elementType": "integer",
+              "containsNull": true
+            },
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "hit_count",
+            "type": "integer",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "hit",
+            "type": "double",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "precision_at_5",
+            "type": "double",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "recall_at_5",
+            "type": "double",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "recommendation_count",
+            "type": "integer",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "rule_count",
+            "type": "integer",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "popularity_count",
+            "type": "integer",
+            "nullable": true,
+            "metadata": {}
+          }
+        ]
+      },
+      "schema_check": "full type tree; Parquet nullability flags ignored",
+      "status": "PASS"
+    },
+    "cold_target_occurrences": 886,
+    "target_occurrences": 22981,
+    "cold_target_exposure_rate": 0.0385535877463992,
+    "batch_seconds": 7.584,
+    "timing_scope": "Spark batch predict+write+score+readback; not per-request latency"
+  },
+  "locked_config_sha256": "4f25a5c9f29a7bc99a3f479cec76c23b7a28c1827d477a4df1432c5e6bb74e7d",
+  "test_used_for_development": false,
+  "previous_test_exposures_same_cohort": [],
+  "latency": [
+    {
+      "method": "popularity",
+      "p50_ms": 0.0020980000954295974,
+      "p95_ms": 0.004426000054991165,
+      "calls": 300,
+      "contexts": 100,
+      "mode": "warm in-process engine; one excluded warm-up; 3 repeats/context; no network/UI"
+    },
+    {
+      "method": "rule_only",
+      "p50_ms": 0.0047894998260744615,
+      "p95_ms": 0.047077099816306235,
+      "calls": 300,
+      "contexts": 100,
+      "mode": "warm in-process engine; one excluded warm-up; 3 repeats/context; no network/UI"
+    },
+    {
+      "method": "hybrid",
+      "p50_ms": 0.005911499783906038,
+      "p95_ms": 0.045289100080481155,
+      "calls": 300,
+      "contexts": 100,
+      "mode": "warm in-process engine; one excluded warm-up; 3 repeats/context; no network/UI"
+    }
+  ],
+  "seconds": 23.976,
+  "ended_at": "2026-10-16T14:21:37.033267+00:00"
+}

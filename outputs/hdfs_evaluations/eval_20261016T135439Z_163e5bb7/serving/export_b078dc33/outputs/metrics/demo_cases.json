@@ -1,0 +1,27 @@
+{
+  "cases": [
+    {
+      "label": "Luật • test order_id=4",
+      "context": [
+        46842,
+        22598,
+        10054,
+        21351,
+        26434,
+        25146
+      ]
+    },
+    {
+      "label": "Fallback • test order_id=13",
+      "context": [
+        196,
+        33198,
+        36086,
+        3800,
+        27407,
+        17330
+      ]
+    }
+  ],
+  "source": "test contexts only; targets not exposed to UI"
+}

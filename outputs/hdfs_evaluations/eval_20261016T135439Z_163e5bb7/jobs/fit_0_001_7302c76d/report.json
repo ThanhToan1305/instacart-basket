@@ -1,0 +1,267 @@
+{
+  "status": "PASS",
+  "action": "fit_0_001",
+  "support": 0.001,
+  "run_dir": "/app/outputs/hdfs_evaluations/eval_20261016T135439Z_163e5bb7",
+  "stages": [
+    {
+      "name": "fit_0_001",
+      "status": "PASS",
+      "started_at": "2026-10-16T14:10:11.036425+00:00",
+      "seconds": 24.041
+    }
+  ],
+  "started_at": "2026-10-16T14:10:10.349158+00:00",
+  "spark_version": "4.2.0",
+  "hadoop_version": "3.5.0",
+  "hdfs_prefix": "hdfs://namenode:9000/instacart/runs/hdfs_etl_20261016T083208Z_887f71ba/evaluations/eval_20261016T135439Z_163e5bb7/work/fit_0_001_7302c76d",
+  "fit_seconds": 7.291,
+  "config": {
+    "min_confidence": 0.2,
+    "num_partitions": 8,
+    "max_itemsets": 200000,
+    "max_rules": 500000,
+    "worker_timeout_seconds": 1200,
+    "min_support": 0.001
+  },
+  "counts": {
+    "frequent_itemsets": 4503,
+    "rules": 1180,
+    "training_baskets": 21530
+  },
+  "artifacts": {
+    "frequent_itemsets": {
+      "uri": "hdfs://namenode:9000/instacart/runs/hdfs_etl_20261016T083208Z_887f71ba/evaluations/eval_20261016T135439Z_163e5bb7/work/fit_0_001_7302c76d/artifacts/frequent_itemsets",
+      "rows": 4503,
+      "bytes": 33303,
+      "schema": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "items",
+            "type": {
+              "type": "array",
+              "elementType": "integer",
+              "containsNull": true
+            },
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "freq",
+            "type": "long",
+            "nullable": true,
+            "metadata": {}
+          }
+        ]
+      },
+      "schema_check": "full type tree; Parquet nullability flags ignored",
+      "status": "PASS",
+      "fingerprint": {
+        "algorithm": "count,sum(decimal(xxhash64)),min,max; order-independent, not cryptographic",
+        "values": {
+          "rows": 4503,
+          "sum": "-168947470708982073301",
+          "min": -9221620271462644469,
+          "max": 9219903644612748874
+        },
+        "schema": {
+          "type": "struct",
+          "fields": [
+            {
+              "name": "items",
+              "type": {
+                "type": "array",
+                "elementType": "integer",
+                "containsNull": true
+              },
+              "nullable": true,
+              "metadata": {}
+            },
+            {
+              "name": "freq",
+              "type": "long",
+              "nullable": true,
+              "metadata": {}
+            }
+          ]
+        }
+      }
+    },
+    "rules": {
+      "uri": "hdfs://namenode:9000/instacart/runs/hdfs_etl_20261016T083208Z_887f71ba/evaluations/eval_20261016T135439Z_163e5bb7/work/fit_0_001_7302c76d/artifacts/rules",
+      "rows": 1180,
+      "bytes": 43209,
+      "schema": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "antecedent",
+            "type": {
+              "type": "array",
+              "elementType": "integer",
+              "containsNull": true
+            },
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "consequent",
+            "type": {
+              "type": "array",
+              "elementType": "integer",
+              "containsNull": true
+            },
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "confidence",
+            "type": "double",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "lift",
+            "type": "double",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "support",
+            "type": "double",
+            "nullable": true,
+            "metadata": {}
+          }
+        ]
+      },
+      "schema_check": "full type tree; Parquet nullability flags ignored",
+      "status": "PASS",
+      "fingerprint": {
+        "algorithm": "count,sum(decimal(xxhash64)),min,max; order-independent, not cryptographic",
+        "values": {
+          "rows": 1180,
+          "sum": "-561862292140309597692",
+          "min": -9222158104811567419,
+          "max": 9207433118638902477
+        },
+        "schema": {
+          "type": "struct",
+          "fields": [
+            {
+              "name": "antecedent",
+              "type": {
+                "type": "array",
+                "elementType": "integer",
+                "containsNull": true
+              },
+              "nullable": true,
+              "metadata": {}
+            },
+            {
+              "name": "consequent",
+              "type": {
+                "type": "array",
+                "elementType": "integer",
+                "containsNull": true
+              },
+              "nullable": true,
+              "metadata": {}
+            },
+            {
+              "name": "confidence",
+              "type": "double",
+              "nullable": true,
+              "metadata": {}
+            },
+            {
+              "name": "lift",
+              "type": "double",
+              "nullable": true,
+              "metadata": {}
+            },
+            {
+              "name": "support",
+              "type": "double",
+              "nullable": true,
+              "metadata": {}
+            }
+          ]
+        }
+      }
+    }
+  },
+  "split_manifest_sha256": "94d2489ac370fc8e0923d20acf64ecba30491468cb7a26b4fa3837932573395f",
+  "training_input": {
+    "uri": "hdfs://namenode:9000/instacart/runs/hdfs_etl_20261016T083208Z_887f71ba/evaluations/eval_20261016T135439Z_163e5bb7/work/split_5972c049/training_baskets",
+    "rows": 21530,
+    "bytes": 887202,
+    "schema": {
+      "type": "struct",
+      "fields": [
+        {
+          "name": "order_id",
+          "type": "integer",
+          "nullable": true,
+          "metadata": {}
+        },
+        {
+          "name": "user_id",
+          "type": "integer",
+          "nullable": true,
+          "metadata": {}
+        },
+        {
+          "name": "items",
+          "type": {
+            "type": "array",
+            "elementType": "integer",
+            "containsNull": true
+          },
+          "nullable": true,
+          "metadata": {}
+        }
+      ]
+    },
+    "schema_check": "full type tree; Parquet nullability flags ignored",
+    "status": "PASS",
+    "fingerprint": {
+      "algorithm": "count,sum(decimal(xxhash64)),min,max; order-independent, not cryptographic",
+      "values": {
+        "rows": 21530,
+        "sum": "-74868457551463781709",
+        "min": -9223112265159393114,
+        "max": 9222384899247046707
+      },
+      "schema": {
+        "type": "struct",
+        "fields": [
+          {
+            "name": "order_id",
+            "type": "integer",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "user_id",
+            "type": "integer",
+            "nullable": true,
+            "metadata": {}
+          },
+          {
+            "name": "items",
+            "type": {
+              "type": "array",
+              "elementType": "integer",
+              "containsNull": true
+            },
+            "nullable": true,
+            "metadata": {}
+          }
+        ]
+      }
+    }
+  },
+  "seconds": 24.224,
+  "ended_at": "2026-10-16T14:10:35.260111+00:00"
+}
