@@ -1,40 +1,139 @@
-name: instacart
+name: instacart-basket
 
-x-common: &common
-  image: instacart-basket:1.0
+x-logging: &logging
+  driver: json-file
+  options:
+    max-size: "10m"
+    max-file: "3"
+
+x-hadoop: &hadoop
+  image: apache/hadoop:3.4.2
+  user: "0:0"
+  environment:
+    HADOOP_CONF_DIR: /opt/hadoop/etc/hadoop
+    HADOOP_HEAPSIZE_MAX: "384"
+  entrypoint: ["/bin/bash"]
+  logging: *logging
+
+x-spark: &spark
+  image: instacart-spark:3.5.7-ml-v1
   build:
-    context: .
-  init: true
+    context: ./docker/spark
+    dockerfile: Dockerfile
+  environment:
+    HADOOP_CONF_DIR: /opt/hadoop-conf
+    HADOOP_USER_NAME: root
+    PYSPARK_PYTHON: python3
+    SPARK_DAEMON_MEMORY: 256m
+  logging: *logging
 
 services:
-  pipeline:
-    <<: *common
-    profiles: ["jobs"]
-    command:
-      - pipeline
-      - --mode
-      - sample
-      - --sample-fraction
-      - "0.01"
+  namenode:
+    <<: *hadoop
+    hostname: namenode
+    command: ["/opt/project/start-namenode.sh"]
+    mem_limit: 1g
+    ports:
+      - "127.0.0.1:9870:9870"
     volumes:
-      - ./data:/app/data
-      - ./outputs:/app/outputs
-      - ./logs:/app/logs
+      - namenode-data:/data/name
+      - ./docker/hadoop/core-site.xml:/opt/hadoop/etc/hadoop/core-site.xml:ro
+      - ./docker/hadoop/hdfs-site.xml:/opt/hadoop/etc/hadoop/hdfs-site.xml:ro
+      - ./docker/hadoop/start-namenode.sh:/opt/project/start-namenode.sh:ro
+      - ./data/raw:/input:ro
+    healthcheck:
+      test: ["CMD-SHELL", "/opt/hadoop/bin/hdfs dfs -ls / >/dev/null 2>&1"]
+      interval: 30s
+      timeout: 15s
+      retries: 6
+      start_period: 40s
+
+  datanode:
+    <<: *hadoop
+    hostname: datanode
+    command: ["-c", "mkdir -p /data/data && exec /opt/hadoop/bin/hdfs datanode"]
+    mem_limit: 768m
+    depends_on:
+      namenode:
+        condition: service_healthy
+    volumes:
+      - datanode-data:/data/data
+      - ./docker/hadoop/core-site.xml:/opt/hadoop/etc/hadoop/core-site.xml:ro
+      - ./docker/hadoop/hdfs-site.xml:/opt/hadoop/etc/hadoop/hdfs-site.xml:ro
+    healthcheck:
+      test: ["CMD-SHELL", "bash -c 'echo > /dev/tcp/127.0.0.1/9866' && /opt/hadoop/bin/hdfs dfsadmin -report 2>/dev/null | grep -q 'Live datanodes (1)'"]
+      interval: 30s
+      timeout: 15s
+      retries: 6
+      start_period: 40s
+
+  spark-master:
+    <<: *spark
+    hostname: spark-master
+    command: ["/opt/spark/bin/spark-class", "org.apache.spark.deploy.master.Master", "--host", "spark-master", "--port", "7077", "--webui-port", "8080"]
+    mem_limit: 2g
+    ports:
+      - "127.0.0.1:8080:8080"
+      - "127.0.0.1:4040:4040"
+    volumes:
+      - ./docker/hadoop/core-site.xml:/opt/hadoop-conf/core-site.xml:ro
+      - ./docker/hadoop/hdfs-site.xml:/opt/hadoop-conf/hdfs-site.xml:ro
+      - ./docker/spark/spark-defaults.conf:/opt/spark/conf/spark-defaults.conf:ro
+      - ./scripts:/workspace/scripts:ro
+      - ./src:/workspace/src:ro
+      - ./outputs:/workspace/outputs
+    healthcheck:
+      test: ["CMD", "python3", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8080/json/', timeout=5).read()"]
+      interval: 15s
+      timeout: 10s
+      retries: 8
+      start_period: 20s
+
+  spark-worker:
+    <<: *spark
+    hostname: spark-worker
+    command: ["/opt/spark/bin/spark-class", "org.apache.spark.deploy.worker.Worker", "--host", "spark-worker", "--cores", "2", "--memory", "2g", "--webui-port", "8081", "--work-dir", "/tmp/spark-work", "spark://spark-master:7077"]
+    mem_limit: 3g
+    depends_on:
+      spark-master:
+        condition: service_healthy
+    ports:
+      - "127.0.0.1:8081:8081"
+    volumes:
+      - ./docker/hadoop/core-site.xml:/opt/hadoop-conf/core-site.xml:ro
+      - ./docker/hadoop/hdfs-site.xml:/opt/hadoop-conf/hdfs-site.xml:ro
+      - ./docker/spark/spark-defaults.conf:/opt/spark/conf/spark-defaults.conf:ro
+      - ./src:/workspace/src:ro
+    healthcheck:
+      test: ["CMD", "python3", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8081/json/', timeout=5).read()"]
+      interval: 15s
+      timeout: 10s
+      retries: 8
+      start_period: 20s
 
   dashboard:
-    <<: *common
-    command: ["dashboard"]
+    profiles: ["dashboard"]
+    image: instacart-dashboard:1.0
+    build:
+      context: ./app
+      dockerfile: Dockerfile
+    mem_limit: 768m
     ports:
       - "127.0.0.1:8501:8501"
+    environment:
+      PYTHONPATH: /workspace/scripts
+      DASHBOARD_BUNDLE: /workspace/outputs/dashboard/latest.json
     volumes:
-      - ./data/gold:/app/data/gold:ro
-      - ./outputs:/app/outputs:ro
+      - ./outputs:/workspace/outputs:ro
+      - ./scripts:/workspace/scripts:ro
+    logging: *logging
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8501/_stcore/health', timeout=5).read()"]
+      interval: 15s
+      timeout: 10s
+      retries: 8
+      start_period: 20s
 
-  dashboard-sample:
-    <<: *common
-    profiles: ["sample"]
-    command: ["dashboard-sample"]
-    ports:
-      - "127.0.0.1:8502:8501"
-    volumes:
-      - ./outputs:/app/outputs:ro
+volumes:
+  namenode-data:
+  datanode-data:

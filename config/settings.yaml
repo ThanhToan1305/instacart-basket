@@ -1,7 +1,0 @@
-spark:
-  app_name: InstacartPrototype
-  master: "local[*]"
-  driver_memory: 2g
-  adaptive_enabled: true
-  shuffle_partitions: 32
-  log_level: WARN
